@@ -11,15 +11,15 @@ const profileSchema = new Schema({
         type: Number,
         required: true
     },
-    postalCode: {
+    postal_code: {
         type: String,
         required: true
     },
     avatar: {
         type: String,
     },
-    eventsAttending: { type: mongoose.Schema.Types.ObjectId, ref: 'Event'},
-    eventsSaved: { type: mongoose.Schema.Types.ObjectId, ref: 'Event'},
+    events_attending: { type: mongoose.Schema.Types.ObjectId, ref: 'Event'},
+    events_saved: { type: mongoose.Schema.Types.ObjectId, ref: 'Event'},
     photos: { type: mongoose.Schema.Types.ObjectId, ref: 'Photo'},
     friends: { type: mongoose.Schema.Types.ObjectId, ref: 'Profile'}
 }, { timestamps: true})
