@@ -11,7 +11,7 @@ const profileSchema = new Schema({
         type: Number,
         required: true
     },
-    postal_code: {
+    location: {
         type: String,
         required: true
     },

@@ -92,11 +92,11 @@ const SignupForm = (props) => {
         <input
           type="text"
           autoComplete="off"
-          id="postal_code"
+          id="location"
           value={formData.location}
-          name="postal_code"
+          name="location"
           onChange={handleChange}
-          placeholder="535006"
+          placeholder="123456 (zipcode)"
         />
       </div>
       <div className={styles.inputContainer}>
