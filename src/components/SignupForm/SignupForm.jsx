@@ -127,8 +127,8 @@ const SignupForm = (props) => {
           placeholder="secret honk!"
         />
       </div>
-      <div>
-        <label htmlfor="avatar">Choose image to upload</label>
+      <div className={styles.inputContainer}>
+        <label htmlfor="avatar" className={styles.label}>Profile Image</label>
         <input type="file" id="avatar" name="avatar"
               accept=".jpg, .jpeg, .png"/>
       </div>
