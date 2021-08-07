@@ -42,6 +42,9 @@ const App = () => {
 			<Route exact path='/users'>
 				{user ? <Users /> : <Redirect to='/login' />}
 			</Route>
+			<Route exact path='/profile'>
+				
+			</Route>
 		</>
 	)
 }
