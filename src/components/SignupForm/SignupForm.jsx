@@ -54,6 +54,7 @@ const SignupForm = (props) => {
           name="name"
           onChange={handleChange}
           placeholder="Goose"
+          required
         />
       </div>
       <div className={styles.inputContainer}>
@@ -66,6 +67,7 @@ const SignupForm = (props) => {
           name="email"
           onChange={handleChange}
           placeholder="honk@gaggle.com"
+          required
         />
       </div>
       <div className={styles.inputContainer}>
