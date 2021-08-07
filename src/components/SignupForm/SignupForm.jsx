@@ -128,7 +128,7 @@ const SignupForm = (props) => {
         />
       </div>
       <div className={styles.inputContainer}>
-        <label htmlfor="avatar" className={styles.label}>Profile Image</label>
+        <label htmlfor="avatar" className={styles.label}>Profile Image: </label>
         <input type="file" id="avatar" name="avatar"
               accept=".jpg, .jpeg, .png"/>
       </div>
