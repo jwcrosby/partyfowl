@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import * as eventCtrl from '../controllers/events.js'
+import * as eventsCtrl from '../controllers/events.js'
 import { decodeUserFromToken, checkAuth } from '../middleware/auth.js'
 
 const router = Router()
