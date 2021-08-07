@@ -5,6 +5,7 @@ import Signup from '../Auth/Signup/Signup'
 import Login from '../Auth/Login/Login'
 import Landing from '../Landing/Landing'
 import Users from '../Users/Users'
+import Profile from '../Profile/Profile'
 import * as authService from '../../services/authService'
 
 const App = () => {
@@ -43,7 +44,7 @@ const App = () => {
 				{user ? <Users /> : <Redirect to='/login' />}
 			</Route>
 			<Route exact path='/profile'>
-				
+				<Profile/>
 			</Route>
 		</>
 	)
