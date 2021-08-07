@@ -9,6 +9,7 @@ const SignupForm = (props) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    location: '',
     password: '',
     passwordConf: '',
   })
@@ -43,7 +44,7 @@ const SignupForm = (props) => {
     >
       <div className={styles.inputContainer}>
         <label htmlFor="name" className={styles.label}>
-          Name
+          Name: 
         </label>
         <input
           type="text"
@@ -55,7 +56,7 @@ const SignupForm = (props) => {
         />
       </div>
       <div className={styles.inputContainer}>
-        <label htmlFor="email-input" className={styles.label}>Email</label>
+        <label htmlFor="email-input" className={styles.label}>Email: </label>
         <input
           type="text"
           autoComplete="off"
@@ -66,8 +67,22 @@ const SignupForm = (props) => {
         />
       </div>
       <div className={styles.inputContainer}>
+        <label htmlFor="location-input" className={styles.label}>
+          Location: 
+        </label>
+        <input
+          type="text"
+          autoComplete="off"
+          id="postal_code"
+          value={formData.location}
+          name="postal_code"
+          onChange={handleChange}
+          placeholder="Zipcode"
+        />
+      </div>
+      <div className={styles.inputContainer}>
         <label htmlFor="password-input" className={styles.label}>
-          Password
+          Password: 
         </label>
         <input
           type="password"
@@ -80,7 +95,7 @@ const SignupForm = (props) => {
       </div>
       <div className={styles.inputContainer}>
         <label htmlFor="confirm-input" className={styles.label}>
-          Confirm Password
+          Confirm Password: 
         </label>
         <input
           type="password"
