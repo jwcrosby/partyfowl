@@ -17,6 +17,7 @@ const profileSchema = new Schema({
     },
     avatar: {
         type: String,
+        default: "src/assets/goose.jpeg",
     },
     events_attending: { type: mongoose.Schema.Types.ObjectId, ref: 'Event'},
     events_saved: { type: mongoose.Schema.Types.ObjectId, ref: 'Event'},

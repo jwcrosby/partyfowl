@@ -3,4 +3,9 @@
   align-items: center;
   flex-direction: column;
 }
+
+h1 {
+  /* adding to test CSS linking */
+  color: rgb(226, 189, 140);
+} 
   
