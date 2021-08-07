@@ -32,7 +32,13 @@ function signup(req, res) {
     res.status(200).json({ token })
   })
   .catch(err => {
-    res.status(400).send({ err: err.errmsg })
+    let errMsg
+    if (error.errors?.email){
+      errMsg = 'This email already exists'
+    } else {
+      errMsg = 'Something went wrong!'
+    }
+    res.status(400).send({ err: err.errMsg })
   })
 }
 
