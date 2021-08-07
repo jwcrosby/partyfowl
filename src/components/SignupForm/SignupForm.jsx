@@ -53,6 +53,7 @@ const SignupForm = (props) => {
           value={formData.name}
           name="name"
           onChange={handleChange}
+          placeholder="Goose"
         />
       </div>
       <div className={styles.inputContainer}>
@@ -64,6 +65,7 @@ const SignupForm = (props) => {
           value={formData.email}
           name="email"
           onChange={handleChange}
+          placeholder="honk@gaggle.com"
         />
       </div>
       <div className={styles.inputContainer}>
@@ -77,7 +79,7 @@ const SignupForm = (props) => {
           value={formData.location}
           name="postal_code"
           onChange={handleChange}
-          placeholder="Zipcode"
+          placeholder="535006"
         />
       </div>
       <div className={styles.inputContainer}>
@@ -91,6 +93,7 @@ const SignupForm = (props) => {
           value={formData.password}
           name="password"
           onChange={handleChange}
+          placeholder="secret honk!"
         />
       </div>
       <div className={styles.inputContainer}>
@@ -104,6 +107,7 @@ const SignupForm = (props) => {
           value={formData.passwordConf}
           name="passwordConf"
           onChange={handleChange}
+          placeholder="secret honk!"
         />
       </div>
       <div className={styles.inputContainer}>
