@@ -1,10 +1,6 @@
 import { User } from '../models/user.js'
+import { Profile } from '../models/profile.js'
 import jwt from 'jsonwebtoken'
-
-export {
-  signup,
-  login,
-}
 
 async function login(req, res) {
   try {
@@ -55,4 +51,9 @@ function createJWT(user) {
     process.env.SECRET,
     { expiresIn: '24h' }
   )
+}
+
+export {
+  signup,
+  login,
 }
