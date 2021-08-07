@@ -85,6 +85,20 @@ const SignupForm = (props) => {
         />
       </div>
       <div className={styles.inputContainer}>
+        <label htmlFor="age-input" className={styles.label}>
+          Age: 
+        </label>
+        <input
+          type="text"
+          autoComplete="off"
+          id="age"
+          value={formData.age}
+          name="age"
+          onChange={handleChange}
+          placeholder="1"
+        />
+      </div>
+      <div className={styles.inputContainer}>
         <label htmlFor="password-input" className={styles.label}>
           Password: 
         </label>
