@@ -1,10 +1,6 @@
 import { User } from '../models/user.js'
+import { Profile } from '../models/profile.js'
 import jwt from 'jsonwebtoken'
-
-export {
-  signup,
-  login,
-}
 
 async function login(req, res) {
   try {
@@ -23,19 +19,31 @@ async function login(req, res) {
   }
 }
 
-function signup(req, res) {
-  const user = new User(req.body)
-  user.save()
-  .then(user =>{
-    console.log(user)
-    const token = createJWT(user)
-    res.status(200).json({ token })
+const signup = async (req, res) => {
+  const user = new User(req.body);
+  const newProfile = new Profile({
+    name: user.name,
   })
-  .catch(err => {
-    res.status(400).send({ err: err.errmsg })
-  })
-}
 
+  user.profile = newProfile._id
+
+  try {
+    await user.save();
+    await newProfile.save();
+    const token = createJWT(user);
+    res.json({ token });
+  } catch (error) {
+    let errMsg;
+    if (error.errors?.email) {
+      errMsg = "This email already exists";
+    } else if (error.errors?.handle) {
+      errMsg = "This Username already exists";
+    } else {
+      errMsg = "Something went wrong!";
+    }
+    res.status(400).send({ err: errMsg });
+  }
+};
 
 function createJWT(user) {
   return jwt.sign(
@@ -43,4 +51,9 @@ function createJWT(user) {
     process.env.SECRET,
     { expiresIn: '24h' }
   )
+}
+
+export {
+  signup,
+  login,
 }
