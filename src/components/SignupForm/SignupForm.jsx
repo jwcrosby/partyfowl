@@ -9,6 +9,7 @@ const SignupForm = (props) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    age: '',
     location: '',
     password: '',
     passwordConf: '',
@@ -71,6 +72,20 @@ const SignupForm = (props) => {
         />
       </div>
       <div className={styles.inputContainer}>
+        <label htmlFor="age-input" className={styles.label}>
+          Age: 
+        </label>
+        <input
+          type="number"
+          autoComplete="off"
+          id="age"
+          value={formData.age}
+          name="age"
+          onChange={handleChange}
+          placeholder="1"
+        />
+      </div>
+      <div className={styles.inputContainer}>
         <label htmlFor="location-input" className={styles.label}>
           Location: 
         </label>
@@ -82,20 +97,6 @@ const SignupForm = (props) => {
           name="postal_code"
           onChange={handleChange}
           placeholder="535006"
-        />
-      </div>
-      <div className={styles.inputContainer}>
-        <label htmlFor="age-input" className={styles.label}>
-          Age: 
-        </label>
-        <input
-          type="text"
-          autoComplete="off"
-          id="age"
-          value={formData.age}
-          name="age"
-          onChange={handleChange}
-          placeholder="1"
         />
       </div>
       <div className={styles.inputContainer}>
@@ -125,6 +126,11 @@ const SignupForm = (props) => {
           onChange={handleChange}
           placeholder="secret honk!"
         />
+      </div>
+      <div>
+        <label htmlfor="avatar">Choose image to upload</label>
+        <input type="file" id="avatar" name="avatar"
+              accept=".jpg, .jpeg, .png"/>
       </div>
       <div className={styles.inputContainer}>
         <button disabled={validForm} className={styles.button}>Sign Up</button>
