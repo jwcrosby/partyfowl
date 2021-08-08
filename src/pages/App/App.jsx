@@ -47,6 +47,10 @@ const App = () => {
 			<Route exact path='/profile'>
 				<Profile user={user}/>
 			</Route>
+			<Route path="/post/:id">
+				<EventDetails
+				/>
+			</Route>
 		</>
 	)
 }
