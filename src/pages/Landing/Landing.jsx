@@ -4,7 +4,7 @@ import styles from "./Landing.module.css";
 import {
   getAllEvents,
   getEventsByPostalCode,
-} from "../../../services/ticketmasterAPI";
+} from "../../services/ticketmasterAPI";
 
 const Landing = ({ user }) => {
   const [eventData, setEventData] = useState([]);
