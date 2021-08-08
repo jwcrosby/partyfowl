@@ -26,7 +26,7 @@ const getUserProfile = async (userId) => {
     )
     const data = await res.json()
     return data
-  } catch {
+  } catch (error) {
     throw error
   }
 }
