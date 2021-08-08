@@ -6,9 +6,7 @@ const Profile = (props) => {
     const [userProfile,setUserProfile] = useState()
 
     // onClick function
-    console.log(props.user)
-    
-
+   
     useEffect(() => {
         userService.getUserProfile(props.user._id)
         .then (user => setUserProfile(user))
