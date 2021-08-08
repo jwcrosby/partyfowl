@@ -24,7 +24,7 @@ const Landing = ({ user }) => {
     setHasSearchRun(false)
     setEventData(prevEventDataState)
   }
-  
+
   const changePage = (e) => {
     e.preventDefault()
     setCurrentPage(currentPage + parseInt(e.target.value))
@@ -40,7 +40,7 @@ const Landing = ({ user }) => {
   return (
       <main className={styles.container}>
         <div>
-          <h1>RANDOM EVENT DATA</h1>
+          <h1>LANDING</h1>
           <Feed
           eventData={eventData}
           setEventData={setEventData}

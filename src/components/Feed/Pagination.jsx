@@ -1,5 +1,6 @@
 import React from "react"
 import { useHistory } from 'react-router-dom'
+import "./Pagination.css";
 
 //Components
 import Search from './Search'
@@ -48,7 +49,7 @@ const Pagination = (props) => {
     return (
         <div className="hidden-container">
             <div className="header">
-                <h3>{!hasSearchRun ? 'Recent' : `Search Results: ${keyword}`}</h3>
+                <h3>{!hasSearchRun ? 'Random' : `Search Results: ${keyword}`}</h3>
 
                 {!hasSearchRun &&
                     <Search
@@ -71,7 +72,7 @@ const Pagination = (props) => {
                                 </button>
                             }
 
-                            {posts.length === 8 &&
+                            {eventData.length === 8 &&
                                 <button value="1" onClick={(e) => changePage(e)}>
                                     Next
                                 </button>
