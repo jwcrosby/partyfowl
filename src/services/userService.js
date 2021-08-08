@@ -11,6 +11,10 @@ function getAllUsers() {
   .then(res => res.json())
 }
 
+function getUserProfile(){
+  console.log("I'M IN THE RIGHT FUNCTION")
+}
+
 export {
   getAllUsers,
 }

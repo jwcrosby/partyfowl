@@ -11,6 +11,7 @@ import * as authService from '../../services/authService'
 const App = () => {
 	const history = useHistory()
 	const [user, setUser] = useState(authService.getUser())
+	
 
 	const handleLogout = () => {
 		authService.logout()
