@@ -23,7 +23,7 @@ const Landing = ({ user }) => {
   return (
       <main className={styles.container}>
         <div>
-          <h1>ALL EVENT DATA</h1>
+          <h1>RANDOM EVENT DATA</h1>
           <Feed
           events={eventData}></Feed>
         </div>
