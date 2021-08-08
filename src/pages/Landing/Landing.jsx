@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
-import styles from './Landing.module.css'
-import { getAllEvents, getEventsByPostalCode } from "../../../services/ticketmasterAPI";
+import { Route, Link, Redirect } from "react-router-dom";
+import styles from "./Landing.module.css";
+import {
+  getAllEvents,
+  getEventsByPostalCode,
+} from "../../../services/ticketmasterAPI";
 
-
-const Landing = ({user}) => {
+const Landing = ({ user }) => {
   const [eventData, setEventData] = useState([]);
 
   useEffect(() => {
@@ -12,11 +15,21 @@ const Landing = ({user}) => {
 
   return (
     <main className={styles.container}>
-      <h1>
-        hello, {user ? user.name : "friend"}
-      </h1>
+      eventData &&
+      <div>
+        <h1>ALL EVENT DATA</h1>
+        <div className="all-events">
+          {eventData.map((event, index) => (
+            <Link to={{ pathname: "/events/" + index, state: event }}>
+              <div className="events" key={index}>
+                <div className="event-name">{event.name}</div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
     </main>
-  )
-}
+  );
+};
 
-export default Landing
+export default Landing;
