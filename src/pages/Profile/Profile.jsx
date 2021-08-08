@@ -5,7 +5,7 @@ import styles from './Profile.module.css'
 import * as userService from '../../services/userService'
 
 // Components
-import EventList from '../../../components/EventList/EventList'
+import EventList from '../../components/Event/EventList'
 
 const Profile = (props) => {
     const [userProfile,setUserProfile] = useState()
