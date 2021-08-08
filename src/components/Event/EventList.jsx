@@ -2,7 +2,8 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import styles from './Event.module.css'
 
-
+// Components
+import EventCard from './EventCard'
 
 
 const EventList = (props) => {
@@ -11,9 +12,13 @@ const EventList = (props) => {
     console.log('EVENT LIST!!')
 
     return (
-        <div className="post-list">
-            <h1>Event List!</h1>
-        <div/>
+        props.map((event) => (
+            <EventCard
+                key={event._id}
+                event={event}
+                {...props}
+            />
+        ))
     )
 }
 
