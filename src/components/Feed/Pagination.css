@@ -17,7 +17,7 @@
   border-radius: 8px 8px 0px 0px;
 }
 
-.header h3{
+.header h3 {
   margin-left: 14px;
 }
 
@@ -27,7 +27,7 @@
   padding-right: 10px;
 }
 
-.header button{
+.header button {
   background: none;
   font-size: 130px;
   border-radius: 8px;
@@ -45,35 +45,35 @@
 }
 
 .search {
-    width: 100%;
-    max-width: 600px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    border: 1px solid #292934;
-    border-radius: 50px;
-    background: #0e0e16;
-    padding: 5px 5px 5px 12px;
-  }
-  
-  .search-icon{
-    width: 12px;
-    margin: 0;
-  }
-  
-  .search input {
-    background: none;
-    border: none;
-    color: rgb(200, 200, 200);
-    font-size: 16px;
-    padding-left: 10px;
-    margin: 0;
-  }
-  
-  .search input:focus{
-    outline: none;
-  }
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border: 1px solid #292934;
+  border-radius: 50px;
+  background: #0e0e16;
+  padding: 5px 5px 5px 12px;
+}
 
-  form {
-    box-shadow: none;
-  }
+.search-icon {
+  width: 12px;
+  margin: 0;
+}
+
+.search input {
+  background: none;
+  border: none;
+  color: rgb(200, 200, 200);
+  font-size: 16px;
+  padding-left: 10px;
+  margin: 0;
+}
+
+.search input:focus {
+  outline: none;
+}
+
+form {
+  box-shadow: none;
+}
