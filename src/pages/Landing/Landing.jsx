@@ -6,6 +6,9 @@ import { getAllEvents, getEventsByPostalCode } from "../../../services/ticketmas
 const Landing = ({user}) => {
   const [eventData, setEventData] = useState([]);
 
+  useEffect(() => {
+    getAllEvents().then((data) => setEventData(data.results));
+  }, []);
 
   return (
     <main className={styles.container}>
