@@ -12,6 +12,7 @@ import Feed from '../../components/Feed/Feed'
 
 const Landing = ({ user }) => {
   const [eventData, setEventData] = useState([]);
+  const [currentPage, setCurrentPage] = useState(0);
 
   useEffect(() => {
     getAllEvents()
@@ -25,7 +26,17 @@ const Landing = ({ user }) => {
         <div>
           <h1>RANDOM EVENT DATA</h1>
           <Feed
-          events={eventData}></Feed>
+          eventData={eventData}
+          setEventData={setEventData}
+          changePage={changePage}
+          currentPage={currentPage}
+          
+          keyword={keyword}
+          setKeyword={setKeyword}
+          clearSearch={clearSearch}
+          hasSearchRun={hasSearchRun}
+          setHasSearchRun={setHasSearchRun}
+          />
         </div>
       </main>
   );
