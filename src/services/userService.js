@@ -16,9 +16,21 @@ const getAllUsers = async () => {
   }
 }
 
-function getUserProfile(userId){
-  console.log("I AM IN THE RIGHT FUNCTION")
+
+const getUserProfile = async (userId) => {
+  console.log("I'M IN THE RIGHT FUNCTION")
+  try {
+    const res = await fetch(`${BASE_URL}/${userId}`, 
+      { headers: {Authorization: `Bearer ${tokenService.getToken()}`}},
+      { mode: 'cors'}
+    )
+    const data = await res.json()
+    return data
+  } catch {
+    throw error
+  }
 }
+
 
 export {
   getAllUsers,
