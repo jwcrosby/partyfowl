@@ -1,5 +1,6 @@
 import { User } from '../models/user.js'
 import { Profile } from '../models/profile.js'
+import mongoose from 'mongoose'
 import jwt from 'jsonwebtoken'
 
 async function login(req, res) {
@@ -21,12 +22,10 @@ async function login(req, res) {
 
 const signup = async (req, res) => {
   const user = new User(req.body);
-  const newProfile = new Profile({
-    name: user.name,
-  })
+  const newProfile = new Profile(req.body)
 
   user.profile = newProfile._id
-
+  
   try {
     await user.save();
     await newProfile.save();

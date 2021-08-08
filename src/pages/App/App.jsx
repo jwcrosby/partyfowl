@@ -5,11 +5,13 @@ import Signup from '../Auth/Signup/Signup'
 import Login from '../Auth/Login/Login'
 import Landing from '../Landing/Landing'
 import Users from '../Users/Users'
+import Profile from '../Profile/Profile'
 import * as authService from '../../services/authService'
 
 const App = () => {
 	const history = useHistory()
 	const [user, setUser] = useState(authService.getUser())
+	
 
 	const handleLogout = () => {
 		authService.logout()
@@ -41,6 +43,9 @@ const App = () => {
 			</Route>
 			<Route exact path='/users'>
 				{user ? <Users /> : <Redirect to='/login' />}
+			</Route>
+			<Route exact path='/profile'>
+				<Profile user={user}/>
 			</Route>
 		</>
 	)
