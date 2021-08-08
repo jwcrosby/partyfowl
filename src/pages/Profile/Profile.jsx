@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import * as userService from '../../services/userService'
+import EventCard from '../../../components/EventCard/EventCard'
 import styles from './Profile.module.css'
 
 const Profile = (props) => {
@@ -30,6 +31,7 @@ const Profile = (props) => {
             <p>Interested in ___</p>
             <div>
                 Past Events
+                
             </div>
             <div>
                 Saved Events
