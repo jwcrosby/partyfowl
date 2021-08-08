@@ -19,6 +19,7 @@ const getAllUsers = async () => {
 
 const getUserProfile = async (userId) => {
   console.log("I'M IN THE RIGHT FUNCTION")
+  console.log(`${BASE_URL}/${userId}`)
   try {
     const res = await fetch(`${BASE_URL}/${userId}`, 
       { headers: {Authorization: `Bearer ${tokenService.getToken()}`}},

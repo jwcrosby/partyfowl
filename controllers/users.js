@@ -8,6 +8,10 @@ function index(req, res) {
 
 function grabProfile(req,res) {
   console.log("I'M IN GRAB PROFILE!!!")
+  
+  User.findById(req.params.id)
+  .populate("profile")
+  .then(user => res.json(user))
 }
 
 export {

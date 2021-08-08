@@ -3,19 +3,16 @@ import * as userService from '../../services/userService'
 import styles from './Profile.module.css'
 
 const Profile = (props) => {
-    console.log(props)
-    console.log("props.user._id", props.user._id)
-
     const [userProfile,setUserProfile] = useState()
 
     // onClick function
 
 
     useEffect(() => {
-        userService.getUserProfile()
+        userService.getUserProfile(props.user._id)
 
         // .then (user => setUserProfile(user))
-    }, [])
+    }, [props])
    
     return (
         <main  className={styles.container}>
