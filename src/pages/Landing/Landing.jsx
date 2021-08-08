@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { usePrevious } from '../../hooks/usePrevious'
 import styles from "./Landing.module.css";
 
 //Services
@@ -13,6 +14,21 @@ import Feed from '../../components/Feed/Feed'
 const Landing = ({ user }) => {
   const [eventData, setEventData] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
+
+  const prevEventDataState = usePrevious(eventData)
+  const [keyword, setKeyword] = useState('')
+  const [hasSearchRun, setHasSearchRun] = useState(false)
+
+  const clearSearch = () => {
+    setKeyword('')
+    setHasSearchRun(false)
+    setEventData(prevEventDataState)
+  }
+  
+  const changePage = (e) => {
+    e.preventDefault()
+    setCurrentPage(currentPage + parseInt(e.target.value))
+  }
 
   useEffect(() => {
     getAllEvents()
