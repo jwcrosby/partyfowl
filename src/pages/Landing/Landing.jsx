@@ -8,7 +8,7 @@ import {
 } from "../../services/ticketmasterAPI";
 
 //Components
-import Feed from '../components/Feed/Feed'
+import Feed from '../../components/Feed/Feed'
 
 const Landing = ({ user }) => {
   const [eventData, setEventData] = useState([]);
