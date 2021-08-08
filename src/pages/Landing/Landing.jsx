@@ -5,7 +5,7 @@ import {
 } from "../../services/ticketmasterAPI";
 
 const Landing = ({ user }) => {
-  const [eventData, setEventData] = useState({});
+  const [eventData, setEventData] = useState([]);
 
   useEffect(() => {
     getAllEvents()
@@ -19,9 +19,9 @@ const Landing = ({ user }) => {
         <div>
           <h1>ALL EVENT DATA</h1>
           <div>
-          {/* {eventData?.map((event, index) => (
-                <p>{index}</p>
-            ))}  */}
+          {eventData?.map((event, index) => (
+                <p>{event.name}</p>
+            ))}
           </div>
         </div>
       </main>
