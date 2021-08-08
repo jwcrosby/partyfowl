@@ -13,7 +13,8 @@ const Profile = (props) => {
 
     useEffect(() => {
         userService.getUserProfile()
-        .then (user => setUserProfile(user))
+
+        // .then (user => setUserProfile(user))
     }, [])
    
     return (

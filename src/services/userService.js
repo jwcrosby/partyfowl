@@ -2,17 +2,22 @@ import * as tokenService from './tokenService'
 
 const BASE_URL = '/api/users'
 
-function getAllUsers() {
-  return fetch(
-    BASE_URL, 
-    { headers: {Authorization: `Bearer ${tokenService.getToken()}`}},
-    { mode: 'cors'}
-  )
-  .then(res => res.json())
+
+const getAllUsers = async () => {
+  try {
+    const res = await fetch(BASE_URL, 
+      { headers: {Authorization: `Bearer ${tokenService.getToken()}`}},
+      { mode: 'cors'}
+    )
+    const data = await res.json()
+    return data
+  } catch (error) {
+    throw error
+  }
 }
 
-function getUserProfile(){
-  console.log("I'M IN THE RIGHT FUNCTION")
+function getUserProfile(userId){
+  console.log("I AM IN THE RIGHT FUNCTION")
 }
 
 export {
