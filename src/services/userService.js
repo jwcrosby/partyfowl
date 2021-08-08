@@ -26,6 +26,7 @@ const getUserProfile = async (userId) => {
       { mode: 'cors'}
     )
     const data = await res.json()
+    console.log("data", data)
     return data
   } catch (error) {
     throw error
