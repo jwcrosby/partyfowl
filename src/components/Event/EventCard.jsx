@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import styles from './Event.module.css'
+
 
 const EventCard = (props) => {
 // props should contain single event object containing all event data
@@ -13,10 +13,13 @@ const EventCard = (props) => {
                 <h1>Insert Event Name</h1>
             </div>
             <div className="card-details">
-                <h1>Insert Event Name</h1>
+                <p>Insert Location</p>
             </div>
-            <div className="card-header">
-                <h1>Insert Event Name</h1>
+            <div className="card-details">
+                <p>Insert Event Name</p>
+            </div>
+            <div className="card-image">
+                <img src="https://i.imgur.com/30lQ0dl.png" alt="event"/>
             </div>
         </div>
     )
