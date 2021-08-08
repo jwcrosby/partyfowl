@@ -12,7 +12,14 @@ const Profile = (props) => {
         .then (user => setUserProfile(user))
     }, [props])
 
-  
+    if ( userProfile === undefined ){
+        return (
+            <>
+            Still loading...
+            {/* we can insert loading animation here in the future */}
+            </>
+        )
+    }
     return (
         <main  className={styles.container}>
             <h1>PROFILE PAGE</h1> 
