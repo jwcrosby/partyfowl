@@ -17,7 +17,7 @@ const profileSchema = new Schema({
     },
     avatar: {
         type: String,
-        default: "src/assets/goose.jpeg",
+        default: "https://i.imgur.com/18icxdq.jpg",
     },
     events_attending: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Event'}],
     events_saved: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Event'}],
@@ -30,3 +30,4 @@ const Profile = mongoose.model('Profile', profileSchema)
 export {
     Profile
 }
+
