@@ -17,4 +17,5 @@ function getUserProfile(){
 
 export {
   getAllUsers,
+  getUserProfile
 }

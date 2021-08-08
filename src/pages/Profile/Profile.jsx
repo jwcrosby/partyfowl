@@ -4,6 +4,7 @@ import styles from './Profile.module.css'
 
 const Profile = (props) => {
     console.log(props)
+    console.log("props.user._id", props.user._id)
 
     const [userProfile,setUserProfile] = useState()
 
