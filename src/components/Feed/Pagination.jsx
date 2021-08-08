@@ -27,13 +27,13 @@ const Pagination = (props) => {
 
     } = props
 
-
     const handleSearch = async (e) => {
         e.preventDefault()
         try {
             setHasSearchRun(true)
-            const eventData = await search(keyword)
-            setEventData(eventData)
+            const data = await search(keyword)
+            console.log(data)
+            setEventData(data._embedded.events)
             history.push('/')
         } catch (error) {
             throw error
@@ -44,12 +44,10 @@ const Pagination = (props) => {
         setKeyword(e.target.value)
     }
 
-
-
     return (
         <div className="hidden-container">
             <div className="header">
-                <h3>{!hasSearchRun ? 'Random' : `Search Results: ${keyword}`}</h3>
+                <h3>{!hasSearchRun ? 'Enter Zip Code' : `Search Results: ${keyword}`}</h3>
 
                 {!hasSearchRun &&
                     <Search
@@ -58,9 +56,6 @@ const Pagination = (props) => {
                         handleChange={handleChange}
                     />
                 }
-
-
-
 
                 <div className="header-buttons">
                     {!hasSearchRun ?
@@ -80,7 +75,7 @@ const Pagination = (props) => {
                         </>
                         :
                         <>
-                           {hasSearchRun && 
+                          {hasSearchRun && 
                                 <button onClick={clearSearch}>
                                     Clear Results
                                 </button>}

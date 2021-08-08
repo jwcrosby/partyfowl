@@ -21,15 +21,15 @@
   margin-left: 14px;
 }
 
-.search-header-buttons {
+.header-buttons {
   display: flex;
   margin-left: auto;
   padding-right: 10px;
 }
 
-.search-header button{
+.header button{
   background: none;
-  font-size: 13px;
+  font-size: 130px;
   border-radius: 8px;
   box-sizing: border-box;
   margin: 0px 0px 0px 10px;
