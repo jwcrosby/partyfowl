@@ -24,7 +24,7 @@ const Landing = ({ user }) => {
       <main className={styles.container}>
         <div>
           <h1>ALL EVENT DATA</h1>
-          <Feed></Feed>
+          {/* <Feed/> */}
           <div>
           {eventData?.map((event, index) => (
             <Link to={{ pathname: "/events/" + event.id, state: event }}>
