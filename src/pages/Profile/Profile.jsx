@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import * as userService from '../../services/userService'
 import styles from './Profile.module.css'
+
+// Services
+import * as userService from '../../services/userService'
+
+// Components
+import EventList from '../../components/Event/EventList'
 
 const Profile = (props) => {
     const [userProfile,setUserProfile] = useState()
@@ -30,12 +35,15 @@ const Profile = (props) => {
             <p>Interested in ___</p>
             <div>
                 Past Events
+                <EventList />
             </div>
             <div>
                 Saved Events
+                <EventList />
             </div>
             <div>
                 Upcoming Events
+                <EventList />
             </div>
             
         </main>        
