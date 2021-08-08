@@ -19,10 +19,10 @@ const profileSchema = new Schema({
         type: String,
         default: "src/assets/goose.jpeg",
     },
-    events_attending: { type: mongoose.Schema.Types.ObjectId, ref: 'Event'},
-    events_saved: { type: mongoose.Schema.Types.ObjectId, ref: 'Event'},
-    photos: { type: mongoose.Schema.Types.ObjectId, ref: 'Photo'},
-    friends: { type: mongoose.Schema.Types.ObjectId, ref: 'Profile'}
+    events_attending: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Event'}],
+    events_saved: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Event'}],
+    photos: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Photo'}],
+    friends: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Profile'}],
 }, { timestamps: true})
 
 const Profile = mongoose.model('Profile', profileSchema)
