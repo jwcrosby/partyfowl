@@ -23,20 +23,9 @@ const Landing = ({ user }) => {
   return (
       <main className={styles.container}>
         <div>
-          <h1>ALL EVENT DATA</h1>
-          {/* <Feed/> */}
-          <div>
-          {eventData?.map((event, index) => (
-            <Link to={{ pathname: "/events/" + event.id, state: event }}>
-            <div className="events" key={index}>
-              <div className="event-name">{event.name}</div>
-              <div className="event-date">{event.dates.start.localDate}</div>
-              <div className="event-time">{event.dates.start.localTime}</div>
-              <img className={styles.img} src={event.images[3].url} alt="event"></img>
-            </div>
-            </Link>
-            ))}
-          </div>
+          <h1>RANDOM EVENT DATA</h1>
+          <Feed
+          events={eventData}></Feed>
         </div>
       </main>
   );

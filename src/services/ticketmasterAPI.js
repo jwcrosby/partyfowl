@@ -8,8 +8,7 @@ const getAllEvents = async () => {
 
     const data = await res.json();
 
-    return data
-
+    return data;
   } catch (error) {
     throw error;
   }

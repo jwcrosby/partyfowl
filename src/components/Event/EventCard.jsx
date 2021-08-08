@@ -1,28 +1,31 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
-
+import React from "react";
+import { Link } from "react-router-dom";
+import "./EventCard.css";
 
 const EventCard = (props) => {
-// props should contain single event object containing all event data
+  console.log(props);
 
-    console.log("THE PROPS IN EVENT CARD", props)
+  return (
+    <Link to={{ pathname: "/events/" + props.event.id}}>
+    <div className="event-card">
+      <div className="card-header">
+        <h3>{props.event.name}</h3>
+      </div>
 
-    return (
-        <div className="event-card">
-            <div className="card-header">
-                <h1>Insert Event Name</h1>
-            </div>
-            <div className="card-details">
-                <p>Insert Location</p>
-            </div>
-            <div className="card-details">
-                <p>Insert Event Name</p>
-            </div>
-            <div className="card-image">
-                <img src="https://i.imgur.com/30lQ0dl.png" alt="event"/>
-            </div>
-        </div>
-    )
-}
+      <div className="event-date">
+        <h5>{props.event.dates.start.localDate}</h5>
+      </div> 
 
-export default EventCard
+      <div className="event-time">
+        <h6>{props.event.dates.start.localTime}</h6>
+      </div>
+
+      <div className="event-image">
+        <img className="img" src={props.event.images[3].url} alt="event"></img>
+      </div>
+    </div>
+    </Link>
+  );
+};
+
+export default EventCard;

@@ -1,20 +1,16 @@
 import React from 'react'
 
-
 // Components
 import EventCard from './EventCard'
 
-
 const EventList = (props) => {
-// assuming/setting props as an array of pre-populated event objects
 
-    console.log('EVENT LIST!!')
-
+    //my job is to map through the event data
     return (
         <div className="event-list">
-            {props?.map((event) => (
+            {props.events?.map((event) => (
                 <EventCard
-                    key={event._id}
+                    key={event.id}
                     event={event}
                     {...props}
                 />
