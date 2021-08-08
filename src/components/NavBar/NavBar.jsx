@@ -8,7 +8,7 @@ const NavBar = ({ user, handleLogout }) => {
 			<div>
 			{user ? (
 				<>
-					<NavLink to='/'>Home</NavLink>
+					<NavLink className='Home' to='/'>Home</NavLink>
 					<h1>
 						Welcome, {user.name}
 					</h1> 

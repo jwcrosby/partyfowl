@@ -71,7 +71,7 @@ const SignupForm = (props) => {
           required
         />
       </div>
-      <div className={styles.inputContainer}>
+      <div className={styles.ageContainer}>
         <label htmlFor="age-input" className={styles.label}>
           Age: 
         </label>
@@ -127,12 +127,12 @@ const SignupForm = (props) => {
           placeholder="secret honk!"
         />
       </div>
-      <div className={styles.inputContainer}>
+      <div className={styles.imgContainer}>
         <label htmlfor="avatar" className={styles.label}>Profile Image: </label>
         <input type="file" id="avatar" name="avatar"
               accept=".jpg, .jpeg, .png"/>
       </div>
-      <div className={styles.inputContainer}>
+      <div className={styles.buttonContainer}>
         <button disabled={validForm} className={styles.button}>Sign Up</button>
         <Link to="/">
           <button>Cancel</button>
