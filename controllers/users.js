@@ -6,6 +6,11 @@ function index(req, res) {
   .then(users => res.json(users))
 }
 
+function grabProfile(req,res) {
+  console.log("I'M IN GRAB PROFILE!!!")
+}
+
 export {
-  index
+  index,
+  grabProfile,
 }
