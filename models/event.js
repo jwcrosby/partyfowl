@@ -50,8 +50,8 @@ const eventSchema = new Schema({
         type: String
     },
     comments: [commentSchema],
-    user_photos: { type: mongoose.Schema.Types.ObjectId, ref: 'Photo'},
-    profiles_attending: { type: mongoose.Schema.Types.ObjectId, ref: 'Profile'},
+    user_photos: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Photo'}],
+    profiles_attending: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Profile'}],
 }, { timestamps: true })
 
 const Event = mongoose.model('Event', eventSchema)
