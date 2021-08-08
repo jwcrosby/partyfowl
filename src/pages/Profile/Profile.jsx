@@ -17,10 +17,13 @@ const Profile = (props) => {
         <main  className={styles.container}>
             <h1>PROFILE PAGE</h1> 
             {/* <p>{userProfile}</p> */}
+            <img src={userProfile.profile.avatar}/>
+            {/* <h1>{userProfile.profile.name}</h1> */}
             
         </main>        
     )
 }
+
 
 export default Profile
 
