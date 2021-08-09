@@ -29,8 +29,6 @@ const getEventsByPostalCode = async (size, postalCode) => {
 };
 
 const getEventById = async (id) => {
-  console.log("I'M HITTING THIS FUNCTION IN TICKETMASTER API")
-
   try {
     let eventUrl = `/api/events/getEvent/${id}`;
 
@@ -44,4 +42,18 @@ const getEventById = async (id) => {
   }
 };
 
-export { getAllEvents, getEventsByPostalCode, getEventById };
+const getEventImages = async (id) => {
+  try {
+    let eventUrl = `/api/events/getEventImages/${id}`;
+
+    const res = await fetch(eventUrl);
+
+    const data = await res.json();
+
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export { getAllEvents, getEventsByPostalCode, getEventById, getEventImages };

@@ -21,6 +21,11 @@ const EventDetails = () => {
         ticketService.getEventById(id)
         .then (event => setEventDetails(event))
     }, [id])
+
+    useEffect(() => {
+        ticketService.getEventImages(id)
+        .then (event => setEventDetails(event))
+    }, [id])
     
     if ( eventDetails === undefined ){
         return (
