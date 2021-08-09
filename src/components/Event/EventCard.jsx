@@ -9,11 +9,11 @@ const EventCard = (props) => {
 
   return (
     <>
-      <Link to={{ pathname: "/events/" + props.event.id}}>
-      <div className="event-card">
-        <div className="card-header">
-          <h3>{props.event.name}</h3>
-        </div>
+    <Link to={{ pathname: `/events/${props.event.id}` , state: { event : props.event.id}}}>
+    <div className="event-card">
+      <div className="card-header">
+        <h3>{props.event.name}</h3>
+      </div>
 
         <div className="event-date">
           <h5>{props.event.dates.start.localDate}</h5>
