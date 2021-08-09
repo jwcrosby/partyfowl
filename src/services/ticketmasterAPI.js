@@ -42,18 +42,5 @@ const getEventById = async (id) => {
   }
 };
 
-const getEventImages = async (id) => {
-  try {
-    let eventUrl = `/api/events/getEventImages/${id}`;
 
-    const res = await fetch(eventUrl);
-
-    const data = await res.json();
-
-    return data;
-  } catch (error) {
-    throw error;
-  }
-}
-
-export { getAllEvents, getEventsByPostalCode, getEventById, getEventImages };
+export { getAllEvents, getEventsByPostalCode, getEventById };

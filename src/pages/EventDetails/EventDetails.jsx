@@ -21,11 +21,6 @@ const EventDetails = () => {
         ticketService.getEventById(id)
         .then (event => setEventDetails(event))
     }, [id])
-
-    useEffect(() => {
-        ticketService.getEventImages(id)
-        .then (event => setEventDetails(event))
-    }, [id])
     
     if ( eventDetails === undefined ){
         return (
@@ -37,6 +32,7 @@ const EventDetails = () => {
     return (
         <div>
             <div className="display-img">
+                {/* <img src=`` */}
                 <img src="https://i.imgur.com/30lQ0dl.png" alt="placeholder"/>
             </div>
         </div>
