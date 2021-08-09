@@ -6,7 +6,7 @@ import './EventDetails.css'
 import * as ticketService from "../../services/ticketmasterAPI";
 
 // Components
-
+import CommentSection from '../../components/Comment/CommentSection';
 
 // Assets?
 
@@ -14,6 +14,7 @@ import * as ticketService from "../../services/ticketmasterAPI";
 const EventDetails = () => {
     const { id } = useParams()
     const [eventDetails, setEventDetails] = useState()
+    const [commentArray, setCommentArray] = useState([])
 
     useEffect(() => {
         ticketService.getEventById(id)
@@ -41,6 +42,12 @@ const EventDetails = () => {
             </div>
             <div className="datetime">
                 <p>Timezone: {eventDetails.dates.timezone}</p>
+            </div>
+            <div className='comments'>
+                <CommentSection
+                    commentArray={commentArray}
+                    setCommentArray={setCommentArray}
+                />
             </div>
             
         </div>
