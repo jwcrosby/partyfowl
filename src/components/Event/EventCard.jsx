@@ -11,6 +11,9 @@ const EventCard = (props) => {
     <>
     <Link to={{ pathname: `/events/${props.event.id}` , state: { event : props.event.id}}}>
     <div className="event-card">
+        <div className="event-image">
+          <img className="img-event" src={props.event.images[3].url} alt="event"></img>
+        </div>
       <div className="card-header">
         <h3>{props.event.name}</h3>
       </div>
@@ -23,9 +26,6 @@ const EventCard = (props) => {
           <h6>{props.event.dates.start.localTime}</h6>
         </div>
 
-        <div className="event-image">
-          <img className="img" src={props.event.images[3].url} alt="event"></img>
-        </div>
       </div>
       </Link>
       {/* <EventMap
