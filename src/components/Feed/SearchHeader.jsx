@@ -25,9 +25,13 @@ const SearchHeader = (props) => {
     e.preventDefault();
     try {
       setHasSearchRun(true);
+
       const data = await search(keyword);
-      console.log(data);
-      setEventData(data._embedded.events);
+
+      data.hasOwnProperty("_embedded")
+        ? setEventData(data._embedded.events)
+        : setEventData([]);
+
       history.push("/");
     } catch (error) {
       throw error;
@@ -54,12 +58,11 @@ const SearchHeader = (props) => {
         )}
 
         <div className="header-buttons">
-
-            <>
-              {hasSearchRun && (
-                <button onClick={clearSearch}>Clear Results</button>
-              )}
-            </>
+          <>
+            {hasSearchRun && (
+              <button onClick={clearSearch}>Clear Results</button>
+            )}
+          </>
         </div>
       </div>
     </div>

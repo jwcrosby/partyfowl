@@ -24,8 +24,9 @@ const Landing = ({ user }) => {
 
   useEffect(() => {
     getAllEvents().then((data) => {
-      console.log(data._embedded.events);
-      setEventData(data._embedded.events);
+      data.hasOwnProperty("_embedded")
+        ? setEventData(data._embedded.events)
+        : setEventData([]);
     });
   }, []);
 
