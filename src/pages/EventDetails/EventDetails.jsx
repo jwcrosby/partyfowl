@@ -12,9 +12,21 @@ import './EventDetails.css'
 
 const EventDetails = (props) => {
     console.log(props)
+    
+    // const {id} = props.match.params
+
+    // console.log(id)
+
+    // const {event} = props.location.state
+
+    // console.log(event) // "bar"
 
     return (
-        <h1>I'm In Event Details!</h1>
+        <div>
+            <div className="display-img">
+                <img src="https://i.imgur.com/30lQ0dl.png" alt="placeholder"/>
+            </div>
+        </div>
     )
 }
 

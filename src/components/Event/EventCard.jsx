@@ -6,7 +6,7 @@ const EventCard = (props) => {
   console.log(props);
 
   return (
-    <Link to={{ pathname: "/events/" + props.event.id}}>
+    <Link to={{ pathname: `/events/${props.event.id}` , state: { event : props.event.id}}}>
     <div className="event-card">
       <div className="card-header">
         <h3>{props.event.name}</h3>
