@@ -14,6 +14,8 @@ import { getEventById } from "../../services/ticketmasterAPI";
 const EventDetails = () => {
     const { id } = useParams()
     const [eventDetails, setEventDetails] = useState()
+    const [eventImages, setEventImages] = useState({})
+
 
     useEffect(() => {
         getEventById(id)
