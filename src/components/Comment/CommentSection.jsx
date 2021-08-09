@@ -5,7 +5,7 @@ import CreateComment from '../CreateComponents/CreateComment/CreateComment'
 import CommentList from './CommentList'
 
 // services
-import { createComment } from '../../services/commentService'
+import { createComment, deleteComment } from '../../services/commentService'
 
 
 const CommentSection = (props) => {
@@ -15,6 +15,15 @@ const CommentSection = (props) => {
             const newComment = await createComment(props.event._id, formData)
             newComment.owner = props.currentUser
             props.setCommentArray([...props.setCommentArray, newComment])
+        } catch (error) {
+            throw error
+        }
+    }
+
+    const handleDeleteComment = async (commentId) => {
+        try {
+            await deleteComment(props.event._id, commentId)
+            props.setCommentArray(props.commentArray.filter(comment => comment._id !== commentId))
         } catch (error) {
             throw error
         }
@@ -32,7 +41,10 @@ const CommentSection = (props) => {
                 handleCreateComment={handleCreateComment}
             ></CreateComment>
 
-            <CommentList {...props} />
+            <CommentList 
+                {...props}
+                handleDeleteComment={handleDeleteComment}
+            />
         
         </div>
     )
