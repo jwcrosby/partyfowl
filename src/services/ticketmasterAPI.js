@@ -29,6 +29,8 @@ const getEventsByPostalCode = async (size, postalCode) => {
 };
 
 const getEventById = async (id) => {
+  console.log("I'M HITTING THIS FUNCTION IN TICKETMASTER API")
+
   try {
     let eventUrl = `/api/events/getEvent/${id}`;
 

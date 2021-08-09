@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import './EventDetails.css'
 
 // Services
-import { getEventById } from "../../services/ticketmasterAPI";
+import * as ticketService from "../../services/ticketmasterAPI";
 
 // Components
 
@@ -18,7 +18,7 @@ const EventDetails = () => {
 
 
     useEffect(() => {
-        getEventById(id)
+        ticketService.getEventById(id)
         .then (event => setEventDetails(event))
     }, [id])
     
