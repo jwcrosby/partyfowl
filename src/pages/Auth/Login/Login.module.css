@@ -3,6 +3,9 @@
   align-items: center;
   flex-direction: column;
 }
+html {
+  height: 100vh;
+}
 body {
   background-image: url("../../../components/images/jpg-draft1.jpg") ;
   -webkit-background-size: cover;
