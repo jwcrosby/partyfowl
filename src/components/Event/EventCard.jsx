@@ -33,7 +33,7 @@ const EventCard = (props) => {
         event={props.event}
         {...props}
       /> */}
-      <p>"EVENT MAP"</p>
+      {/* <p>"EVENT MAP"</p> */}
     </>
   );
 };

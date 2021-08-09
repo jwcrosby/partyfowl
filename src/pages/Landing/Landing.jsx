@@ -8,6 +8,7 @@ import { getAllEvents } from "../../services/ticketmasterAPI";
 
 //Components
 import Feed from "../../components/Feed/Feed";
+import EventMap from '../../components/Event/EventMap'
 
 const Landing = ({ user }) => {
   const [eventData, setEventData] = useState([]);
@@ -34,6 +35,8 @@ const Landing = ({ user }) => {
     <main className={styles.container}>
       <div>
         <h1>LANDING</h1>
+        <EventMap/>
+
         <Feed
           eventData={eventData}
           setEventData={setEventData}
