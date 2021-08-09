@@ -11,6 +11,7 @@ const CreateComment = (props) => {
             owner: props.currentUser._id,
         }
         props.handleCreateComment(formData)
+        props.setToggleNewComment(false)
     }
 
     return (
