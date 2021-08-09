@@ -6,6 +6,7 @@ import Login from '../Auth/Login/Login'
 import Landing from '../Landing/Landing'
 import Users from '../Users/Users'
 import Profile from '../Profile/Profile'
+import EventDetails from '../EventDetails/EventDetails'
 import * as authService from '../../services/authService'
 
 const App = () => {
@@ -46,6 +47,9 @@ const App = () => {
 			</Route>
 			<Route exact path='/profile'>
 				<Profile user={user}/>
+			</Route>
+			<Route path="/events/:id">
+				<EventDetails/>
 			</Route>
 		</>
 	)
