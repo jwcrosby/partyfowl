@@ -1,6 +1,9 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import './NavBar.css'
+import nest from '../images/login.png'
+import header from '../images/temporary-header.png'
+
 
 const NavBar = ({ user, handleLogout }) => {
 	return (
@@ -17,9 +20,12 @@ const NavBar = ({ user, handleLogout }) => {
 				</>
 			) : (
 				<>
-					<NavLink to='/'>Home</NavLink>
-					<NavLink to="/login">Log In</NavLink>
-					<NavLink to="/signup">Sign Up</NavLink>
+					<NavLink className='Home nav-a' to='/'>Home</NavLink>
+					<span className='header-img' >Header Img Will Go Here</span> 
+					<span className='form-links'>
+					<NavLink className='login nav-a' to="/login"><img className='nest-icon' src={nest} alt="an egg" /><br/></NavLink>
+					<NavLink className='signup nav-a' to="/signup">Sign Up</NavLink>
+					</span>
 				</>
 			)}
 			</div>
