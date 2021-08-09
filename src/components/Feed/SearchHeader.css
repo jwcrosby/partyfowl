@@ -1,7 +1,7 @@
 .hidden-container {
-  width: inherit;
+  width: 80vw;
   /* position: fixed; */
-  background: #0b0b12;
+  
   padding: 10px 10px 0px 10px;
 }
 
@@ -14,11 +14,14 @@
   box-sizing: border-box;
   border: 1px solid #26262b;
   color: rgb(200, 200, 200);
-  border-radius: 8px 8px 0px 0px;
+  border-radius: 8px ;
 }
 
 .header h3 {
   margin-left: 14px;
+}
+h3.h3-search {
+  width: 20vw;
 }
 
 .header-buttons {
@@ -76,4 +79,10 @@
 
 form.search {
   box-shadow: none;
+  background-color:black;
 }
+ div.search-container{
+   color: white;
+ }
+
+

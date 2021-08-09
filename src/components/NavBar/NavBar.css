@@ -1,9 +1,58 @@
 .nav-bar{
     /* just to test if css is connected - and it is! */
     background: #b9b9ff;
-    height: 40px;
+    height: 3rem;
+    width: 100vw;
+    border-bottom: 1px solid black;
+    box-shadow: 5px 5px 5px rgb(108, 108, 129); 
+    position: fixed;
+    top: 0;
+}
+.nav-a {
+    color: black;
+    font-family: 'Courgette', cursive;
+    font-size: 2rem;
+    text-decoration: none;
+    margin: 3px;
+    vertical-align:middle;
+    display: inline-block;
+    height: 3vh;
+}
+.Home {
+    margin-left: 10vw;
+    width: 33%;
+    height: 3vh;
+}
+.header-img {
+    height: 4rem;
+    width: 15%;
+}
+.login, .signup{
+    color: white;
+    text-align: right;
+    /* width: 10%; */
+    /* position: absolute;
+    top: 0;
+    right: 1;
+    width: 25%; */
+    /* margin: 0; */
 
 }
-a {
-    color: red;
+
+.signup:hover{
+    color: black;
 }
+
+.login:hover{
+    color: black;
+}
+.form-links {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 25%;
+}
+.nest-icon {
+    height: 4vh;
+}
+

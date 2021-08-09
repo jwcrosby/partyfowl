@@ -1,9 +1,16 @@
-.img {
-  width: 250px
-}
-
 .event-card {
   /* to distinguish card from background */
   background-color: white;
+  border-radius: 3px;
+  width: 53vw;
+  height: 20vh;
+  display: flex;
+}
+
+.img-event {
+  width: 23vw;
+  height: 20vh;
+  border-radius: 5px;
   
+
 }
