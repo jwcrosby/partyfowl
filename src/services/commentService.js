@@ -17,3 +17,16 @@ export const createComment = async (eventId, comment) => {
         throw error
     }
 }
+
+export const deleteComment = async (eventId, commentId) => {
+    try {
+        const res = await fetch(`${BASE_URL}${eventId}/comments/${commentId}`, {
+            method: 'DELETE',
+            headers: { 'Authorization': 'Bearer ' + tokenService.getToken() }
+        }, { mode: 'cors' })
+        const data = await res.json()
+        return data
+    } catch (error) {
+        throw error
+    }
+}
