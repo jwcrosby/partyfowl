@@ -74,6 +74,6 @@
   outline: none;
 }
 
-form {
+form.search {
   box-shadow: none;
 }
