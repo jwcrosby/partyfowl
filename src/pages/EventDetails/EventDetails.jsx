@@ -41,7 +41,6 @@ const EventDetails = () => {
             </div>
             <div className="datetime">
                 <p>Timezone: {eventDetails.dates.timezone}</p>
-                <p>From {eventDetails.dates.start.localDate} at {eventDetails.dates.start.localTime} to {eventDetails.dates.end.dateTime}</p>
             </div>
             
         </div>
