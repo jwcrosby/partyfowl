@@ -7,6 +7,7 @@ import * as ticketService from "../../services/ticketmasterAPI";
 
 // Components
 import CommentSection from '../../components/Comment/CommentSection';
+import EventDetailsMap from '../../components/Event/EventDetailsMap';
 
 // Assets?
 
@@ -37,6 +38,15 @@ const EventDetails = () => {
                 <img src={eventDetails.images[0].url} alt="event"/>
             </div>
             <h1>{eventDetails.name}</h1>
+
+            <EventDetailsMap
+            
+            />
+
+
+
+
+
             <div className="description">
                 <p>Description: {eventDetails.description}</p>
             </div>

@@ -3,7 +3,7 @@ import ReactMapGL from 'react-map-gl';
 
 // const TOKEN = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN
 console.log(process.env)
-const EventMap = (props) => {
+const EventDetailsMap = (props) => {
 
     const [viewport, setViewport] = useState({
       latitude: 37.8,
@@ -23,7 +23,7 @@ const EventMap = (props) => {
     );
   }
 
-export default EventMap
+export default EventDetailsMap
 
 
 
