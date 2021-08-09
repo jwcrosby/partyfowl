@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import ReactMapGL from 'react-map-gl';
 
-// Needs to be converted to a service and then a controller
-const TOKEN = 'pk.eyJ1Ijoid2Nyb3NieSIsImEiOiJja3M0dnQwa2swYm8yMm9teHJqdDg2ZWtnIn0.q0ntESOC-EdJb2PwMLn5vQ'
-
+// const TOKEN = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN
+console.log(process.env)
 const EventMap = (props) => {
 
     const [viewport, setViewport] = useState({
@@ -17,9 +16,9 @@ const EventMap = (props) => {
     return (
         <ReactMapGL
         {...viewport}
-        mapStyle="mapbox://styles/mapbox/dark-v9"
+        mapStyle="mapbox://styles/wcrosby/cks530lbr9l0s17t68dk9ozze"
         onViewportChange={setViewport}
-        mapboxApiAccessToken={TOKEN}
+        // mapboxApiAccessToken={TOKEN}
       />
     );
   }

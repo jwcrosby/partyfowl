@@ -6,7 +6,6 @@ import "./EventCard.css";
 import EventMap from './EventMap'
 
 const EventCard = (props) => {
-  console.log(props);
 
   return (
     <>
@@ -33,7 +32,6 @@ const EventCard = (props) => {
         event={props.event}
         {...props}
       /> */}
-      {/* <p>"EVENT MAP"</p> */}
     </>
   );
 };
