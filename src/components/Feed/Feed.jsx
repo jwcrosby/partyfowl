@@ -1,8 +1,7 @@
 import React from 'react'
 
 //Components
-// import Pagination from './Pagination'
-import Pagination from './Pagination'
+import SearchHeader from './SearchHeader'
 import EventList from '../Event/EventList'
 
 
@@ -10,7 +9,7 @@ const Feed = (props) => {
 
     return (
         <>
-            <Pagination {...props} />
+            <SearchHeader {...props} />
             <div className="spacing-block" />
             <EventList
                 {...props}
