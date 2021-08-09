@@ -49,8 +49,7 @@ const App = () => {
 				<Profile user={user}/>
 			</Route>
 			<Route path="/events/:id">
-				<EventDetails
-				/>
+				<EventDetails/>
 			</Route>
 		</>
 	)

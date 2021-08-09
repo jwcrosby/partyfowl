@@ -1,4 +1,5 @@
 import React from 'react'
+import { useParams } from 'react-router-dom'
 import './EventDetails.css'
 
 // Services
@@ -13,13 +14,8 @@ import './EventDetails.css'
 const EventDetails = (props) => {
     console.log(props)
     
-    // const {id} = props.match.params
-
-    // console.log(id)
-
-    // const {event} = props.location.state
-
-    // console.log(event) // "bar"
+    const { id } = useParams()
+    console.log(id)
 
     return (
         <div>
