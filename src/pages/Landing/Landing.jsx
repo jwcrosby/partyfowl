@@ -38,7 +38,7 @@ const Landing = ({ user }) => {
   return (
     <main className={styles.container}>
       <div>
-        <h1>LANDING</h1>
+        <h1 className='landing-h1'>LANDING</h1>
         <Feed
           eventData={eventData}
           setEventData={setEventData}
