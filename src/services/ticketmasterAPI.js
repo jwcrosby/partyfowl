@@ -30,7 +30,7 @@ const getEventsByPostalCode = async (size, postalCode) => {
 
 const getEventById = async (id) => {
   try {
-    let eventUrl = `https://app.ticketmaster.com/discovery/v2/events/${id}.json?apikey=HwHRmjrv9cpx06oAoP2GNE1OkQ1CAej7&=`;
+    let eventUrl = `/api/events/getEvent/${id}`;
 
     const res = await fetch(eventUrl);
 
