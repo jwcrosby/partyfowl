@@ -14,8 +14,6 @@ import * as ticketService from "../../services/ticketmasterAPI";
 const EventDetails = () => {
     const { id } = useParams()
     const [eventDetails, setEventDetails] = useState()
-    const [eventImages, setEventImages] = useState({})
-
 
     useEffect(() => {
         ticketService.getEventById(id)
@@ -23,6 +21,7 @@ const EventDetails = () => {
     }, [id])
     
     if ( eventDetails === undefined ){
+
         return (
             <>
             Still loading...
@@ -32,9 +31,19 @@ const EventDetails = () => {
     return (
         <div>
             <div className="display-img">
-                {/* <img src=`` */}
-                <img src="https://i.imgur.com/30lQ0dl.png" alt="placeholder"/>
+                {/* can refactor to make it a carousel */}
+                {/* need to make conditional for if no images */}
+                <img src={eventDetails.images[0].url} alt="event"/>
             </div>
+            <h1>{eventDetails.name}</h1>
+            <div className="description">
+                <p>Description: {eventDetails.description}</p>
+            </div>
+            <div className="datetime">
+                <p>Timezone: {eventDetails.dates.timezone}</p>
+                <p>From {eventDetails.dates.start.localDate} at {eventDetails.dates.start.localTime} to {eventDetails.dates.end.dateTime}</p>
+            </div>
+            
         </div>
     )
 }
