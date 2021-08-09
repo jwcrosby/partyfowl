@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import './EventDetails.css'
 
 // Services
-
+import { getEventById } from "../../services/ticketmasterAPI";
 
 // Components
 
@@ -11,12 +11,22 @@ import './EventDetails.css'
 // Assets?
 
 
-const EventDetails = (props) => {
-    console.log(props)
-    
+const EventDetails = () => {
     const { id } = useParams()
-    console.log(id)
+    const [eventDetails, setEventDetails] = useState()
 
+    useEffect(() => {
+        getEventById(id)
+        .then (event => setEventDetails(event))
+    }, [id])
+    
+    if ( eventDetails === undefined ){
+        return (
+            <>
+            Still loading...
+            </>
+        )
+    }
     return (
         <div>
             <div className="display-img">
