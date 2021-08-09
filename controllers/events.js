@@ -53,11 +53,20 @@ function getEventById (req,res){
     })  
 }
 
+function getEventImages (req,res){
+    console.log("I'm in getEventImages")
+    axios.get(`https://app.ticketmaster.com/discovery/v2/events/${req.params.id}/images.json?apikey=${process.env.API_KEY}`)
+    .then(response => {
+        res.json(response.data)
+    })
+}
+
 export {
     createComment,
     deleteComment,
     getAllEvents,
     getEventsByPostalCode,
-    getEventById
+    getEventById,
+    getEventImages,
 }
 
