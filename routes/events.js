@@ -6,7 +6,8 @@ const router = Router()
 
 // ========= Public Routes ===========
 
-
+router.get('/getAll', eventsCtrl.getAllEvents)
+router.get('/getByPostal', eventsCtrl.getEventsByPostalCode)
 
 // ========= Protected Routes ===========
 router.use(decodeUserFromToken)
@@ -17,3 +18,4 @@ router.delete('/:event_id/comments/:comment_id', checkAuth, eventsCtrl.deleteCom
 export {
     router
 }
+
