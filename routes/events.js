@@ -6,7 +6,8 @@ const router = Router()
 
 // ========= Public Routes ===========
 
-
+router.get('/getAll', eventsCtrl.getAllEvents)
+router.get('/getByPostal', eventsCtrl.getEventsByPostalCode)
 
 // ========= Protected Routes ===========
 router.use(decodeUserFromToken)
@@ -14,3 +15,4 @@ router.use(decodeUserFromToken)
 export {
     router
 }
+
