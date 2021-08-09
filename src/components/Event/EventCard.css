@@ -1,3 +1,9 @@
 .img {
   width: 250px
 }
+
+.event-card {
+  /* to distinguish card from background */
+  background-color: white;
+  
+}
