@@ -13,8 +13,23 @@ const createComment = async (req, res) => {
     }
 }
 
+const deleteComment = async (req, res) => {
+    try {
+        const event = await Event.findById(req.params.event_id)
+        const idx = event.comments.findIndex((comment) =>
+            comment.event_id.equals(req.params.comment_id)
+        )
+        const removedComment = event.comments.splice(idx, 1)
+        await event.save()
+        return res.status(200).json(removedComment)
+    } catch (err) {
+        res.json(err)
+    }
+}
+
 
 
 export {
-    createComment
+    createComment,
+    deleteComment,
 }
