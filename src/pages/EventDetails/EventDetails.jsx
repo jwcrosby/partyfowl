@@ -43,6 +43,12 @@ const EventDetails = () => {
             <div className="datetime">
                 <p>Timezone: {eventDetails.dates.timezone}</p>
             </div>
+            <div className='comments'>
+                <CommentSection
+                    commentArray={commentArray}
+                    setCommentArray={setCommentArray}
+                />
+            </div>
             
         </div>
     )
