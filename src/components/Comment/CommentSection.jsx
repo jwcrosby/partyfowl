@@ -9,6 +9,7 @@ import { createComment, deleteComment } from '../../services/commentService'
 
 
 const CommentSection = (props) => {
+    const [toggleNewComment, setToggleNewComment] = useState(false)
 
     const handleCreateComment = async (formData) => {
         try {
@@ -36,10 +37,21 @@ const CommentSection = (props) => {
                 <h3>Comment Section</h3>
             </div>
 
+            <div className='header-btns'>
+                {props.currentUser &&
+                    <button onClick={() => setToggleNewComment(!toggleNewComment)}>
+                        Add A Comment
+                    </button>
+                }
+            </div>
+
+            {toggleNewComment &&
             <CreateComment 
-                {...props}
-                handleCreateComment={handleCreateComment}
-            ></CreateComment>
+                    {...props}
+                    handleCreateComment={handleCreateComment}
+                    setToggleNewComment={setToggleNewComment}
+                ></CreateComment>
+            }
 
             <CommentList 
                 {...props}
