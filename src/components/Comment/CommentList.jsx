@@ -6,7 +6,13 @@ import CommentCard from './CommentCard'
 const CommentList = (props) => {
 
     return (
-        <CommentCard />
+        props.commentArray.map((comment) => (
+            <CommentCard 
+                key={comment._id}
+                comment={comment}
+                {...props}
+            />
+        ))
     )
 }
 
