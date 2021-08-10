@@ -4,6 +4,7 @@ import "./EventDetails.css";
 
 // Services
 import * as ticketService from "../../services/ticketmasterAPI";
+import * as eventService from "../../services/eventService"
 
 // Components
 import CommentSection from "../../components/Comment/CommentSection";
@@ -17,6 +18,7 @@ const EventDetails = () => {
   const [commentArray, setCommentArray] = useState([]);
 
   const handleNewCommentClick = () => {
+      eventService.createEvent(id)
       // check if there is an event
       // if not, create one
       // Find event
