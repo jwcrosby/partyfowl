@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 
 // components
-import CreateComment from '../CreateComponents/CreateComment/CreateComment'
 import CommentList from './CommentList'
+import CreateComment from '../CreateComponents/CreateComment/CreateComment'
 
 // services
 import { createComment, deleteComment } from '../../services/commentService'
@@ -50,7 +50,7 @@ const CommentSection = (props) => {
                     {...props}
                     handleCreateComment={handleCreateComment}
                     setToggleNewComment={setToggleNewComment}
-                ></CreateComment>
+            ></CreateComment>
             }
 
             <CommentList 

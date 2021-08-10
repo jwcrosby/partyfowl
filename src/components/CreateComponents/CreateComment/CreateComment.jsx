@@ -6,7 +6,7 @@ const CreateComment = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault()
         const formData = {
-            comment_content: text,
+            content: text,
             event_id: props.event._id,
             owner: props.currentUser._id,
         }
@@ -21,7 +21,7 @@ const CreateComment = (props) => {
                 required
                 autoComplete='off'
                 placeholder='Comment'
-                name='comment_content'
+                name='content'
                 value={text}
                 onChange={(e) => setText(e.target.value)}
             ></input>
