@@ -28,7 +28,6 @@ const deleteComment = async (req, res) => {
         res.json(err)
     }
 }
-// when you combine event.js controller files, be sure to also change routing
 
 function getAllEvents (req, res) {
     console.log("I'M HITTING GETALLEVENTS")

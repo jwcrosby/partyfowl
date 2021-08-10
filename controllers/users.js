@@ -1,4 +1,5 @@
 import { User } from '../models/user.js'
+import { Profile } from '../models/profile.js'
 
 function index(req, res) {
   console.log(req.user)
@@ -12,7 +13,15 @@ function grabProfile(req,res) {
   .then(user => res.json(user))
 }
 
+function populateEvents(req,res) {
+  Profile.findById(req.params.id)
+  .populate("events_attending")
+  .populate("events_saved")
+  .then(profile => res.json(profile))
+}
+
 export {
   index,
   grabProfile,
+  populateEvents
 }
