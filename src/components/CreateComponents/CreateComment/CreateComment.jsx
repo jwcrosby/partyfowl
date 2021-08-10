@@ -1,14 +1,15 @@
 import React, { useState } from 'react'
 
 const CreateComment = (props) => {
+    console.log("props", props)
     const [text, setText] = useState('')
 
     const handleSubmit = (e) => {
         e.preventDefault()
         const formData = {
-            comment_content: text,
-            event_id: props.event._id,
-            owner: props.currentUser._id,
+            content: text,
+            // event_id: props.event._id,
+            // owner: props.currentUser._id,
         }
         props.handleCreateComment(formData)
         props.setToggleNewComment(false)
@@ -21,7 +22,7 @@ const CreateComment = (props) => {
                 required
                 autoComplete='off'
                 placeholder='Comment'
-                name='comment_content'
+                name='content'
                 value={text}
                 onChange={(e) => setText(e.target.value)}
             ></input>

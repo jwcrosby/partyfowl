@@ -44,6 +44,7 @@ const EventDetails = () => {
       </div>
       <div className="comments">
         <CommentSection
+          eventId={ id }
           commentArray={commentArray}
           setCommentArray={setCommentArray}
         />
