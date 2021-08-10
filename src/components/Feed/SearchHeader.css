@@ -6,7 +6,7 @@
 }
 
 .header {
-  width: 100%;
+  width: 95vw;
   height: 50px;
   display: flex;
   align-items: center;
@@ -32,7 +32,7 @@ h3.h3-search {
 
 .header button {
   background: none;
-  font-size: 130px;
+  font-size: 13px;
   border-radius: 8px;
   box-sizing: border-box;
   margin: 0px 0px 0px 10px;
