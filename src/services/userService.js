@@ -29,7 +29,7 @@ const getUserProfile = async (userId) => {
     throw error
   }
 }
-
+    
 
 export {
   getAllUsers,

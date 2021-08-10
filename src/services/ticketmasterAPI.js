@@ -42,5 +42,20 @@ const getEventById = async (id) => {
   }
 };
 
+const populateEvents = async (id) => {
+  try {
+    console.log(id)
+    let eventUrl = `/api/events/populateEvents/${id}`;
+    const res = await fetch(eventUrl);
 
-export { getAllEvents, getEventsByPostalCode, getEventById };
+    const data = await res.json();
+
+    return data;
+
+  } catch (error) {
+    throw error
+  }
+}
+
+
+export { getAllEvents, getEventsByPostalCode, getEventById, populateEvents };

@@ -3,6 +3,7 @@ import styles from './Profile.module.css'
 
 // Services
 import * as userService from '../../services/userService'
+import * as ticketService from "../../services/ticketmasterAPI";
 
 // Components
 import EventList from '../../components/Event/EventList'
@@ -10,11 +11,12 @@ import EventList from '../../components/Event/EventList'
 const Profile = (props) => {
     const [userProfile,setUserProfile] = useState()
 
-    // onClick function
    
     useEffect(() => {
         userService.getUserProfile(props.user._id)
         .then (user => setUserProfile(user))
+        .then(ticketService.populateEvents(userProfile._id))
+
     }, [props])
 
     if ( userProfile === undefined ){
@@ -28,7 +30,6 @@ const Profile = (props) => {
     return (
         <main  className={styles.container}>
             <h1>PROFILE PAGE</h1> 
-            {/* <p>{userProfile}</p> */}
             <img src={userProfile.profile.avatar} alt="user avatar"/>
             <h1>{userProfile.profile.name}</h1>
             <p>{userProfile.profile.location}</p>
