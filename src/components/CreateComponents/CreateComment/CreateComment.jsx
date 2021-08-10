@@ -1,14 +1,15 @@
 import React, { useState } from 'react'
 
 const CreateComment = (props) => {
+    console.log("props", props)
     const [text, setText] = useState('')
 
     const handleSubmit = (e) => {
         e.preventDefault()
         const formData = {
             content: text,
-            event_id: props.event._id,
-            owner: props.currentUser._id,
+            // event_id: props.event._id,
+            // owner: props.currentUser._id,
         }
         props.handleCreateComment(formData)
         props.setToggleNewComment(false)

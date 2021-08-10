@@ -2,6 +2,7 @@ import * as tokenService from './tokenService'
 const BASE_URL = '/api/events/'
 
 export const createComment = async (eventId, comment) => {
+    console.log('event id', eventId, 'comment', comment)
     try {
         const res = await fetch(`${BASE_URL}${eventId}`, {
             method: 'POST',
