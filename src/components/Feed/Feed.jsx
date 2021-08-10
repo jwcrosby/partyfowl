@@ -7,12 +7,14 @@ import EventList from '../Event/EventList'
 
 const Feed = (props) => {
 
+
+
     return (
         <>
             <SearchHeader {...props} />
             <div className="spacing-block" />
             <EventList
-                {...props}
+                eventsArray={props.eventData}
             />
         </>
 

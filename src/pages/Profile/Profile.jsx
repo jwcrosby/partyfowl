@@ -16,6 +16,7 @@ const Profile = (props) => {
         userService.getUserProfile(props.user._id)
         .then (userProfile => {
             setUserProfile(userProfile)
+            console.log(userProfile)
             
             userService.populateEvents(userProfile._id)
             // .then (populatedProfile => {
@@ -40,17 +41,17 @@ const Profile = (props) => {
             <h1>{userProfile.profile.name}</h1>
             <p>{userProfile.profile.location}</p>
             <p>Interested in ___</p>
-            <div>
+            {/* <div>
                 Past Events
-                <EventList userprofile={userProfile} />
-            </div>
+                <EventList eventsArray={userProfile} />
+            </div> */}
             <div>
                 Saved Events
-                <EventList userprofile={userProfile} />
+                <EventList eventsArray={userProfile.profile.events_saved} />
             </div>
             <div>
                 Upcoming Events
-                <EventList userprofile={userProfile} />
+                <EventList eventsArray={userProfile.profile.events_attending} />
             </div>
             
         </main>        
