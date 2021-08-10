@@ -16,6 +16,12 @@ const EventDetails = () => {
   const [eventDetails, setEventDetails] = useState();
   const [commentArray, setCommentArray] = useState([]);
 
+  const handleNewCommentClick = () => {
+      // check if there is an event
+      // if not, create one
+      // Find event
+  }
+
   useEffect(() => {
     ticketService.getEventById(id).then((event) => setEventDetails(event));
   }, [id]);
