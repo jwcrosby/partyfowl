@@ -2,9 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./EventCard.css";
 
-// Components
-import EventMap from './EventMap'
-
 const EventCard = (props) => {
 
   return (
@@ -28,10 +25,6 @@ const EventCard = (props) => {
 
       </div>
       </Link>
-      {/* <EventMap
-        event={props.event}
-        {...props}
-      /> */}
     </>
   );
 };
