@@ -23,10 +23,10 @@ app.use('/api/users', usersRouter)
 app.use('/api/events', eventsRouter)
 
 
-app.get('/*', function (req, res) {
-  res.sendFile(
-    path.dirname(fileURLToPath(import.meta.url), 'build', 'index.html')
-  )
+app.get("/*", function (req, res) {
+	res.sendFile(
+		path.join(path.dirname(fileURLToPath(import.meta.url)), "build", "index.html")
+	)
 })
 
 const port = process.env.PORT || 3001
