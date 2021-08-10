@@ -14,9 +14,13 @@ const Profile = (props) => {
    
     useEffect(() => {
         userService.getUserProfile(props.user._id)
-        .then (user => {
-            setUserProfile(user)
-            ticketService.populateEvents(user.profile._id)
+        .then (userProfile => {
+            setUserProfile(userProfile)
+            
+            userService.populateEvents(userProfile._id)
+            // .then (populatedProfile => {
+            //     setUserProfile(populatedProfile)
+            // })
         })
     }, [props])
     
@@ -38,15 +42,15 @@ const Profile = (props) => {
             <p>Interested in ___</p>
             <div>
                 Past Events
-                <EventList />
+                <EventList userprofile={userProfile} />
             </div>
             <div>
                 Saved Events
-                <EventList />
+                <EventList userprofile={userProfile} />
             </div>
             <div>
                 Upcoming Events
-                <EventList />
+                <EventList userprofile={userProfile} />
             </div>
             
         </main>        

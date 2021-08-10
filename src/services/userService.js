@@ -29,9 +29,24 @@ const getUserProfile = async (userId) => {
     throw error
   }
 }
+
+const populateEvents = async (profileId) => {
+  try{  
+    const res = await fetch(`${BASE_URL}/populateEvents/${profileId}`, 
+      { headers: {Authorization: `Bearer ${tokenService.getToken()}`}},
+      { mode: 'cors'}
+    )
+    const data = await res.json()
+    return data
+
+  } catch (error) {
+    throw error
+  }
+}
     
 
 export {
   getAllUsers,
-  getUserProfile
+  getUserProfile,
+  populateEvents
 }
