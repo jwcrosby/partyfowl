@@ -15,7 +15,7 @@ const CommentSection = (props) => {
         try {
             const newComment = await createComment(props.event._id, formData)
             newComment.owner = props.currentUser
-            props.setCommentArray([...props.setCommentArray, newComment])
+            props.setCommentArray([...props.commentArray, newComment])
         } catch (error) {
             throw error
         }
