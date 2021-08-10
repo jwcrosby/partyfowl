@@ -15,7 +15,7 @@ const EventDetailsMap = (props) => {
   const [viewport, setViewport] = useState({
     latitude: lat,
     longitude: long, 
-    zoom: 15,
+    zoom: 13,
     width: "40vw",
     height: "40vh"
   });
