@@ -3,7 +3,6 @@ import styles from './Profile.module.css'
 
 // Services
 import * as userService from '../../services/userService'
-import * as ticketService from "../../services/ticketmasterAPI";
 
 // Components
 import EventList from '../../components/Event/EventList'
