@@ -1,5 +1,6 @@
 import React from 'react'
 
+// component
 import CommentCard from './CommentCard'
 
 

@@ -1,21 +1,23 @@
 import React, { useState } from 'react'
 
 // components
-import CreateComment from '../CreateComponents/CreateComment/CreateComment'
 import CommentList from './CommentList'
+import CreateComment from '../CreateComponents/CreateComment/CreateComment'
 
 // services
 import { createComment, deleteComment } from '../../services/commentService'
 
 
 const CommentSection = (props) => {
-    const [toggleNewComment, setToggleNewComment] = useState(false)
+    console.log('props 2', props)
+    const [toggleNewComment, setToggleNewComment] = useState(true) // changed false to true props.event._id,
 
     const handleCreateComment = async (formData) => {
+        console.log('form data', formData, 'event id', props.eventId)
         try {
-            const newComment = await createComment(props.event._id, formData)
+            const newComment = await createComment(props.eventId, formData)
             newComment.owner = props.currentUser
-            props.setCommentArray([...props.setCommentArray, newComment])
+            props.setCommentArray([...props.commentArray, newComment])
         } catch (error) {
             throw error
         }
@@ -50,7 +52,7 @@ const CommentSection = (props) => {
                     {...props}
                     handleCreateComment={handleCreateComment}
                     setToggleNewComment={setToggleNewComment}
-                ></CreateComment>
+            ></CreateComment>
             }
 
             <CommentList 

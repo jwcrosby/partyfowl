@@ -7,7 +7,7 @@ const commentSchema = new Schema({
         type: String,
         required: true
     },
-    event: { type: mongoose.Schema.Types.ObjectId, ref: 'Profile'},
+    event: { type: mongoose.Schema.Types.ObjectId, ref: 'Event'},
     owner: { type: mongoose.Schema.Types.ObjectId, ref: 'Profile'}
 }, { timestamps: true})
 
