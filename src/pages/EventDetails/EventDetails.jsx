@@ -4,6 +4,7 @@ import "./EventDetails.css";
 
 // Services
 import * as ticketService from "../../services/ticketmasterAPI";
+import * as eventService from "../../services/eventService"
 
 // Components
 import CommentSection from "../../components/Comment/CommentSection";
@@ -16,7 +17,9 @@ const EventDetails = () => {
   const [eventDetails, setEventDetails] = useState();
   const [commentArray, setCommentArray] = useState([]);
 
-  const handleNewCommentClick = () => {
+  const handleNewCommentClick = async() => {
+      console.log("I'm in the handle Click")
+      await eventService.createEvent(id)
       // check if there is an event
       // if not, create one
       // Find event
