@@ -9,7 +9,7 @@ const router = Router()
 router.get('/getAll', eventsCtrl.getAllEvents)
 router.get('/getByPostal', eventsCtrl.getEventsByPostalCode)
 router.get('/getEvent/:id', eventsCtrl.getEventById)
-router.post("/getEvent/:id", eventsCtrl.create)
+router.post("/createEvent/:id", eventsCtrl.create)
 
 // ========= Protected Routes ===========
 router.use(decodeUserFromToken)

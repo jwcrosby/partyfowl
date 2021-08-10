@@ -17,8 +17,9 @@ const EventDetails = () => {
   const [eventDetails, setEventDetails] = useState();
   const [commentArray, setCommentArray] = useState([]);
 
-  const handleNewCommentClick = () => {
-      eventService.createEvent(id)
+  const handleNewCommentClick = async() => {
+      console.log("I'm in the handle Click")
+      await eventService.createEvent(id)
       // check if there is an event
       // if not, create one
       // Find event
