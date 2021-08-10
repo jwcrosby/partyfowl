@@ -28,7 +28,6 @@ const deleteComment = async (req, res) => {
         res.json(err)
     }
 }
-// when you combine event.js controller files, be sure to also change routing
 
 function getAllEvents (req, res) {
     console.log("I'M HITTING GETALLEVENTS")
@@ -53,6 +52,10 @@ function getEventById (req,res){
     })  
 }
 
+function populateEvents(req,res){
+    console.log("I'M HITTING THE POPULATE EVENTS FUNCTION")
+}
+
 
 export {
     createComment,
@@ -60,5 +63,6 @@ export {
     getAllEvents,
     getEventsByPostalCode,
     getEventById,
+    populateEvents
 }
 

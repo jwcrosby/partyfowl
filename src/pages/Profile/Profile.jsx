@@ -14,10 +14,12 @@ const Profile = (props) => {
    
     useEffect(() => {
         userService.getUserProfile(props.user._id)
-        .then (user => setUserProfile(user))
-        .then(ticketService.populateEvents(userProfile._id))
-
+        .then (user => {
+            setUserProfile(user)
+            ticketService.populateEvents(user.profile._id)
+        })
     }, [props])
+    
 
     if ( userProfile === undefined ){
         return (
