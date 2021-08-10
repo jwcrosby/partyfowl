@@ -1,7 +1,21 @@
 import { Event } from "../models/event.js"
 import axios from "axios"
 
-
+function create (req, res) {
+    Event.find( {event_id: req.params.id}, function (err, results) {
+        if (!results.length) {
+            Event.create({
+                event_id: req.params.id,
+                comments: [],
+                user_photos: [],
+                profiles_attending: [],
+            })
+            .catch(err => {
+                console.log(err)
+            })
+        }
+    })
+}
 
 const createComment = async (req, res) => {
     try {
@@ -54,6 +68,7 @@ function getEventById (req,res){
 
 
 export {
+    create,
     createComment,
     deleteComment,
     getAllEvents,
