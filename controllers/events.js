@@ -31,8 +31,11 @@ function create (req, res) {
 const doesEventExist = async (req,res) => {
     try {
         const event = await Event.find({event_id: req.params.id})
-        console.log("event", event)
-        console.log("exists", !!event.length)
+        if (!!event.length) {
+            return false // event doesn't exist in DB
+        } else {
+            return true // event does exit in DB
+        }
     } catch (err) {
         res.status(400).send(err.message)
     }
