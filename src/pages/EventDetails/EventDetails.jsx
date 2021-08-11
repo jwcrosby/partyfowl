@@ -34,7 +34,6 @@ const EventDetails = () => {
       try {
         // if event exists, returns populated eventData; else, returns null
         const res = await eventService.doesEventExist(id)
-        console.log(res[0])
         if (res) {
           setEventExists(true)
           setDbEventDetails(res[0])
@@ -56,22 +55,28 @@ const EventDetails = () => {
     return <>Still loading...</>; // add a loading animation here
   }
   return (
-    <div>
-      <div className="display-img"> {/* need to make conditional for if no images */}
-        <img src={eventDetails.images[0].url} alt="event" />
+    
+    <div className='details-div'>
+      <h1 className='details-h1'>{eventDetails.name}</h1>
+        {eventExists ? <h2>Event Exists - TESTING CONDITIONAL RENDERING</h2>: <h2>Event Doesn't Exist</h2>}
+      <div className="display-img">
+        {/* can refactor to make it a carousel */}
+        {/* need to make conditional for if no images */}
+        <img className='details-img' src={eventDetails.images[0].url} alt="event" />
       </div>
-      <h1>{eventDetails.name}</h1>
-      {eventExists ? <h2>Event Exists - TESTING CONDITIONAL RENDERING</h2>: null}
 
-      {/* <EventDetailsMap 
-        eventDetails={eventDetails}
-      /> */}
-
-      <div className="description">
-        <p>Description: {eventDetails.description}</p>
-      </div>
-      <div className="datetime">
-        <p>Timezone: {eventDetails.dates.timezone}</p>
+      <div className='map-n-details'>
+        <EventDetailsMap 
+          eventDetails={eventDetails}
+          />
+        <div className='details-text'>
+          <div className="description">
+            <p>Description: {eventDetails.description}</p>
+          </div>
+          <div className="datetime">
+            <p>Timezone: {eventDetails.dates.timezone}</p>
+          </div>
+        </div>
       </div>
       <div className="comments">
         {/* <CommentSection
@@ -79,7 +84,7 @@ const EventDetails = () => {
           commentArray={commentArray}
           setCommentArray={setCommentArray}
         /> */}
-        <button onClick={() => handleFirstCommentClick()}>Add comment</button>
+      <button className='comment-btn' onClick={() => handleFirstCommentClick()}>Make The First Comment!</button>
       </div>
     </div>
   );

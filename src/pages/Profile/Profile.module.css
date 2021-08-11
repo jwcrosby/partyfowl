@@ -1,4 +1,47 @@
 .container {
     /* to test that css is connected */
     background-color: lightblue;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
 }
+.avatarInfo {
+    /* position: relative; */
+    display: grid;
+    text-align: left;
+}
+
+.avatar {
+    min-height: 10rem;
+    max-height: 15rem;
+    border-radius: 10px;
+    margin-left: 80px;
+    grid-column-start: 1;
+    grid-row-start: 1;
+    position: relative;
+    margin-bottom: 100px;
+    box-shadow: 4px 4px mediumslateblue;
+}
+.info {
+    display: block;
+    margin: 40px;
+    padding: 20px;
+    padding-left: 70vw;
+    border-radius: 10px;
+    background-color: palegoldenrod;
+    grid-column-start: 1;
+    grid-row-start: 1;
+    text-align: left;
+    align-content: flex-end;
+}
+.eventsProfile {
+    display: inline-flex;
+    margin: 40px;
+}
+.eventsAttendance {
+    width: 32%;
+    display: block;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: palegoldenrod;
+}   
