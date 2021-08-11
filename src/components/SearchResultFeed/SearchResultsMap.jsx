@@ -16,33 +16,27 @@ const SearchResultsMap = ({eventData}) => {
   const [viewport, setViewport] = useState({
     latitude: 39.7392,
     longitude: -104.9903, 
-    zoom: 12,
-    width: "98vw",
-    height: "70vh"
+    zoom: 12.5,
+    // width: "98vw",
+    // height: "70vh"
   });
 
-  console.log(eventData)
-
     return (
-      <>
+      <div style={{height: "70vh", width: "98vw"}}>
         <ReactMapGL
         {...viewport}
         mapStyle="mapbox://styles/wcrosby/cks530lbr9l0s17t68dk9ozze"
         onViewportChange={setViewport}
         mapboxApiAccessToken={TOKEN}
+        width="100%"
+        height="100%"
         >
 
-          <div className="pin" key={"test"}>
-              <Link to={`/events/${"test"}`}>
-                <Marker latitude={39.7392} longitude={-104.9903} ><img className="pin" src={pinImage} alt="pin"></img></Marker>
-              </Link>
-          </div> 
-
-        {eventData._embedded?.events?.map((event) => (
+        {eventData.map((event, index) => (
           
-          <div className="pin" key={"test"}>
-              <Link to={`/events/${"test"}`}>
-                <Marker latitude={event?.venues[0]?.location?.latitude} longitude={event?.venues[0]?.location?.longitude} ><img className="pin" src={pinImage} alt="pin"></img></Marker>
+          <div className="pin" key={index}>
+              <Link to={`/events/${event.id}`}>
+                <Marker latitude={parseFloat(event._embedded.venues[0].location.latitude)} longitude={parseFloat(event._embedded?.venues[0]?.location?.longitude)} ><img className="pin" src={pinImage} alt="pin"></img></Marker>
               </Link>
           </div> 
       
@@ -50,7 +44,7 @@ const SearchResultsMap = ({eventData}) => {
 
 
         </ReactMapGL>
-      </>
+      </div>
     );
   }
 

@@ -15,13 +15,23 @@ const SearchResults = ({ user }) => {
   const [eventData, setEventData] = useState([]);
 
   useEffect(() => {
-    getEventsByPostalCode(20, 80202).then((data) => {
+    getEventsByPostalCode(100, zipcode).then((data) => {
       console.log(data, "getAllEvents data");
+
+      // const newArray = data?._embedded?.events?.map((event, index) => {
+      //   if(event._embedded.venues[0]) {
+      //     return event
+      //   }   
+      //   return
+      // })
+
+      // setEventData(newArray)
 
       data.hasOwnProperty("_embedded")
         ? setEventData(data._embedded.events)
         : setEventData([]);
     });
+
   }, []);
 
   return (
