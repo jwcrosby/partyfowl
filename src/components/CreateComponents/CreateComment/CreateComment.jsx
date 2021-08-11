@@ -9,7 +9,7 @@ const CreateComment = (props) => {
         const formData = { 
             content: text,
             eventId: props.eventId,
-            // owner: props.currentUser._id,
+            owner: props.user._id,
         }
         props.handleCreateComment(formData)
         props.setToggleNewComment(false)

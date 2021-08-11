@@ -46,7 +46,7 @@ const createComment = async (req, res) => {
         }
 
 
-
+        console.log(commentData)
         event.comments.push(commentData)
         console.log('getting past push')
         await event.save()
