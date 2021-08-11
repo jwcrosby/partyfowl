@@ -45,6 +45,4 @@ const getEventById = async (id) => {
   }
 };
 
-
-
 export { getAllEvents, getEventsByPostalCode, getEventById };

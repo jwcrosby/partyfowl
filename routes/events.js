@@ -7,7 +7,7 @@ const router = Router()
 // ========= Public Routes ===========
 
 router.get('/getAll', eventsCtrl.getAllEvents)
-router.get('/getByPostal', eventsCtrl.getEventsByPostalCode)
+router.get('/getByPostal/:size/:postalCode', eventsCtrl.getEventsByPostalCode)
 router.get('/getEvent/:id', eventsCtrl.getEventById)
 router.post("/createEvent/:id", eventsCtrl.create)
 
