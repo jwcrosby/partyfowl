@@ -4,6 +4,11 @@
   flex-direction: column;
 }
 
-h1 {
+.feed-parent {
+  margin-top: 60px;
+}
+
+.landing-img {
+  max-height: 15vh;
   margin-top: 60px;
 }

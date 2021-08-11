@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { usePrevious } from "../../hooks/usePrevious";
 import styles from "./Landing.module.css";
+import headerImg from '../../components/images/landing-img.png'
+
 
 //Services
 import { getAllEvents } from "../../services/ticketmasterAPI";
@@ -33,8 +35,8 @@ const Landing = ({ user }) => {
   return (
     <main className={styles.container}>
       <div>
-        <h1 className='landing-h1'>LANDING</h1>
-        <Feed
+        {/* <img className='landing-img' src={headerImg} alt="A Stage" /> */}
+        <Feed className='feed-parent'
           eventData={eventData}
           setEventData={setEventData}
           keyword={keyword}
