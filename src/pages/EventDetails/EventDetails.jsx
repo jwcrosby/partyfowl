@@ -108,6 +108,22 @@ const EventDetails = () => {
         } 
         
       </div>
+
+      <div className="user-photos">
+        {!eventExists && 
+            <button className='comment-btn' onClick={() => handleFirstCommentClick()}>
+              Add The First Photo!
+            </button>
+          }
+          {eventExists && 
+            <h2>Placeholder for PhotoSection</h2>
+            // <PhotoSection 
+            //   eventId={id}
+            //   photosArray={photosArray}
+            //   setPhotosArray={setPhotosArray}
+            // />
+          } 
+      </div>
     </div>
   );
 };
