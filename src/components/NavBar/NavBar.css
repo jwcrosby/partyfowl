@@ -18,6 +18,9 @@
     display: inline-block;
     max-height: 3vh;
 }
+.h1-navbar {
+    
+}
 .Home {
     margin-left: 10vw;
     width: 33%;
@@ -27,7 +30,7 @@
     height: 4rem;
     width: 15%;
 }
-.login, .signup{
+.login, .signup, .logout, .profile{
     color: white;
     text-align: right;
     /* width: 10%; */
@@ -46,7 +49,7 @@
 .login:hover{
     color: black;
 }
-.form-links {
+.form-links, .user-links {
     position: absolute;
     top: 0;
     right: 0;

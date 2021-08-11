@@ -2,7 +2,38 @@
     /* to test that css is connected */
     background-color: lightblue;
 }
-.avatar {
-    height: 20rem;
-    border-radius: 10px;
+.avatarInfo {
+    position: relative;
+    display: grid;
 }
+
+.avatar {
+    min-height: 10rem;
+    max-height: 15rem;
+    border-radius: 10px;
+    margin-left: 40px;
+    grid-column-start: 1;
+    grid-row-start: 1;
+}
+.info {
+    display: block;
+    margin: 40px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: palegoldenrod;
+    grid-column-start: 1;
+    grid-row-start: 2;
+    align-items: left;
+}
+.eventsProfile {
+    display: inline-flex;
+    margin: 40px;
+}
+.eventsAttendance {
+    width: 32%;
+    display: block;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: palegoldenrod;
+}   
