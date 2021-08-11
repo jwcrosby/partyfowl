@@ -1,21 +1,36 @@
 import { Event } from "../models/event.js"
 import axios from "axios"
 
-function create (req, res) {
-    
-    Event.find( {event_id: req.params.id}, function (err, results) {
-        if (!results.length) {
-            Event.create({
+const create = async (req,res) => {
+    try {
+        const existingEvent = await Event.find( {event_id: req.params.id})
+        if (existingEvent.length){
+            return res.status(200).json(existingEvent)
+        } else {
+            const newEvent = await Event.create({
                 event_id: req.params.id,
                 comments: [],
                 user_photos: [],
                 profiles_attending: [],
             })
-            .catch(err => {
-                console.log(err)
-            })
+            return res.status(200).json(newEvent)
         }
-    })
+    } catch (error) {
+        throw error
+    }
+}
+
+const doesEventExist = async (req,res) => {
+    try {
+        const eventData = await Event.find({event_id: req.params.id}).populate("users_photos").populate("profiles_attending")
+        if (eventData.length) {
+            return res.status(200).json(eventData) 
+        } else {
+            return res.status(200).json(null) // event does exist in DB
+        }
+    } catch (err) {
+        res.status(400).send(err.message)
+    }
 }
 
 const createComment = async (req, res) => {
@@ -75,5 +90,6 @@ export {
     getAllEvents,
     getEventsByPostalCode,
     getEventById,
+    doesEventExist, 
 }
 
