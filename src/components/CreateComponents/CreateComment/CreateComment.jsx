@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 
 const CreateComment = (props) => {
-    console.log("props", props)
     const [text, setText] = useState('')
 
     const handleSubmit = (e) => {
@@ -13,7 +12,6 @@ const CreateComment = (props) => {
         }
         props.handleCreateComment(formData)
         setText('')
-        console.log('text', text) // getting the actual comment
     }
 
     return (

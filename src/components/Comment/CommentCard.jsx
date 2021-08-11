@@ -5,7 +5,6 @@ import CommentActions from './CommentActions'
 
 
 const CommentCard = (props) => {
-    console.log('props 3', props)
 
     return (
         <div className='comment-card'>
