@@ -17,14 +17,25 @@ function create (req, res) {
     })
 }
 
-function doesEventExist (req,res) {
-    Event.find( {event_id: req.params.id}, function (err, results){
-        if (!results.length) {
-            return false //event doesn't exist in DB
-        } else {
-            return true //event does exist in DB
-        }
-    })
+// function doesEventExist (req,res) {
+//     console.log("I'm in doesEventExist")
+//     Event.find( {event_id: req.params.id}, function (err, results){
+//         if (!results.length) {
+//             return false //event doesn't exist in DB
+//         } else {
+//             return true //event does exist in DB
+//         }
+//     })
+// }
+
+const doesEventExist = async (req,res) => {
+    try {
+        const event = await Event.find({event_id: req.params.id})
+        console.log("event", event)
+        console.log("exists", !!event.length)
+    } catch (err) {
+        res.status(400).send(err.message)
+    }
 }
 
 const createComment = async (req, res) => {

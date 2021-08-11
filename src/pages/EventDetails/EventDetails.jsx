@@ -26,11 +26,41 @@ const EventDetails = () => {
       // Find event
   }
 
-  useEffect(() => { 
-    setEventExists(eventService.doesEventExist(id)) // sets eventExists to true/false
-    
-    ticketService.getEventById(id).then((event) => setEventDetails(event));
-  }, [id])
+  // useEffect(() => { 
+  //   setEventExists(eventService.doesEventExist(id)) // sets eventExists to true/false
+  //   .then(console.log("eventExists", eventExists))
+  //   // ticketService.getEventById(id).then((event) => setEventDetails(event));
+  // }, [id, eventExists])
+
+  useEffect(() => {
+    const fetchEvent = async () => {
+      try {
+        const exists = await eventService.doesEventExist(id)
+        console.log(exists)
+        setEventExists(exists)
+
+      } catch (error) {
+        throw error
+      }
+    }
+    fetchEvent()
+  }, [id, eventExists])
+
+//   useEffect(() => {
+//     const fetchPost = async () => {
+//         try {
+//             const post = await getPostById(id)
+//             setTimeout(() => {
+//                 setPost(post)
+//                 setCommentArray(post.comments)
+//             }, 1000)
+//         } catch (error) {
+//             throw error
+//         }
+//     }
+//     fetchPost()
+//     return () => { setPost(null) }
+// }, [id])
 
 
   if (eventDetails === undefined) {
