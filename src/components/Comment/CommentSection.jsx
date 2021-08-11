@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 // components
 import CommentList from './CommentList'
@@ -10,7 +10,6 @@ import { createComment, deleteComment } from '../../services/commentService'
 
 const CommentSection = (props) => {
     console.log('props 2', props.user)
-    const [toggleNewComment, setToggleNewComment] = useState(true) // changed false to true props.event._id,
 
     const handleCreateComment = async (formData) => {
         console.log('form data', formData, 'event id', props.eventId, 'owner', props.user)
@@ -39,21 +38,10 @@ const CommentSection = (props) => {
                 <h3>Comment Section</h3>
             </div>
 
-            <div className='header-btns'>
-                {props.currentUser &&
-                    <button onClick={() => setToggleNewComment(!toggleNewComment)}>
-                        Add A Comment
-                    </button>
-                }
-            </div>
-
-            {toggleNewComment &&
             <CreateComment 
                     {...props}
                     handleCreateComment={handleCreateComment}
-                    setToggleNewComment={setToggleNewComment}
             ></CreateComment>
-            }
 
             <CommentList 
                 {...props}

@@ -12,7 +12,7 @@ const CreateComment = (props) => {
             owner: props.user._id,
         }
         props.handleCreateComment(formData)
-        props.setToggleNewComment(false)
+        setText('')
         console.log('text', text) // getting the actual comment
     }
 
