@@ -5,6 +5,7 @@ import CommentActions from './CommentActions'
 
 
 const CommentCard = (props) => {
+    console.log('props 3', props)
 
     return (
         <div className='comment-card'>
@@ -17,7 +18,7 @@ const CommentCard = (props) => {
 
             <div className='comment-content'>
                 <p>
-                    {props.CommentActions.comment_content}
+                    {props.user.name}: {props.comment.content}
                 </p>
             </div>
         </div>

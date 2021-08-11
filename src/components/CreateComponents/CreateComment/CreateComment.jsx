@@ -6,13 +6,14 @@ const CreateComment = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        const formData = {
+        const formData = { 
             content: text,
-            // event_id: props.event._id,
-            // owner: props.currentUser._id,
+            eventId: props.eventId,
+            owner: props.user._id,
         }
         props.handleCreateComment(formData)
         props.setToggleNewComment(false)
+        console.log('text', text) // getting the actual comment
     }
 
     return (

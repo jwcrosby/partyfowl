@@ -9,15 +9,15 @@ import { createComment, deleteComment } from '../../services/commentService'
 
 
 const CommentSection = (props) => {
-    console.log('props 2', props)
+    console.log('props 2', props.user)
     const [toggleNewComment, setToggleNewComment] = useState(true) // changed false to true props.event._id,
 
     const handleCreateComment = async (formData) => {
-        console.log('form data', formData, 'event id', props.eventId)
+        console.log('form data', formData, 'event id', props.eventId, 'owner', props.user)
         try {
             const newComment = await createComment(props.eventId, formData)
-            newComment.owner = props.currentUser
-            props.setCommentArray([...props.commentArray, newComment])
+            newComment.owner = props.user
+            props.setCommentsArray([...props.commentsArray, newComment])
         } catch (error) {
             throw error
         }

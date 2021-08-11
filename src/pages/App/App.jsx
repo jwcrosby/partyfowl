@@ -60,7 +60,7 @@ const App = () => {
 			</Route>
 
 			<Route exact path="/events/:id">
-				<EventDetails/>
+				<EventDetails user={user}/>
 			</Route>
 
 		</>
