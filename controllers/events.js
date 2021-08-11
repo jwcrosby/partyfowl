@@ -1,8 +1,7 @@
 import { Event } from "../models/event.js"
 import axios from "axios"
 
-function create (req, res) {
-    
+function create (req, res) { 
     Event.find( {event_id: req.params.id}, function (err, results) {
         if (!results.length) {
             Event.create({
@@ -14,6 +13,16 @@ function create (req, res) {
             .catch(err => {
                 console.log(err)
             })
+        }
+    })
+}
+
+function doesEventExist (req,res) {
+    Event.find( {event_id: req.params.id}, function (err, results){
+        if (!results.length) {
+            return false //event doesn't exist in DB
+        } else {
+            return true //event does exist in DB
         }
     })
 }
@@ -75,5 +84,6 @@ export {
     getAllEvents,
     getEventsByPostalCode,
     getEventById,
+    doesEventExist
 }
 
