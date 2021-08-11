@@ -18,7 +18,7 @@ const CommentCard = (props) => {
 
             <div className='comment-content'>
                 <p>
-                    {props.comment.content}
+                    {props.user.name}: {props.comment.content}
                 </p>
             </div>
         </div>
