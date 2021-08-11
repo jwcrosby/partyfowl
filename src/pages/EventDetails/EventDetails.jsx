@@ -14,30 +14,43 @@ import EventDetailsMap from "../../components/Event/EventDetailsMap";
 
 const EventDetails = () => {
   const { id } = useParams();
-  const [eventExists, setEventExists] = useState();
+  const [eventExists, setEventExists] = useState(false);
   const [eventDetails, setEventDetails] = useState();
   const [commentArray, setCommentArray] = useState([]);
 
   const handleNewCommentClick = async() => {
       console.log("I'm in the handle Click")
-      await eventService.createEvent(id)
+      const res = await eventService.createEvent(id)
+      console.log(res)
+      setEventExists(true)
       // check if there is an event
       // if not, create one
       // Find event
   }
 
-  // useEffect(() => { 
-  //   setEventExists(eventService.doesEventExist(id)) // sets eventExists to true/false
-  //   .then(console.log("eventExists", eventExists))
-  //   // ticketService.getEventById(id).then((event) => setEventDetails(event));
-  // }, [id, eventExists])
 
   useEffect(() => {
     const fetchEvent = async () => {
       try {
-        const exists = await eventService.doesEventExist(id)
-        console.log(exists)
+        const event = await ticketService.getEventById(id)
+        setEventDetails(event)
+        // this returns a boolean on if the event is in the DB or not
+        const res = await eventService.doesEventExist(id)
+        console.log("HELLO", res)
+        if (res ) {
+          console.log("LALALA")
+          setEventExists(true)
+          console.log(eventExists)
+        } else {
+          console.log("ELSE")
+        }
+        // console.log(exists)
         // setEventExists(exists)
+
+        // this returns event details
+
+        // if event exists, populate photos and profiles
+
 
       } catch (error) {
         throw error
@@ -46,24 +59,8 @@ const EventDetails = () => {
     fetchEvent()
   }, [id, eventExists])
 
-//   useEffect(() => {
-//     const fetchPost = async () => {
-//         try {
-//             const post = await getPostById(id)
-//             setTimeout(() => {
-//                 setPost(post)
-//                 setCommentArray(post.comments)
-//             }, 1000)
-//         } catch (error) {
-//             throw error
-//         }
-//     }
-//     fetchPost()
-//     return () => { setPost(null) }
-// }, [id])
-
-
   if (eventDetails === undefined) {
+    // this is where we would add a loading animation
     return <>Still loading...</>;
   }
   return (
@@ -73,11 +70,12 @@ const EventDetails = () => {
         {/* need to make conditional for if no images */}
         <img src={eventDetails.images[0].url} alt="event" />
       </div>
-      <h1>{eventDetails.name}</h1>
+      {/* <h1>{eventDetails.name}</h1> */}
+      {eventExists ? <h1>Event Exists</h1>: null}
 
-      <EventDetailsMap 
+      {/* <EventDetailsMap 
         eventDetails={eventDetails}
-      />
+      /> */}
 
       <div className="description">
         <p>Description: {eventDetails.description}</p>

@@ -1,11 +1,13 @@
 
 export const createEvent = async (id) => {
     try {
+        console.log("HELLO")
         let EVENT_URL = '/api/events/createEvent'
         const res = await fetch(`${EVENT_URL}/${id}`, {
             method: "POST",
         }, { mode: "cors" })
         const data = await res.json()
+        console.log("data",data)
         return data
     } catch (error) {
         throw error
@@ -23,3 +25,4 @@ export const doesEventExist = async (id) => {
         throw error
     }
 }
+
