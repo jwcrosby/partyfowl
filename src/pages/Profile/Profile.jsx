@@ -35,7 +35,7 @@ const Profile = (props) => {
     }
     return (
         <main  className={profileStyles.container}>
-            <h1>{userProfile.profile.name}</h1>
+            <h1 className={profileStyles.name}>{userProfile.profile.name}</h1>
             {/* <h1>PROFILE PAGE</h1>  */}
             <div className={profileStyles.avatarInfo}>
                 <img className={profileStyles.avatar} src={userProfile.profile.avatar} alt="user avatar"/>
