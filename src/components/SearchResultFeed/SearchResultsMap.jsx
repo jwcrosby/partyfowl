@@ -21,9 +21,8 @@ const SearchResultsMap = ({eventData}) => {
     height: "70vh"
   });
 
-  const test = eventData
-  console.log(test)
-  
+  console.log(eventData)
+
     return (
       <>
         <ReactMapGL
@@ -32,19 +31,22 @@ const SearchResultsMap = ({eventData}) => {
         onViewportChange={setViewport}
         mapboxApiAccessToken={TOKEN}
         >
-          
 
-
-        {/* {eventData._embedded.events.map((event) => (
-
-          
           <div className="pin" key={"test"}>
               <Link to={`/events/${"test"}`}>
                 <Marker latitude={39.7392} longitude={-104.9903} ><img className="pin" src={pinImage} alt="pin"></img></Marker>
               </Link>
           </div> 
+
+        {eventData._embedded?.events?.map((event) => (
+          
+          <div className="pin" key={"test"}>
+              <Link to={`/events/${"test"}`}>
+                <Marker latitude={event?.venues[0]?.location?.latitude} longitude={event?.venues[0]?.location?.longitude} ><img className="pin" src={pinImage} alt="pin"></img></Marker>
+              </Link>
+          </div> 
       
-        ))} */}
+        ))}
 
 
         </ReactMapGL>
