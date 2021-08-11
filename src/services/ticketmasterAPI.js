@@ -4,10 +4,13 @@ const getAllEvents = async () => {
   try {
     let eventUrl = `/api/events/getAll`;
 
+    console.log("getAllEvents hit")
+    
     const res = await fetch(eventUrl);
-
+    
     const data = await res.json();
 
+    
     return data;
   } catch (error) {
     throw error;
