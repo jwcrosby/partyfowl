@@ -59,7 +59,7 @@ const App = () => {
 				<EventDetails/>
 			</Route>
 
-			<Route path="/events/:postalcode">
+			<Route path="/events/search/:postalcode">
 				<SearchResults/>
 			</Route>
 		</>
