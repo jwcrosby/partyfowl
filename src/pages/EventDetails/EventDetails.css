@@ -6,8 +6,23 @@
     background-color: palegoldenrod;
     
 }
+
+.details-img {
+    border: 2px solid white;
+    max-height: 500px;
+    border-radius: 10px;
+    align-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
 .display-img {
-    border: 5px solid black;    
+    border-radius: 10px;  
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    
 }
 
 .map-n-details {
@@ -23,9 +38,6 @@
     margin-left: 20px;
 }
 
-.details-img {
-    max-height: 40rem;
-}
 
 .overlays {
     border-radius: 10px;
@@ -33,6 +45,7 @@
 
 .comments {
     text-align: center;
+    padding-bottom: 4vh;
 }
 
 .comment-btn {
