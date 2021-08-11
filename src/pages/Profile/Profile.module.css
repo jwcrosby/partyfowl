@@ -4,6 +4,11 @@
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
 }
+
+.name {
+    box-shadow: none;
+}
+
 .avatarInfo {
     /* position: relative; */
     display: grid;
@@ -47,3 +52,4 @@
     box-shadow: 0 4px mediumslateblue;
 
 }   
+
