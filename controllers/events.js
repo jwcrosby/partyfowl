@@ -34,10 +34,23 @@ const doesEventExist = async (req,res) => {
 }
 
 const createComment = async (req, res) => {
+    console.log('hitting createComment ctrl')
     try {
-        const event = await Event.findById(req.params.id)
-        event.comments.push(req.body)
+        const event = await Event.findOne({event_id: req.params.id})
+        console.log('event', event)
+        console.log('req.body', req.body)
+        const commentData = {
+            content: req.body.content,
+            event: event._id,
+            owner: '611195502c4c894ef0bb6744'
+        }
+
+
+
+        event.comments.push(commentData)
+        console.log('getting past push')
         await event.save()
+        console.log('getting past save')
         const newComment = event.comments[event.comments.length - 1]
         return res.status(201).json(newComment)
     } catch (err) {
@@ -47,7 +60,7 @@ const createComment = async (req, res) => {
 
 const deleteComment = async (req, res) => {
     try {
-        const event = await Event.findById(req.params.event_id)
+        const event = await Event.find({event_id: req.params.id})
         const idx = event.comments.findIndex((comment) =>
             comment.event_id.equals(req.params.comment_id)
         )
