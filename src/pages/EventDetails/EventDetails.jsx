@@ -80,8 +80,14 @@ const EventDetails = () => {
           <div className="datetime">
             <p>Timezone: {eventDetails.dates.timezone}</p>
           </div>
+          <div className="attending-users">
+            {eventExists && 
+              <p><strong>List of Profiles Attending</strong></p>}
+          </div>
+              
         </div>
       </div>
+
       <div className="comments">
        
         {!eventExists && 
