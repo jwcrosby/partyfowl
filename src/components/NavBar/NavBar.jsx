@@ -11,12 +11,15 @@ const NavBar = ({ user, handleLogout }) => {
 			<div>
 			{user ? (
 				<>
-					<NavLink className='Home' to='/'>Home</NavLink>
-					<h1>
+					<NavLink className='Home nav-a' to='/'>Home</NavLink>
+					<span className='header-img' >Header Img Will Go Here</span> 
+					<div className='user-links'>
+					<NavLink className='nav-a logout' to='/' onClick={handleLogout}>Log out</NavLink>
+					<NavLink className='nav-a profile' to='/profile'>Profile</NavLink>
+					</div>
+					{/* <h1 className='h1-navbar'>
 						Welcome, {user.name}
-					</h1> 
-					<NavLink to='/' onClick={handleLogout}>Log out</NavLink>
-					<NavLink to='/profile'>Profile</NavLink>
+					</h1> */}
 				</>
 			) : (
 				<>
