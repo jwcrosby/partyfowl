@@ -14,44 +14,37 @@ import EventDetailsMap from "../../components/Event/EventDetailsMap";
 
 const EventDetails = () => {
   const { id } = useParams();
-  const [eventExists, setEventExists] = useState(false);
-  const [eventDetails, setEventDetails] = useState();
-  const [commentArray, setCommentArray] = useState([]);
+  const [eventExists, setEventExists] = useState(false)
+  const [eventDetails, setEventDetails] = useState()
+  const [dbEventDetails, setDbEventDetails] = useState()
 
-  const handleNewCommentClick = async() => {
-      console.log("I'm in the handle Click")
+  const [commentsArray, setCommentsArray] = useState([])
+  const [photosArray, setPhotosArray] = useState([])
+  const [profileaArray, setProfilesArray] = useState([])
+
+  const handleFirstCommentClick = async() => {
       const res = await eventService.createEvent(id)
-      console.log(res)
       setEventExists(true)
-      // check if there is an event
-      // if not, create one
-      // Find event
+      setDbEventDetails(res)
+      // do i even need to check for existing event in my controller??
   }
-
 
   useEffect(() => {
     const fetchEvent = async () => {
       try {
+        // if event exists, returns populated eventData; else, returns null
+        const res = await eventService.doesEventExist(id)
+        console.log(res[0])
+        if (res) {
+          setEventExists(true)
+          setDbEventDetails(res[0])
+        } else {
+          setEventExists(false)
+        }
+
+        // returns ticketmaster event details
         const event = await ticketService.getEventById(id)
         setEventDetails(event)
-        // this returns a boolean on if the event is in the DB or not
-        const res = await eventService.doesEventExist(id)
-        console.log("HELLO", res)
-        if (res ) {
-          console.log("LALALA")
-          setEventExists(true)
-          console.log(eventExists)
-        } else {
-          console.log("ELSE")
-        }
-        // console.log(exists)
-        // setEventExists(exists)
-
-        // this returns event details
-
-        // if event exists, populate photos and profiles
-
-
       } catch (error) {
         throw error
       }
@@ -60,18 +53,15 @@ const EventDetails = () => {
   }, [id, eventExists])
 
   if (eventDetails === undefined) {
-    // this is where we would add a loading animation
-    return <>Still loading...</>;
+    return <>Still loading...</>; // add a loading animation here
   }
   return (
     <div>
-      <div className="display-img">
-        {/* can refactor to make it a carousel */}
-        {/* need to make conditional for if no images */}
+      <div className="display-img"> {/* need to make conditional for if no images */}
         <img src={eventDetails.images[0].url} alt="event" />
       </div>
-      {/* <h1>{eventDetails.name}</h1> */}
-      {eventExists ? <h1>Event Exists</h1>: null}
+      <h1>{eventDetails.name}</h1>
+      {eventExists ? <h2>Event Exists - TESTING CONDITIONAL RENDERING</h2>: null}
 
       {/* <EventDetailsMap 
         eventDetails={eventDetails}
@@ -89,7 +79,7 @@ const EventDetails = () => {
           commentArray={commentArray}
           setCommentArray={setCommentArray}
         /> */}
-        <button onClick={() => handleNewCommentClick()}>Add comment</button>
+        <button onClick={() => handleFirstCommentClick()}>Add comment</button>
       </div>
     </div>
   );
