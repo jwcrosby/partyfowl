@@ -15,40 +15,6 @@ const eventSchema = new Schema({
     event_id: {
         type: String,
     },
-    description: {
-        type: String
-    },
-    title: {
-        type: String
-    },
-    location: {
-        type: String
-    },
-    start_date_time: {
-        type: Date
-    },
-    end_date_time: {
-        type: Date
-    },
-    event_photo: {
-        type: String
-    },
-    is_past: {
-        type: Boolean,
-        default: false
-    },
-    min_price: {
-        type: Number
-    },
-    max_price: {
-        type: Number
-    },
-    event_site: {
-        type: String
-    },
-    ticket_site: {
-        type: String
-    },
     comments: [commentSchema],
     user_photos: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Photo'}],
     profiles_attending: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Profile'}],

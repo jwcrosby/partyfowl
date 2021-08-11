@@ -4,6 +4,7 @@ import "./EventDetails.css";
 
 // Services
 import * as ticketService from "../../services/ticketmasterAPI";
+import * as eventService from "../../services/eventService"
 
 // Components
 import CommentSection from "../../components/Comment/CommentSection";
@@ -15,6 +16,14 @@ const EventDetails = () => {
   const { id } = useParams();
   const [eventDetails, setEventDetails] = useState();
   const [commentArray, setCommentArray] = useState([]);
+
+  const handleNewCommentClick = async() => {
+      console.log("I'm in the handle Click")
+      await eventService.createEvent(id)
+      // check if there is an event
+      // if not, create one
+      // Find event
+  }
 
   useEffect(() => {
     ticketService.getEventById(id).then((event) => setEventDetails(event));
@@ -43,11 +52,12 @@ const EventDetails = () => {
         <p>Timezone: {eventDetails.dates.timezone}</p>
       </div>
       <div className="comments">
-        <CommentSection
+        {/* <CommentSection
           eventId={ id }
           commentArray={commentArray}
           setCommentArray={setCommentArray}
-        />
+        /> */}
+        <button onClick={() => handleNewCommentClick()}>Add comment</button>
       </div>
     </div>
   );
