@@ -29,8 +29,6 @@ const EventDetails = () => {
       // do i even need to check for existing event in my controller??
   }
 
-  
-
   useEffect(() => {
     const fetchEvent = async () => {
       try {
@@ -38,7 +36,7 @@ const EventDetails = () => {
         const res = await eventService.doesEventExist(id)
         if (res) {
           setEventExists(true)
-          setDbEventDetails(res[0])
+          setDbEventDetails(res[0]) // may not really need this if we're saving info in separate states
           setCommentsArray(res[0].comments)
           setPhotosArray(res[0].user_photos)
           setProfilesArray(res[0].profiles_attending)
@@ -56,14 +54,6 @@ const EventDetails = () => {
     }
     fetchEvent()
   }, [id, eventExists])
-
-  // useEffect(() =>{
-  //   if (eventExists) {
-  //     setCommentsArray(dbEventDetails.comments)
-  //     setPhotosArray(dbEventDetails.user_photos)
-  //     setProfilesArray(dbEventDetails.profiles_attending)
-  //   }
-  // },[eventExists, dbEventDetails])
 
   if (eventDetails === undefined) {
     return <>Still loading...</>; // add a loading animation here
@@ -107,6 +97,22 @@ const EventDetails = () => {
           />
         } 
         
+      </div>
+
+      <div className="user-photos">
+        {!eventExists && 
+            <button className='comment-btn' onClick={() => handleFirstCommentClick()}>
+              Add The First Photo!
+            </button>
+          }
+        {eventExists && 
+          <h2>Placeholder for PhotoSection</h2>
+          // <PhotoSection 
+          //   eventId={id}
+          //   photosArray={photosArray}
+          //   setPhotosArray={setPhotosArray}
+          // />
+        } 
       </div>
     </div>
   );
