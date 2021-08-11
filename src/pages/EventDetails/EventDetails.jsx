@@ -22,11 +22,13 @@ const EventDetails = () => {
   const [photosArray, setPhotosArray] = useState([])
   const [profilesArray, setProfilesArray] = useState([])
 
-  const handleFirstCommentClick = async() => {
+  const handleUserEventInteraction = async() => {
       const res = await eventService.createEvent(id)
       setEventExists(true)
       setDbEventDetails(res)
-      // do i even need to check for existing event in my controller??
+      setCommentsArray(res.comments)
+      setPhotosArray(res.user_photos)
+      setProfilesArray(res.profiles_attending)
   }
 
   useEffect(() => {
@@ -91,7 +93,7 @@ const EventDetails = () => {
       <div className="comments">
        
         {!eventExists && 
-          <button className='comment-btn' onClick={() => handleFirstCommentClick()}>
+          <button className='comment-btn' onClick={() => handleUserEventInteraction()}>
             Make The First Comment!
           </button>
         }
@@ -107,7 +109,7 @@ const EventDetails = () => {
 
       <div className="user-photos">
         {!eventExists && 
-            <button className='comment-btn' onClick={() => handleFirstCommentClick()}>
+            <button className='comment-btn' onClick={() => handleUserEventInteraction()}>
               Add The First Photo!
             </button>
           }

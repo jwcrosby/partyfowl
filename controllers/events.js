@@ -3,18 +3,13 @@ import axios from "axios"
 
 const create = async (req,res) => {
     try {
-        const existingEvent = await Event.find( {event_id: req.params.id})
-        if (existingEvent.length){
-            return res.status(200).json(existingEvent)
-        } else {
-            const newEvent = await Event.create({
-                event_id: req.params.id,
-                comments: [],
-                user_photos: [],
-                profiles_attending: [],
-            })
-            return res.status(200).json(newEvent)
-        }
+        const newEvent = await Event.create({
+            event_id: req.params.id,
+            comments: [],
+            user_photos: [],
+            profiles_attending: [],
+        })
+        return res.status(200).json(newEvent)
     } catch (error) {
         throw error
     }
