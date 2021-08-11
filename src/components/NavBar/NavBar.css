@@ -1,7 +1,7 @@
 .nav-bar{
     /* just to test if css is connected - and it is! */
     background: #b9b9ff;
-    height: 3rem;
+    height: 3.5rem;
     width: 100vw;
     border-bottom: 1px solid black;
     box-shadow: 5px 5px 5px rgb(108, 108, 129); 
@@ -11,10 +11,10 @@
 .nav-a {
     color: black;
     font-family: 'Courgette', cursive;
-    font-size: 2rem;
+    font-size: 2.3rem;
     text-decoration: none;
     margin: 3px;
-    vertical-align:middle;
+    vertical-align:top;
     display: inline-block;
     max-height: 3vh;
 }
@@ -54,8 +54,14 @@
     top: 0;
     right: 0;
     width: 25%;
+    vertical-align: top;
 }
 .nest-icon {
-    max-height: 2.7rem;
+    max-height: 3.2rem;
+    margin-right: 10px;
+}
+
+.goose-icon {
+    max-height: 3rem;
 }
 
