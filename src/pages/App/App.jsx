@@ -54,14 +54,15 @@ const App = () => {
 			<Route exact path='/profile'>
 				<Profile user={user}/>
 			</Route>
+			
+			<Route exact path="/events/search/:postalcode">
+				<SearchResults user={user} />
+			</Route>
 
-			<Route path="/events/:id">
+			<Route exact path="/events/:id">
 				<EventDetails/>
 			</Route>
 
-			<Route path="/events/search/:postalcode">
-				<SearchResults user={user} />
-			</Route>
 		</>
 	)
 }

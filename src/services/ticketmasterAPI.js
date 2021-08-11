@@ -9,7 +9,6 @@ const getAllEvents = async () => {
     const res = await fetch(eventUrl);
     
     const data = await res.json();
-
     
     return data;
   } catch (error) {

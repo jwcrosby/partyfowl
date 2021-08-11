@@ -49,9 +49,9 @@ function getAllEvents (req, res) {
     axios.get(`https://app.ticketmaster.com/discovery/v2/events.json?size=100&sort=random&apikey=${process.env.API_KEY}`)
     .then(response => {
         res.json(response.data)
+    })
     .catch(err => {
         console.log(err)
-    })
     })
 }
 
@@ -59,21 +59,21 @@ function getEventsByPostalCode (req,res) {
     axios.get(`https://app.ticketmaster.com/discovery/v2/events.json?size=${req.params.size}&postalCode=${req.params.postalCode}&apikey=${process.env.API_KEY}`)
     .then(response => {
         res.json(response.data)
+    })
     .catch(err => {
         console.log(err)
-    })
     })
 }
 
 function getEventById (req,res){
-    console.log("I'M HITTING THIS FUNCTION")
+    console.log("GTFO")
     axios.get(`https://app.ticketmaster.com/discovery/v2/events/${req.params.id}.json?apikey=${process.env.API_KEY}`)
     .then(response => {
         res.json(response.data)
+    })  
     .catch(err => {
         console.log(err)
     })
-    })  
 }
 
 
