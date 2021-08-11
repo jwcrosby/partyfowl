@@ -16,7 +16,7 @@
     margin: 3px;
     vertical-align:middle;
     display: inline-block;
-    height: 3vh;
+    max-height: 3vh;
 }
 .Home {
     margin-left: 10vw;
@@ -53,6 +53,6 @@
     width: 25%;
 }
 .nest-icon {
-    height: 4vh;
+    max-height: 2.7rem;
 }
 
