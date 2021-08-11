@@ -20,7 +20,7 @@ const EventDetails = () => {
 
   const [commentsArray, setCommentsArray] = useState([])
   const [photosArray, setPhotosArray] = useState([])
-  const [profileaArray, setProfilesArray] = useState([])
+  const [profilesArray, setProfilesArray] = useState([])
 
   const handleFirstCommentClick = async() => {
       const res = await eventService.createEvent(id)
@@ -28,6 +28,8 @@ const EventDetails = () => {
       setDbEventDetails(res)
       // do i even need to check for existing event in my controller??
   }
+
+  
 
   useEffect(() => {
     const fetchEvent = async () => {
@@ -37,6 +39,10 @@ const EventDetails = () => {
         if (res) {
           setEventExists(true)
           setDbEventDetails(res[0])
+          setCommentsArray(res[0].comments)
+          setPhotosArray(res[0].user_photos)
+          setProfilesArray(res[0].profiles_attending)
+          
         } else {
           setEventExists(false)
         }
@@ -50,6 +56,14 @@ const EventDetails = () => {
     }
     fetchEvent()
   }, [id, eventExists])
+
+  // useEffect(() =>{
+  //   if (eventExists) {
+  //     setCommentsArray(dbEventDetails.comments)
+  //     setPhotosArray(dbEventDetails.user_photos)
+  //     setProfilesArray(dbEventDetails.profiles_attending)
+  //   }
+  // },[eventExists, dbEventDetails])
 
   if (eventDetails === undefined) {
     return <>Still loading...</>; // add a loading animation here
@@ -79,12 +93,20 @@ const EventDetails = () => {
         </div>
       </div>
       <div className="comments">
-        {/* <CommentSection
-          eventId={ id }
-          commentArray={commentArray}
-          setCommentArray={setCommentArray}
-        /> */}
-      <button className='comment-btn' onClick={() => handleFirstCommentClick()}>Make The First Comment!</button>
+       
+        {!eventExists && 
+          <button className='comment-btn' onClick={() => handleFirstCommentClick()}>
+            Make The First Comment!
+          </button>
+        }
+        {eventExists && 
+          <CommentSection 
+            eventId={id}
+            commentsArray={commentsArray}
+            setCommentsArray={setCommentsArray}
+          />
+        } 
+        
       </div>
     </div>
   );
