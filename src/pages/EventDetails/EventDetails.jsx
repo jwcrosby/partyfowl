@@ -23,14 +23,14 @@ const EventDetails = (props) => {
   const [photosArray, setPhotosArray] = useState([])
   const [profilesArray, setProfilesArray] = useState([])
 
-  const handleFirstCommentClick = async() => {
+  const handleUserEventInteraction = async() => {
       const res = await eventService.createEvent(id)
       setEventExists(true)
       setDbEventDetails(res)
-      // do i even need to check for existing event in my controller??
+      setCommentsArray(res.comments)
+      setPhotosArray(res.user_photos)
+      setProfilesArray(res.profiles_attending)
   }
-
-  
 
   useEffect(() => {
     const fetchEvent = async () => {
@@ -39,7 +39,7 @@ const EventDetails = (props) => {
         const res = await eventService.doesEventExist(id)
         if (res) {
           setEventExists(true)
-          setDbEventDetails(res[0])
+          setDbEventDetails(res[0]) // may not really need this if we're saving info in separate states
           setCommentsArray(res[0].comments)
           setPhotosArray(res[0].user_photos)
           setProfilesArray(res[0].profiles_attending)
@@ -57,14 +57,6 @@ const EventDetails = (props) => {
     }
     fetchEvent()
   }, [id, eventExists])
-
-  // useEffect(() =>{
-  //   if (eventExists) {
-  //     setCommentsArray(dbEventDetails.comments)
-  //     setPhotosArray(dbEventDetails.user_photos)
-  //     setProfilesArray(dbEventDetails.profiles_attending)
-  //   }
-  // },[eventExists, dbEventDetails])
 
   if (eventDetails === undefined) {
     return <>Still loading...</>; // add a loading animation here
@@ -91,12 +83,18 @@ const EventDetails = (props) => {
           <div className="datetime">
             <p>Timezone: {eventDetails.dates.timezone}</p>
           </div>
+          <div className="attending-users">
+            {eventExists && 
+              <p><strong>List of Profiles Attending</strong></p>}
+          </div>
+              
         </div>
       </div>
+
       <div className="comments">
        
         {!eventExists && 
-          <button className='comment-btn' onClick={() => handleFirstCommentClick()}>
+          <button className='comment-btn' onClick={() => handleUserEventInteraction()}>
             Make The First Comment!
           </button>
         }
@@ -109,6 +107,22 @@ const EventDetails = (props) => {
           />
         } 
         
+      </div>
+
+      <div className="user-photos">
+        {!eventExists && 
+            <button className='comment-btn' onClick={() => handleUserEventInteraction()}>
+              Add The First Photo!
+            </button>
+          }
+        {eventExists && 
+          <h2>Placeholder for PhotoSection</h2>
+          // <PhotoSection 
+          //   eventId={id}
+          //   photosArray={photosArray}
+          //   setPhotosArray={setPhotosArray}
+          // />
+        } 
       </div>
     </div>
   );

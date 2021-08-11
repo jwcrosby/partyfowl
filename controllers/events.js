@@ -3,18 +3,13 @@ import axios from "axios"
 
 const create = async (req,res) => {
     try {
-        const existingEvent = await Event.find( {event_id: req.params.id})
-        if (existingEvent.length){
-            return res.status(200).json(existingEvent)
-        } else {
-            const newEvent = await Event.create({
-                event_id: req.params.id,
-                comments: [],
-                user_photos: [],
-                profiles_attending: [],
-            })
-            return res.status(200).json(newEvent)
-        }
+        const newEvent = await Event.create({
+            event_id: req.params.id,
+            comments: [],
+            user_photos: [],
+            profiles_attending: [],
+        })
+        return res.status(200).json(newEvent)
     } catch (error) {
         throw error
     }
@@ -78,6 +73,9 @@ function getAllEvents (req, res) {
     .then(response => {
         res.json(response.data)
     })
+    .catch(err => {
+        console.log(err)
+    })
 }
 
 function getEventsByPostalCode (req,res) {
@@ -85,14 +83,20 @@ function getEventsByPostalCode (req,res) {
     .then(response => {
         res.json(response.data)
     })
+    .catch(err => {
+        console.log(err)
+    })
 }
 
 function getEventById (req,res){
-    console.log("I'M HITTING THIS FUNCTION")
+    console.log("GTFO")
     axios.get(`https://app.ticketmaster.com/discovery/v2/events/${req.params.id}.json?apikey=${process.env.API_KEY}`)
     .then(response => {
         res.json(response.data)
     })  
+    .catch(err => {
+        console.log(err)
+    })
 }
 
 
