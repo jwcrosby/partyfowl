@@ -1,9 +1,9 @@
-.map {
-  border-radius: 10px;
-}
-
 .pin {
   top: -15px;
   left: -15px; 
-  height: 70px;
+  height: 60px;
+}
+
+.map {
+  border-radius: 10px;
 }

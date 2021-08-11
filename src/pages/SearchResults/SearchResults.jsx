@@ -11,17 +11,17 @@ import { getEventsByPostalCode } from "../../services/ticketmasterAPI";
 import Feed from "../../components/Feed/Feed";
 
 const SearchResults = ({ user }) => {
-  const zipcode = 80202;
+  const geoHash = "9xj64";
   const [eventData, setEventData] = useState([]);
 
   useEffect(() => {
-    getEventsByPostalCode(100, zipcode).then((data) => {
+    getEventsByPostalCode(100, geoHash).then((data) => {
       console.log(data, "getAllEvents data");
 
       // const newArray = data?._embedded?.events?.map((event, index) => {
       //   if(event._embedded.venues[0]) {
       //     return event
-      //   }   
+      //   }
       //   return
       // })
 
@@ -31,7 +31,6 @@ const SearchResults = ({ user }) => {
         ? setEventData(data._embedded.events)
         : setEventData([]);
     });
-
   }, []);
 
   return (
@@ -39,7 +38,7 @@ const SearchResults = ({ user }) => {
       <div>
         <h1 className="landing-h1">Search Results</h1>
 
-        <SearchResultsMap eventData={eventData} />
+        <SearchResultsMap eventData={eventData} geoHash={geoHash} />
       </div>
     </main>
   );

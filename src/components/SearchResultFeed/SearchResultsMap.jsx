@@ -3,23 +3,24 @@ import { Link } from "react-router-dom";
 import ReactMapGL, { Marker } from 'react-map-gl'
 import pinImage from '../../assets/goose.png'
 import "./SearchResultsMap.css";
+import ngeohash from 'ngeohash'
+
+var geohash = require('ngeohash');
+
 
 const TOKEN = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN
 
 const SearchResultsMap = ({eventData}) => {
-  // console.log("lat", props.eventDetails._embedded.venues[0].location.latitude)
-  // console.log("long", props.eventDetails._embedded.venues[0].location.longitude)
-
-  // const lat = parseFloat(props.eventDetails._embedded.venues[0].location.latitude)
-  // const long = parseFloat(props.eventDetails._embedded.venues[0].location.longitude)
   
   const [viewport, setViewport] = useState({
     latitude: 39.7392,
     longitude: -104.9903, 
-    zoom: 12.5,
+    zoom: 13,
     // width: "98vw",
     // height: "70vh"
   });
+  
+  console.log(geohash.encode(39.7392,-104.9903))
 
     return (
       <div style={{height: "70vh", width: "98vw"}} className='map'>
