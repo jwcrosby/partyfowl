@@ -4,37 +4,47 @@ import { usePrevious } from "../../hooks/usePrevious";
 import styles from "./SearchResults.module.css";
 
 //Services
-import { getAllEvents } from "../../services/ticketmasterAPI";
+import { getEventsByPostalCode } from "../../services/ticketmasterAPI";
 
 //Components
 import Feed from "../../components/Feed/Feed";
 
-const SearchResults = ({ user }) => {
+const Landing = ({ user }) => {
+  const zipcode = 80202
   const [eventData, setEventData] = useState([]);
 
-  const prevEventDataState = usePrevious(eventData);
-  const [keyword, setKeyword] = useState("");
-  const [hasSearchRun, setHasSearchRun] = useState(false);
+  // const prevEventDataState = usePrevious(eventData);
+  // const [keyword, setKeyword] = useState("");
+  // const [hasSearchRun, setHasSearchRun] = useState(false);
 
-  const clearSearch = () => {
-    setKeyword("");
-    setHasSearchRun(false);
-    setEventData(prevEventDataState);
-  };
+  // const clearSearch = () => {
+  //   setKeyword("");
+  //   setHasSearchRun(false);
+  //   setEventData(prevEventDataState);
+  // };
 
   useEffect(() => {
-    getAllEvents().then((data) => {
+    getEventsByPostalCode(25, zipcode).then((data) => {
       data.hasOwnProperty("_embedded")
         ? setEventData(data._embedded.events)
         : setEventData([]);
     });
   }, []);
 
+  console.log(eventData)
+
   return (
     <main className={styles.container}>
       <div>
-        <h1 className='header-h1'>Search Results</h1>
-        <Feed
+        <h1 className='landing-h1'>Search Results</h1>
+        
+        
+
+
+
+
+
+        {/* <Feed
           eventData={eventData}
           setEventData={setEventData}
           keyword={keyword}
@@ -42,10 +52,10 @@ const SearchResults = ({ user }) => {
           clearSearch={clearSearch}
           hasSearchRun={hasSearchRun}
           setHasSearchRun={setHasSearchRun}
-        />
+        /> */}
       </div>
     </main>
   );
 };
 
-export default SearchResults;
+export default Landing;
