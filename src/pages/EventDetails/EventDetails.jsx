@@ -14,50 +14,113 @@ import EventDetailsMap from "../../components/Event/EventDetailsMap";
 
 const EventDetails = () => {
   const { id } = useParams();
-  const [eventDetails, setEventDetails] = useState();
-  const [commentArray, setCommentArray] = useState([]);
+  const [eventExists, setEventExists] = useState(false)
+  const [eventDetails, setEventDetails] = useState()
+  const [dbEventDetails, setDbEventDetails] = useState()
 
-  const handleNewCommentClick = async() => {
-      console.log("I'm in the handle Click")
-      await eventService.createEvent(id)
-      // check if there is an event
-      // if not, create one
-      // Find event
+  const [commentsArray, setCommentsArray] = useState([])
+  const [photosArray, setPhotosArray] = useState([])
+  const [profilesArray, setProfilesArray] = useState([])
+
+  const handleUserEventInteraction = async() => {
+      const res = await eventService.createEvent(id)
+      setEventExists(true)
+      setDbEventDetails(res)
+      setCommentsArray(res.comments)
+      setPhotosArray(res.user_photos)
+      setProfilesArray(res.profiles_attending)
   }
 
   useEffect(() => {
-    ticketService.getEventById(id).then((event) => setEventDetails(event));
-  }, [id]);
+    const fetchEvent = async () => {
+      try {
+        // if event exists, returns populated eventData; else, returns null
+        const res = await eventService.doesEventExist(id)
+        if (res) {
+          setEventExists(true)
+          setDbEventDetails(res[0]) // may not really need this if we're saving info in separate states
+          setCommentsArray(res[0].comments)
+          setPhotosArray(res[0].user_photos)
+          setProfilesArray(res[0].profiles_attending)
+          
+        } else {
+          setEventExists(false)
+        }
+
+        // returns ticketmaster event details
+        const event = await ticketService.getEventById(id)
+        setEventDetails(event)
+      } catch (error) {
+        throw error
+      }
+    }
+    fetchEvent()
+  }, [id, eventExists])
 
   if (eventDetails === undefined) {
-    return <>Still loading...</>;
+    return <>Still loading...</>; // add a loading animation here
   }
   return (
-    <div>
+    
+    <div className='details-div'>
+      <h1 className='details-h1'>{eventDetails.name}</h1>
+        {eventExists ? <h2>Event Exists - TESTING CONDITIONAL RENDERING</h2>: <h2>Event Doesn't Exist</h2>}
       <div className="display-img">
         {/* can refactor to make it a carousel */}
         {/* need to make conditional for if no images */}
-        <img src={eventDetails.images[0].url} alt="event" />
+        <img className='details-img' src={eventDetails.images[0].url} alt="event" />
       </div>
-      <h1>{eventDetails.name}</h1>
 
-      <EventDetailsMap 
-        eventDetails={eventDetails}
-      />
+      <div className='map-n-details'>
+        <EventDetailsMap 
+          eventDetails={eventDetails}
+          />
+        <div className='details-text'>
+          <div className="description">
+            <p>Description: {eventDetails.description}</p>
+          </div>
+          <div className="datetime">
+            <p>Timezone: {eventDetails.dates.timezone}</p>
+          </div>
+          <div className="attending-users">
+            {eventExists && 
+              <p><strong>List of Profiles Attending</strong></p>}
+          </div>
+              
+        </div>
+      </div>
 
-      <div className="description">
-        <p>Description: {eventDetails.description}</p>
-      </div>
-      <div className="datetime">
-        <p>Timezone: {eventDetails.dates.timezone}</p>
-      </div>
       <div className="comments">
-        {/* <CommentSection
-          eventId={ id }
-          commentArray={commentArray}
-          setCommentArray={setCommentArray}
-        /> */}
-        <button onClick={() => handleNewCommentClick()}>Add comment</button>
+       
+        {!eventExists && 
+          <button className='comment-btn' onClick={() => handleUserEventInteraction()}>
+            Make The First Comment!
+          </button>
+        }
+        {eventExists && 
+          <CommentSection 
+            eventId={id}
+            commentsArray={commentsArray}
+            setCommentsArray={setCommentsArray}
+          />
+        } 
+        
+      </div>
+
+      <div className="user-photos">
+        {!eventExists && 
+            <button className='comment-btn' onClick={() => handleUserEventInteraction()}>
+              Add The First Photo!
+            </button>
+          }
+        {eventExists && 
+          <h2>Placeholder for PhotoSection</h2>
+          // <PhotoSection 
+          //   eventId={id}
+          //   photosArray={photosArray}
+          //   setPhotosArray={setPhotosArray}
+          // />
+        } 
       </div>
     </div>
   );

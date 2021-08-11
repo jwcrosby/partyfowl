@@ -21,7 +21,7 @@ const EventDetailsMap = (props) => {
   });
   
     return (
-      <>
+      <div className='map'>
         <ReactMapGL
         {...viewport}
         mapStyle="mapbox://styles/wcrosby/cks530lbr9l0s17t68dk9ozze"
@@ -35,7 +35,7 @@ const EventDetailsMap = (props) => {
         </div>
 
         </ReactMapGL>
-      </>
+      </div>
     );
   }
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import styles from './Profile.module.css'
+import profileStyles from './Profile.module.css'
 
 // Services
 import * as userService from '../../services/userService'
@@ -34,24 +34,37 @@ const Profile = (props) => {
         )
     }
     return (
-        <main  className={styles.container}>
-            <h1>PROFILE PAGE</h1> 
-            <img src={userProfile.profile.avatar} alt="user avatar"/>
-            <h1>{userProfile.profile.name}</h1>
-            <p>{userProfile.profile.location}</p>
-            <p>Interested in ___</p>
+        <main  className={profileStyles.container}>
+            <h1 className={profileStyles.name}>{userProfile.profile.name}</h1>
+            {/* <h1>PROFILE PAGE</h1>  */}
+            <div className={profileStyles.avatarInfo}>
+                <img className={profileStyles.avatar} src={userProfile.profile.avatar} alt="user avatar"/>
+                <section className={profileStyles.info}>
+                <p>{userProfile.profile.location}</p>
+                <p>Interested in ___</p>
+                </section>
+            </div>
             {/* <div>
                 Past Events
                 <EventList eventsArray={userProfile} />
             </div> */}
-            <div>
-                Saved Events
-                <EventList eventsArray={userProfile.profile.events_saved} />
-            </div>
-            <div>
-                Upcoming Events
-                <EventList eventsArray={userProfile.profile.events_attending} />
-            </div>
+            <section className={profileStyles.eventsProfile}>
+                <div className={profileStyles.eventsAttendance}>
+                    Events Attended
+                    <EventList eventsArray={userProfile.profile.events_saved} />
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem, iste, consectetur dicta similique eaque debitis temporibus inventore earum ratione nostrum veniam sed, doloribus dignissimos sint aut dolore atque dolorum nulla.</p>
+                </div>
+                <div className={profileStyles.eventsAttendance}>
+                    Saved Events
+                    <EventList eventsArray={userProfile.profile.events_saved} />
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem, iste, consectetur dicta similique eaque debitis temporibus inventore earum ratione nostrum veniam sed, doloribus dignissimos sint aut dolore atque dolorum nulla.</p>
+                </div>
+                <div className={profileStyles.eventsAttendance}>
+                    Upcoming Events
+                    <EventList eventsArray={userProfile.profile.events_attending} />
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem, iste, consectetur dicta similique eaque debitis temporibus inventore earum ratione nostrum veniam sed, doloribus dignissimos sint aut dolore atque dolorum nulla.</p>
+                </div>
+            </section>
             
         </main>        
     )

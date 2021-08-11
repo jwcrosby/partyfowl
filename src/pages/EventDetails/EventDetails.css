@@ -1,0 +1,68 @@
+.details-div {
+    margin: 20px;
+}
+.details-h1 {
+    color: black;
+    background-color: palegoldenrod;
+    margin-top: 5rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    
+}
+
+.details-img {
+    border: 2px solid white;
+    max-height: 500px;
+    max-width: 750px;
+    min-height: 400px;
+    min-width: 600px;
+    border-radius: 10px;
+    align-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.display-img {
+    border-radius: 10px;  
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+
+.map-n-details {
+    margin-top: 20px;
+    display: flex;
+    background-color: palegoldenrod;
+    border-radius: 10px;
+    overflow: hidden;
+
+}
+
+.details-text {
+    margin-left: 20px;
+}
+
+
+.overlays {
+    border-radius: 10px;
+}
+
+.comments {
+    text-align: center;
+    padding-bottom: 4vh;
+}
+
+.comment-btn {
+    border: none;
+    background-color: rgb(58, 99, 211);
+    margin: 8px;
+    color: white;
+    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
+    font-size: 17px;
+    font-weight: 400;
+    align-items: center;
+    padding: 6px 36px;
+    border-radius: 16px;
+    cursor: pointer; 
+}
