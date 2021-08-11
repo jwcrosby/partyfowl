@@ -14,6 +14,7 @@ import EventDetailsMap from "../../components/Event/EventDetailsMap";
 
 const EventDetails = () => {
   const { id } = useParams();
+  const [eventExists, setEventExists] = useState();
   const [eventDetails, setEventDetails] = useState();
   const [commentArray, setCommentArray] = useState([]);
 
@@ -25,9 +26,12 @@ const EventDetails = () => {
       // Find event
   }
 
-  useEffect(() => {
+  useEffect(() => { 
+    setEventExists(eventService.doesEventExist(id)) // sets eventExists to true/false
+    
     ticketService.getEventById(id).then((event) => setEventDetails(event));
-  }, [id]);
+  }, [id])
+
 
   if (eventDetails === undefined) {
     return <>Still loading...</>;
