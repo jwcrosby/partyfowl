@@ -1,14 +1,14 @@
 import React from 'react'
 
 const CommentActions = (props) => {
-    
+    console.log('comment action props', props)
 // ?
     return (
         <div className='actions'>
             {
-                props.currentUser &&
-                props.currentUser._id === props.CommentActions.commenter._id &&
-                <button onClick={() => props.handleDeleteComment(props.commenter._id)}>
+                props.user &&
+                props.user._id === props.comment.owner &&
+                <button onClick={() => props.handleDeleteComment(props.comment._id)}>
                     Delete
                 </button>
             }

@@ -57,7 +57,7 @@ const deleteComment = async (req, res) => {
     try {
         const event = await Event.find({event_id: req.params.id})
         const idx = event.comments.findIndex((comment) =>
-            comment.event_id.equals(req.params.comment_id)
+            comment._id.equals(req.params.comment_id)
         )
         const removedComment = event.comments.splice(idx, 1)
         await event.save()

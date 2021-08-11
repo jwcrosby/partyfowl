@@ -23,7 +23,7 @@ export const createComment = async (eventId, comment) => {
 
 export const deleteComment = async (eventId, commentId) => {
     try {
-        const res = await fetch(`${BASE_URL}${eventId}/comments/${commentId}`, {
+        const res = await fetch(`${BASE_URL}${eventId}`, {
             method: 'DELETE',
             headers: { 'Authorization': 'Bearer ' + tokenService.getToken() }
         }, { mode: 'cors' })
