@@ -13,6 +13,7 @@ const getAllEvents = async () => {
     
     return data;
   } catch (error) {
+    console.log(error, "getAllEvents error")
     throw error;
   }
 };
