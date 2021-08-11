@@ -1,0 +1,50 @@
+.details-div {
+    margin: 20px;
+}
+.details-h1 {
+    color: black;
+    background-color: palegoldenrod;
+    
+}
+.display-img {
+    border: 5px solid black;    
+}
+
+.map-n-details {
+    margin-top: 20px;
+    display: flex;
+    background-color: palegoldenrod;
+    border-radius: 10px;
+    overflow: hidden;
+
+}
+
+.details-text {
+    margin-left: 20px;
+}
+
+.details-img {
+    max-height: 40rem;
+}
+
+.overlays {
+    border-radius: 10px;
+}
+
+.comments {
+    text-align: center;
+}
+
+.comment-btn {
+    border: none;
+    background-color: rgb(58, 99, 211);
+    margin: 8px;
+    color: white;
+    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
+    font-size: 17px;
+    font-weight: 400;
+    align-items: center;
+    padding: 6px 36px;
+    border-radius: 16px;
+    cursor: pointer; 
+}

@@ -33,23 +33,26 @@ const EventDetails = () => {
     return <>Still loading...</>;
   }
   return (
-    <div>
+    <div className='details-div'>
+      <h1 className='details-h1'>{eventDetails.name}</h1>
       <div className="display-img">
         {/* can refactor to make it a carousel */}
         {/* need to make conditional for if no images */}
-        <img src={eventDetails.images[0].url} alt="event" />
+        <img className='details-img' src={eventDetails.images[0].url} alt="event" />
       </div>
-      <h1>{eventDetails.name}</h1>
 
-      <EventDetailsMap 
-        eventDetails={eventDetails}
-      />
-
-      <div className="description">
-        <p>Description: {eventDetails.description}</p>
-      </div>
-      <div className="datetime">
-        <p>Timezone: {eventDetails.dates.timezone}</p>
+      <div className='map-n-details'>
+        <EventDetailsMap 
+          eventDetails={eventDetails}
+        />
+        <div className='details-text'>
+          <div className="description">
+            <p>Description: {eventDetails.description}</p>
+          </div>
+          <div className="datetime">
+            <p>Timezone: {eventDetails.dates.timezone}</p>
+          </div>
+        </div>
       </div>
       <div className="comments">
         {/* <CommentSection
@@ -57,7 +60,7 @@ const EventDetails = () => {
           commentArray={commentArray}
           setCommentArray={setCommentArray}
         /> */}
-        <button onClick={() => handleNewCommentClick()}>Add comment</button>
+        <button className='comment-btn' onClick={() => handleNewCommentClick()}>Add comment</button>
       </div>
     </div>
   );

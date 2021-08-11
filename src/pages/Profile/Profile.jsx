@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import styles from './Profile.module.css'
+import profileStyles from './Profile.module.css'
 
 // Services
 import * as userService from '../../services/userService'
@@ -34,9 +34,9 @@ const Profile = (props) => {
         )
     }
     return (
-        <main  className={styles.container}>
-            <h1>PROFILE PAGE</h1> 
-            <img src={userProfile.profile.avatar} alt="user avatar"/>
+        <main  className={profileStyles.container}>
+            {/* <h1>PROFILE PAGE</h1>  */}
+            <img className={profileStyles.avatar} src={userProfile.profile.avatar} alt="user avatar"/>
             <h1>{userProfile.profile.name}</h1>
             <p>{userProfile.profile.location}</p>
             <p>Interested in ___</p>

@@ -2,3 +2,7 @@
     /* to test that css is connected */
     background-color: lightblue;
 }
+.avatar {
+    height: 20rem;
+    border-radius: 10px;
+}
