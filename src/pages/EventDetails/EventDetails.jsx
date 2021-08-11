@@ -37,7 +37,7 @@ const EventDetails = () => {
       try {
         const exists = await eventService.doesEventExist(id)
         console.log(exists)
-        setEventExists(exists)
+        // setEventExists(exists)
 
       } catch (error) {
         throw error

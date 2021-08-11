@@ -17,24 +17,13 @@ function create (req, res) {
     })
 }
 
-// function doesEventExist (req,res) {
-//     console.log("I'm in doesEventExist")
-//     Event.find( {event_id: req.params.id}, function (err, results){
-//         if (!results.length) {
-//             return false //event doesn't exist in DB
-//         } else {
-//             return true //event does exist in DB
-//         }
-//     })
-// }
-
 const doesEventExist = async (req,res) => {
     try {
         const event = await Event.find({event_id: req.params.id})
         if (!!event.length) {
-            return false // event doesn't exist in DB
+            return res.status(200).json(false) // event doesn't exist in DB
         } else {
-            return true // event does exit in DB
+            return res.status(200).json(true) // event does exist in DB
         }
     } catch (err) {
         res.status(400).send(err.message)
