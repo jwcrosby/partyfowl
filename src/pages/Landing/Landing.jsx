@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { usePrevious } from "../../hooks/usePrevious";
 import styles from "./Landing.module.css";
-import headerImg from '../../components/images/landing-img.png'
-
 
 //Services
 import { getAllEvents } from "../../services/ticketmasterAPI";
@@ -13,7 +10,6 @@ import Feed from "../../components/Feed/Feed";
 
 const Landing = ({ user }) => {
   const [eventData, setEventData] = useState([]);
-
   const prevEventDataState = usePrevious(eventData);
   const [keyword, setKeyword] = useState("");
   const [hasSearchRun, setHasSearchRun] = useState(false);
@@ -36,17 +32,16 @@ const Landing = ({ user }) => {
     <main className={styles.container}>
       <div>
         {eventData &&
-
-        <Feed className='feed-parent'
-          eventData={eventData}
-          setEventData={setEventData}
-          keyword={keyword}
-          setKeyword={setKeyword}
-          clearSearch={clearSearch}
-          hasSearchRun={hasSearchRun}
-          setHasSearchRun={setHasSearchRun}
-        />
-      }
+          <Feed className='feed-parent'
+            eventData={eventData}
+            setEventData={setEventData}
+            keyword={keyword}
+            setKeyword={setKeyword}
+            clearSearch={clearSearch}
+            hasSearchRun={hasSearchRun}
+            setHasSearchRun={setHasSearchRun}
+          />
+        }
       </div>
     </main>
   );

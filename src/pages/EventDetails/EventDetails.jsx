@@ -23,7 +23,6 @@ const EventDetails = (props) => {
 
   const [commentsArray, setCommentsArray] = useState([])
   const [photoCommentsArray, setPhotoCommentsArray] = useState([])
-  const [photosArray, setPhotosArray] = useState([])
   const [profilesArray, setProfilesArray] = useState([])
 
   
@@ -54,7 +53,6 @@ const EventDetails = (props) => {
     setDbEventDetails(res)
     setCommentsArray(res.comments)
     setPhotoCommentsArray(res.user_photos)
-    setPhotosArray(res.user_photos)
     setProfilesArray(res.profiles_attending)
   }
 
@@ -79,7 +77,6 @@ const EventDetails = (props) => {
           setDbEventDetails(res[0]) // may not really need this if we're saving info in separate states
           setCommentsArray(res[0].comments)
           setPhotoCommentsArray(res[0].user_photos)
-          setPhotosArray(res[0].user_photos)
           setProfilesArray(res[0].profiles_attending)
           
         } else {
