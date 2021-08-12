@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from "react-router-dom";
 import profileStyles from './Profile.module.css'
 
 // Services
@@ -20,16 +21,16 @@ const Profile = (props) => {
             console.log("THIS IS THE RESPONSEEEEE", res)
             setUserProfile(res)
            
-            const eventslist = res.events_attending
+            // const eventslist = res.events_attending
                 
-            let list = []
-            eventslist.map( async (event) => {
-                const id = event.event_id
-                const res = await ticketService.getEventById(id)
-                list.push(res)
-            })
-            console.log("LIST OF EVENTS", list)
-            setEventsAttending(list) 
+            // let list = []
+            // eventslist.map( async (event) => {
+            //     const id = event.event_id
+            //     const res = await ticketService.getEventById(id)
+            //     list.push(res)
+            // })
+            // console.log("LIST OF EVENTS", list)
+            // setEventsAttending(list) 
         }catch (error) {
             throw error
         }
@@ -74,7 +75,13 @@ const Profile = (props) => {
                 
                 <div className={profileStyles.eventsAttendance}>
                     <h3> Upcoming Events </h3>
-                    <EventList eventsArray={eventsAttending} />
+                    {userProfile.events_attending.map((event) => (
+                       
+                        <Link to={{ pathname: `/events/${event.event_id}` , state: { event : event.event_id}}}>
+                            {event.title}
+                        </Link>
+                        
+                    ))}
                 </div>
                 
             </section>
