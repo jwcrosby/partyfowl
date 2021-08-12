@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 // components
 import CommentList from './CommentList'
@@ -9,15 +9,12 @@ import { createComment, deleteComment } from '../../services/commentService'
 
 
 const CommentSection = (props) => {
-    console.log('props 2', props)
-    const [toggleNewComment, setToggleNewComment] = useState(true) // changed false to true props.event._id,
 
     const handleCreateComment = async (formData) => {
-        console.log('form data', formData, 'event id', props.eventId)
         try {
             const newComment = await createComment(props.eventId, formData)
-            newComment.owner = props.currentUser
-            props.setCommentArray([...props.commentArray, newComment])
+            newComment.owner = props.user
+            props.setCommentsArray([newComment, ...props.commentsArray])
         } catch (error) {
             throw error
         }
@@ -25,8 +22,8 @@ const CommentSection = (props) => {
 
     const handleDeleteComment = async (commentId) => {
         try {
-            await deleteComment(props.event._id, commentId)
-            props.setCommentArray(props.commentArray.filter(comment => comment._id !== commentId))
+            await deleteComment(props.eventId, commentId)
+            props.setCommentsArray(props.commentsArray.filter(comment => comment._id !== commentId))
         } catch (error) {
             throw error
         }
@@ -39,21 +36,10 @@ const CommentSection = (props) => {
                 <h3>Comment Section</h3>
             </div>
 
-            <div className='header-btns'>
-                {props.currentUser &&
-                    <button onClick={() => setToggleNewComment(!toggleNewComment)}>
-                        Add A Comment
-                    </button>
-                }
-            </div>
-
-            {toggleNewComment &&
             <CreateComment 
-                    {...props}
-                    handleCreateComment={handleCreateComment}
-                    setToggleNewComment={setToggleNewComment}
+                {...props}
+                handleCreateComment={handleCreateComment}
             ></CreateComment>
-            }
 
             <CommentList 
                 {...props}

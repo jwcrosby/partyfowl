@@ -9,10 +9,11 @@ import * as eventService from "../../services/eventService"
 // Components
 import CommentSection from "../../components/Comment/CommentSection";
 import EventDetailsMap from "../../components/Event/EventDetailsMap";
+import { PromiseProvider } from "mongoose";
 
 // Assets?
 
-const EventDetails = () => {
+const EventDetails = (props) => {
   const { id } = useParams();
   const [eventExists, setEventExists] = useState(false)
   const [eventDetails, setEventDetails] = useState()
@@ -98,7 +99,8 @@ const EventDetails = () => {
           </button>
         }
         {eventExists && 
-          <CommentSection 
+          <CommentSection
+            user={props.user}
             eventId={id}
             commentsArray={commentsArray}
             setCommentsArray={setCommentsArray}

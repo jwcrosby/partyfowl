@@ -50,9 +50,15 @@ const saveEvent = async (req,res) => {
 
 
 const createComment = async (req, res) => {
+
     try {
-        const event = await Event.findById(req.params.id)
-        event.comments.push(req.body)
+        const event = await Event.findOne({event_id: req.params.id})
+        const commentData = {
+            content: req.body.content,
+            event: event._id,
+            owner: req.user._id
+        }
+        event.comments.push(commentData)
         await event.save()
         const newComment = event.comments[event.comments.length - 1]
         return res.status(201).json(newComment)
@@ -63,9 +69,9 @@ const createComment = async (req, res) => {
 
 const deleteComment = async (req, res) => {
     try {
-        const event = await Event.findById(req.params.event_id)
+        const event = await Event.findOne({event_id: req.params.event_id})
         const idx = event.comments.findIndex((comment) =>
-            comment.event_id.equals(req.params.comment_id)
+            comment._id.equals(req.params.comment_id)
         )
         const removedComment = event.comments.splice(idx, 1)
         await event.save()
@@ -81,6 +87,9 @@ function getAllEvents (req, res) {
     .then(response => {
         res.json(response.data)
     })
+    .catch(err => {
+        console.log(err)
+    })
 }
 
 function getEventsByPostalCode (req,res) {
@@ -88,14 +97,20 @@ function getEventsByPostalCode (req,res) {
     .then(response => {
         res.json(response.data)
     })
+    .catch(err => {
+        console.log(err)
+    })
 }
 
 function getEventById (req,res){
-    console.log("I'M HITTING THIS FUNCTION")
+    console.log("GTFO")
     axios.get(`https://app.ticketmaster.com/discovery/v2/events/${req.params.id}.json?apikey=${process.env.API_KEY}`)
     .then(response => {
         res.json(response.data)
     })  
+    .catch(err => {
+        console.log(err)
+    })
 }
 
 

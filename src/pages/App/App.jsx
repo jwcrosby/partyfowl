@@ -7,6 +7,7 @@ import Landing from '../Landing/Landing'
 import Users from '../Users/Users'
 import Profile from '../Profile/Profile'
 import EventDetails from '../EventDetails/EventDetails'
+import SearchResults from '../SearchResults/SearchResults'
 import * as authService from '../../services/authService'
 
 const App = () => {
@@ -27,32 +28,43 @@ const App = () => {
 	return (
 		<>
 			<NavBar user={user} handleLogout={handleLogout}/>
+
 			<Route exact path='/'>
 				<Landing user={user} />
 			</Route>
+
 			<Route exact path='/signup'>
 				{user ? 
 					<Redirect to='/' /> : 
 					<Signup handleSignupOrLogin={handleSignupOrLogin}/>
 				}
 			</Route>
+
 			<Route exact path='/login'>
 				{user ? 
 					<Redirect to='/' /> : 
 					<Login handleSignupOrLogin={handleSignupOrLogin}/>
 				}
 			</Route>
+
 			<Route exact path='/users'>
 				{user ? <Users /> : <Redirect to='/login' />}
 			</Route>
+
 			<Route exact path='/profile'>
 				<Profile user={user}/>
 			</Route>
-			<Route path="/events/:id">
-				<EventDetails/>
+			
+			<Route exact path="/events/search/:postalcode">
+				<SearchResults user={user} />
 			</Route>
+
+			<Route exact path="/events/:id">
+				<EventDetails user={user}/>
+			</Route>
+
 		</>
 	)
 }
- 
+
 export default App
