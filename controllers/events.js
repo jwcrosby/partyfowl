@@ -87,8 +87,7 @@ const deleteComment = async (req, res) => {
 }
 
 function getAllEvents (req, res) {
-    console.log("I'M HITTING GETALLEVENTS")
-    axios.get(`https://app.ticketmaster.com/discovery/v2/events.json?size=100&sort=random&apikey=${process.env.API_KEY}`)
+    axios.get(`https://app.ticketmaster.com/discovery/v2/events.json?sort=random&size=6&apikey=${process.env.API_KEY}`)
     .then(response => {
         res.json(response.data)
     })
@@ -97,9 +96,8 @@ function getAllEvents (req, res) {
     })
 }
 
-function getEventsByPostalCode (req,res) {
+function getEventsByGeoHash (req,res) {
     axios.get(`https://app.ticketmaster.com/discovery/v2/events.json?size=${req.params.size}&geoPoint=${req.params.geoHash}&radius=25&unit=miles&apikey=${process.env.API_KEY}`)
-
 
     .then(response => {
         res.json(response.data)
@@ -110,7 +108,6 @@ function getEventsByPostalCode (req,res) {
 }
 
 function getEventById (req,res){
-    console.log("GTFO")
     axios.get(`https://app.ticketmaster.com/discovery/v2/events/${req.params.id}.json?apikey=${process.env.API_KEY}`)
     .then(response => {
         res.json(response.data)
@@ -127,7 +124,7 @@ export {
     createComment,
     deleteComment,
     getAllEvents,
-    getEventsByPostalCode,
+    getEventsByGeoHash,
     getEventById,
     doesEventExist,
     createUserAttendsEvent 

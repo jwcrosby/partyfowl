@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { usePrevious } from "../../hooks/usePrevious";
 import styles from "./SearchResults.module.css";
 import SearchResultsMap from "../../components/SearchResultFeed/SearchResultsMap";
 import geohash from "ngeohash"
 
 //Services
 import { convertSearchQueryToLatLong } from "../../services/geocodioAPI";
-import { getEventsByPostalCode } from "../../services/ticketmasterAPI";
+import { getEventsByGeoHash } from "../../services/ticketmasterAPI";
 
 const SearchResults = ({ user }) => {
   const [latitude, setLatitude] = useState();
@@ -28,15 +26,11 @@ const SearchResults = ({ user }) => {
       setLongitude(long);
       setGeoHashLocation(geoHashConversion.toString());
 
-      console.log(latitude, "latitude");
-      console.log(longitude, "longitude");
-      console.log(geoHashLocation, "geoHashLocation");
-
     });
   }, []);
   
   useEffect(() => {
-      getEventsByPostalCode(100, geoHashLocation).then((data) => {
+    getEventsByGeoHash(100, geoHashLocation).then((data) => {
         data.hasOwnProperty("_embedded")
           ? setEventData(data._embedded.events)
           : setEventData([]);
