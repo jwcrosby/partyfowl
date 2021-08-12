@@ -98,7 +98,9 @@ function getAllEvents (req, res) {
 }
 
 function getEventsByPostalCode (req,res) {
-    axios.get(`https://app.ticketmaster.com/discovery/v2/events.json?size=${req.params.size}&postalCode=${req.params.postalCode}&apikey=${process.env.API_KEY}`)
+    axios.get(`https://app.ticketmaster.com/discovery/v2/events.json?size=${req.params.size}&geoPoint=${req.params.geoHash}&radius=25&unit=miles&apikey=${process.env.API_KEY}`)
+
+
     .then(response => {
         res.json(response.data)
     })
