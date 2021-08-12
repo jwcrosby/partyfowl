@@ -39,8 +39,8 @@ const EventDetails = (props) => {
     if (!eventExists) {
       await createEventOnClick()
     } 
-    const updatedProfile = eventService.createUserAttendsEvent(id, profile)
-    setProfilesArray(updatedProfile)
+    const updatedArray = await eventService.createUserAttendsEvent(id, profile)
+    setProfilesArray(updatedArray)
   }
   
 
@@ -99,7 +99,18 @@ const EventDetails = (props) => {
           </div>
           <div className="attending-users">
             {eventExists && 
-              <p><strong>List of Profiles Attending</strong></p>}
+              <div>
+                <p><strong>List of Profiles Attending</strong></p>
+                {profilesArray.map((profile) => (
+                    <div className="profile-listing">
+                        <img src={profile.avatar} alt="avatar" />
+                        {profile.name}
+                    </div>
+                ))}
+              </div>
+            }
+           
+            
           </div>
 
           

@@ -40,13 +40,13 @@ const createUserAttendsEvent = async (req,res) => {
             {upsert: true}
         )
         
-        const updatedProfile = await Profile.findOneAndUpdate(
+        await Profile.findOneAndUpdate(
             {_id : req.params.profile},
             { $set: {events_attending: updatedEvent._id}},
             {upsert:true}
         )
 
-        return updatedProfile // does this need to return anything?
+        return res.status(201).json(updatedEvent.profiles_attending) // does this need to return anything?
     } catch (error) {
         res.status(400).send(error.message)
     }
