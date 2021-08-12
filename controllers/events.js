@@ -1,4 +1,5 @@
 import { Event } from "../models/event.js"
+import { Profile } from "../models/profile.js"
 import axios from "axios"
 
 const create = async (req,res) => {
@@ -27,6 +28,31 @@ const doesEventExist = async (req,res) => {
         res.status(400).send(err.message)
     }
 }
+
+const createUserAttendsEvent = async (req,res) => {
+    try {
+        console.log("I'm in the user/event controller")
+        
+        const updatedEvent = await Event.findOneAndUpdate(
+            {event_id: req.params.id},
+            { $addToSet: {profiles_attending: req.params.profile}},
+            {upsert: true}
+        )
+        
+        await Profile.findOneAndUpdate(
+            {_id : req.params.profile},
+            { $addToSet: {events_attending: updatedEvent._id}},
+            {upsert:true}
+        )
+        
+        const populatedEvent = await Event.find({event_id: req.params.id}).populate("profiles_attending")
+        return res.status(201).json(populatedEvent) 
+    } catch (error) {
+        res.status(400).send(error.message)
+    }
+}
+
+
 
 const createComment = async (req, res) => {
 
@@ -95,6 +121,7 @@ function getEventById (req,res){
 }
 
 
+
 export {
     create,
     createComment,
@@ -102,6 +129,7 @@ export {
     getAllEvents,
     getEventsByPostalCode,
     getEventById,
-    doesEventExist, 
+    doesEventExist,
+    createUserAttendsEvent 
 }
 

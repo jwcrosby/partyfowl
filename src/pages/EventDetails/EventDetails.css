@@ -66,3 +66,9 @@
     border-radius: 16px;
     cursor: pointer; 
 }
+
+.profile-listing img {
+    max-height: 50px;
+    max-width: 50px;
+    border-radius: 50%;
+}
