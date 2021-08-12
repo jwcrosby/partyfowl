@@ -19,7 +19,8 @@
 }
 
 .card-header {
-  font-family: 'Courgette', cursive;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
   text-decoration: none !important;
 }
 
