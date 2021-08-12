@@ -2,7 +2,7 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import './NavBar.css'
 import nest from '../images/login.png'
-import header from '../images/temporary-header.png'
+import fowl from '../images/partyfowl-nav.png'
 import goose from '../images/goose.png'
 
 
@@ -12,8 +12,8 @@ const NavBar = ({ user, handleLogout }) => {
 			<div className='nav-parent'>
 			{user ? (
 				<>
-					<NavLink className='Home nav-a' to='/'>PartyFowl</NavLink>
-					<span className='header-img' >Header Img Will Go Here</span> 
+					<NavLink className='Home nav-a' to='/'><img className='goose-icon' src={fowl} alt="Logo" /></NavLink>
+					<span className='header-img' ><img className='goose-icon' src={goose} alt="a goose" /></span>  
 					<div className='user-links'>
 					<NavLink className='nav-a logout' to='/' onClick={handleLogout}>Log out</NavLink>
 					<NavLink className='nav-a profile' to='/profile'>Profile</NavLink>
@@ -24,7 +24,7 @@ const NavBar = ({ user, handleLogout }) => {
 				</>
 			) : (
 				<>
-					<NavLink className='Home nav-a' to='/'>PartyFowl</NavLink>
+					<NavLink className='Home nav-a' to='/'><img className='goose-icon' src={fowl} alt="Logo" /></NavLink>
 					<span className='header-img' ><img className='goose-icon' src={goose} alt="a goose" /></span> 
 					<span className='form-links'>
 					<NavLink className='login nav-a' to="/login"><img className='nest-icon' src={nest} alt="an egg" /><br/></NavLink>

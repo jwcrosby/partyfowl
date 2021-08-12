@@ -57,7 +57,7 @@ const Profile = (props) => {
                 <div className={profileStyles.eventsAttendance}>
                     Saved Events
                     <EventList eventsArray={userProfile.profile.events_saved} />
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem, iste, consectetur dicta similique eaque debitis temporibus inventore earum ratione nostrum veniam sed, doloribus dignissimos sint aut dolore atque dolorum nulla.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, porro molestias magnam animi aliquam in laboriosam Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum exercitationem aperiam expedita rerum nam ratione quis omnis, dicta, excepturi doloremque illo obcaecati perspiciatis fugiat praesentium perferendis molestiae itaque, laudantium repellat! recusandae quos dolorem accusamus mollitia, beatae nam iusto incidunt saepe, tempora totam quia. Saepe. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem, iste, consectetur dicta similique eaque debitis temporibus inventore earum ratione nostrum veniam sed, doloribus dignissimos sint aut dolore atque dolorum nulla.</p>
                 </div>
                 <div className={profileStyles.eventsAttendance}>
                     Upcoming Events

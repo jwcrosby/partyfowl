@@ -26,7 +26,8 @@
 .card-text {
   margin-left: 1vw;
   color: black;
-  max-height: 18vh;
+  max-height: 20vh;
+  overflow: hidden;
 }
 
 .card-details {
