@@ -23,12 +23,6 @@ const SearchHeader = (props) => {
     try {
       setHasSearchRun(true);
 
-      // const data = await search(keyword);
-
-      // data.hasOwnProperty("_embedded")
-      //   ? setEventData(data._embedded.events)
-      //   : setEventData([]);
-
       history.push(`/events/search/${keyword}`);
       
     } catch (error) {
