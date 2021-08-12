@@ -8,6 +8,8 @@ import SearchResultsMap from "../../components/SearchResultFeed/SearchResultsMap
 import { convertSearchQueryToLatLong } from "../../services/geocodioAPI";
 import { getEventsByPostalCode } from "../../services/ticketmasterAPI";
 
+convertSearchQueryToLatLong
+
 //Components
 import Feed from "../../components/Feed/Feed";
 
@@ -17,16 +19,6 @@ const SearchResults = ({ user }) => {
 
   useEffect(() => {
     getEventsByPostalCode(100, geoHashLocation).then((data) => {
-      console.log(data, "getAllEvents data");
-
-      // const newArray = data?._embedded?.events?.map((event, index) => {
-      //   if(event._embedded.venues[0]) {
-      //     return event
-      //   }
-      //   return
-      // })
-
-      // setEventData(newArray)
 
       data.hasOwnProperty("_embedded")
         ? setEventData(data._embedded.events)
