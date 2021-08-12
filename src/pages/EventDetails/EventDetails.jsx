@@ -31,7 +31,7 @@ const EventDetails = (props) => {
       setPhotosArray(res.user_photos)
       setProfilesArray(res.profiles_attending)
   }
-
+  console.log('evt deets', eventDetails)
   useEffect(() => {
     const fetchEvent = async () => {
       try {
@@ -86,6 +86,12 @@ const EventDetails = (props) => {
           <div className="attending-users">
             {eventExists && 
               <p><strong>List of Profiles Attending</strong></p>}
+          </div>
+          <div className='links-container'>
+            <button>For offical site</button>
+            <a href={eventDetails.url}  rel='noreferrer' target='_blank'>
+                <button type='button'>For ticket site</button>
+            </a>
           </div>
               
         </div>
