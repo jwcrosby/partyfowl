@@ -1,6 +1,7 @@
 import { Event } from "../models/event.js"
 import { Profile } from "../models/profile.js"
 import axios from "axios"
+import mongoose from 'mongoose'
 
 const create = async (req,res) => {
     try {
@@ -29,19 +30,23 @@ const doesEventExist = async (req,res) => {
     }
 }
 
-const saveEvent = async (req,res) => {
+const createUserAttendsEvent = async (req,res) => {
     try {
-        const currentEvent = await Event.findById(req.params.id)
-        const currentProfile = await Profile.findById(req.params.profile)
+        console.log("I'm in the user/event controller")
+        
+        const currentEvent = await Event.findOneAndUpdate(
+            {event_id: req.params.id},
+            { $set: {profiles_attending: req.params.profile}},
+            {upsert: true}
+        )
+        
+        await Profile.updateOne(
+            {_id : req.params.profile},
+            { $set: {events_attending: currentEvent._id}},
+            {upsert:true}
+        )
 
-        currentEvent.profiles_attending.push(currentProfile)
-        currentProfile.events_attending.push(currentEvent)
-
-        await currentEvent.save()
-        await currentProfile.save()
-
-        // does this need to return anything?
-
+        return null // does this need to return anything?
     } catch (error) {
         res.status(400).send(error.message)
     }
@@ -123,6 +128,6 @@ export {
     getEventsByPostalCode,
     getEventById,
     doesEventExist,
-    saveEvent 
+    createUserAttendsEvent 
 }
 
