@@ -4,9 +4,14 @@ import ReactMapGL, { Marker } from "react-map-gl";
 import pinImage from "../../assets/goose.png";
 import "./SearchResultsMap.css";
 
+
 const TOKEN = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 
-const SearchResultsMap = ({ eventData }) => {
+const SearchResultsMap = ({ eventData, latitude, longitude }) => {
+
+  console.log(latitude, "X")
+  console.log(longitude, "Y")
+
   const [viewport, setViewport] = useState({
     latitude: 39.7392,
     longitude: -104.9903,
