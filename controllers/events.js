@@ -1,7 +1,6 @@
 import { Event } from "../models/event.js"
 import { Profile } from "../models/profile.js"
 import axios from "axios"
-import mongoose from 'mongoose'
 
 const create = async (req,res) => {
     try {
@@ -36,17 +35,18 @@ const createUserAttendsEvent = async (req,res) => {
         
         const updatedEvent = await Event.findOneAndUpdate(
             {event_id: req.params.id},
-            { $set: {profiles_attending: req.params.profile}},
+            { $addToSet: {profiles_attending: req.params.profile}},
             {upsert: true}
         )
         
         await Profile.findOneAndUpdate(
             {_id : req.params.profile},
-            { $set: {events_attending: updatedEvent._id}},
+            { $addToSet: {events_attending: updatedEvent._id}},
             {upsert:true}
         )
-
-        return res.status(201).json(updatedEvent.profiles_attending) // does this need to return anything?
+        
+        const populatedEvent = await Event.find({event_id: req.params.id}).populate("profiles_attending")
+        return res.status(201).json(populatedEvent) 
     } catch (error) {
         res.status(400).send(error.message)
     }

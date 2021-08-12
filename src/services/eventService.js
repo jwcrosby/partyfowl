@@ -31,10 +31,13 @@ export const createUserAttendsEvent = async (id, profile) => {
     try {
         console.log("I'm in the eventServices function for user/event save")
         let EVENT_URL = `/api/events`
-        const res = await fetch(`${EVENT_URL}/${id}/${profile}`,
-        { headers: {Authorization: `Bearer ${tokenService.getToken()}`}},
-        { mode: 'cors'})
+        const res = await fetch(`${EVENT_URL}/${id}/${profile}`, 
+        {method: "POST",
+        headers: {Authorization: `Bearer ${tokenService.getToken()}`},
+        mode: 'cors'})
+        console.log("LOGGING RES", res)
         const data = await res.json()
+        await console.log("HOPEFULLY THE PROFILES-ATTENDING", data)
         return data
 
     } catch (error) {

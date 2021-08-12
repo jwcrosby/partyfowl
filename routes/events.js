@@ -15,7 +15,7 @@ router.post("/createEvent/:id", eventsCtrl.create)
 
 // ========= Protected Routes ===========
 router.use(decodeUserFromToken)
-router.get('/:id/:profile', checkAuth, eventsCtrl.createUserAttendsEvent)
+router.post('/:id/:profile', checkAuth, eventsCtrl.createUserAttendsEvent)
 router.post('/:id', checkAuth, eventsCtrl.createComment)
 router.delete('/:event_id/comments/:comment_id', checkAuth, eventsCtrl.deleteComment)
 
