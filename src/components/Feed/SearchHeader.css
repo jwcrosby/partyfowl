@@ -23,6 +23,8 @@
 }
 h3.h3-search {
   width: 20vw;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
 }
 
 .header-buttons {

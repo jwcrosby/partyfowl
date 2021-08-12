@@ -29,8 +29,14 @@
   color: black;
   max-height: 20vh;
   overflow: hidden;
+  text-underline-offset: 0.5em;
 }
 
 .card-details {
   text-decoration: none;
+  text-underline-offset: 0.5em;
+  margin-top: 0.2rem;
+}
+h5.card-details {
+  margin-bottom: 0.5rem;
 }
