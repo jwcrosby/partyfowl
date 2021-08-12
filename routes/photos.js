@@ -11,6 +11,7 @@ const router = Router()
 // ============ Protected Routes =========
 router.use(decodeUserFromToken)
 router.post('/:id', checkAuth, photoCommentsCtrl.createPhotoComment)
+router.delete('/:event_id/photoComments/:photoComment_id', checkAuth, photoCommentsCtrl.deletePhotoComment)
 
 
 export {
