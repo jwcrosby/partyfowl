@@ -29,23 +29,16 @@ const doesEventExist = async (req,res) => {
 }
 
 const createComment = async (req, res) => {
-    console.log('hitting createComment ctrl')
+
     try {
         const event = await Event.findOne({event_id: req.params.id})
-        console.log('event', event)
-        console.log('req.body', req.body)
         const commentData = {
             content: req.body.content,
             event: event._id,
-            owner: '611195502c4c894ef0bb6744'
+            owner: req.user._id
         }
-
-
-        console.log(commentData)
         event.comments.push(commentData)
-        console.log('getting past push')
         await event.save()
-        console.log('getting past save')
         const newComment = event.comments[event.comments.length - 1]
         return res.status(201).json(newComment)
     } catch (err) {
@@ -55,9 +48,9 @@ const createComment = async (req, res) => {
 
 const deleteComment = async (req, res) => {
     try {
-        const event = await Event.find({event_id: req.params.id})
+        const event = await Event.findOne({event_id: req.params.event_id})
         const idx = event.comments.findIndex((comment) =>
-            comment.event_id.equals(req.params.comment_id)
+            comment._id.equals(req.params.comment_id)
         )
         const removedComment = event.comments.splice(idx, 1)
         await event.save()
