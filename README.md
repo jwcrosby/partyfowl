@@ -1,8 +1,8 @@
-# PartyFowl 
+# PartyFowl :tada:
 Some catchy introduction
 
 ---
-## [Check It Out Here!](https://partyfowl.herokuapp.com/)
+## :sparkles: [Check It Out Here!](https://partyfowl.herokuapp.com/)
 ---
 ## :partying_face: How Does It Work?
 
@@ -41,7 +41,7 @@ Some catchy introduction
 - [ ] Mailing feature to send notifications
 - [ ] Messaging features
 ---
-## The Team: SEI-Gulls 
+## :bird: The Team: SEI-Gulls 
 - **Witte Crosby** :technologist: Scrum Master, API Lead | [GitHub](https://github.com/jwcrosby), [LinkedIn](https://www.linkedin.com/in/wittec/)
 - **Gerardo Cazares** :technologist: Designer | [GitHub](https://github.com/geedtd), [LinkedIn](https://www.linkedin.com/in/gerardocazares/)
 - **Jimmy Erickson** :technologist: Database Manager | [GitHub](https://github.com/JImmyJImmy0), [LinkedIn](https://www.linkedin.com/in/james--erickson/)
