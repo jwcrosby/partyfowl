@@ -5,9 +5,6 @@ import "./SearchHeader.css";
 //Components
 import Search from "./Search";
 
-//Services
-import { search } from "../../services/searchService";
-
 const SearchHeader = (props) => {
   const history = useHistory();
   const {
@@ -25,12 +22,6 @@ const SearchHeader = (props) => {
     e.preventDefault();
     try {
       setHasSearchRun(true);
-
-      // const data = await search(keyword);
-
-      // data.hasOwnProperty("_embedded")
-      //   ? setEventData(data._embedded.events)
-      //   : setEventData([]);
 
       history.push(`/events/search/${keyword}`);
       

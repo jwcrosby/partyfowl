@@ -14,7 +14,7 @@ console.log(latitude, longitude)
   const [viewport, setViewport] = useState({
     latitude: latitude,
     longitude: longitude,
-    zoom: 11.75,
+    zoom: 13,
   });
 
 
