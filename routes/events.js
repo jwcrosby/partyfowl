@@ -10,8 +10,8 @@ router.get('/getAll', eventsCtrl.getAllEvents)
 router.get('/getByGeoHash/:size/:geoHash', eventsCtrl.getEventsByGeoHash)
 router.get('/getEvent/:id', eventsCtrl.getEventById)
 router.get('/doesEventExist/:id', eventsCtrl.doesEventExist)
-router.post("/createEvent/:id", eventsCtrl.create)
 
+router.post("/createEvent/:id",  eventsCtrl.create)
 
 // ========= Protected Routes ===========
 router.use(decodeUserFromToken)

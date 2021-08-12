@@ -15,6 +15,9 @@ const eventSchema = new Schema({
     event_id: {
         type: String,
     },
+    title: {
+        type: String
+    },
     comments: [commentSchema],
     user_photos: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Photo'}],
     profiles_attending: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Profile'}],
