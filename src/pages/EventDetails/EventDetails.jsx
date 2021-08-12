@@ -112,6 +112,14 @@ const EventDetails = (props) => {
            
             
           </div>
+          <div className='links-container'>
+            <a href={eventDetails?._embedded?.venues[0]?.url} rel='noreferrer' target='_blank'>
+                <button>Click to see the venue</button>
+            </a>
+            <a href={eventDetails.url}  rel='noreferrer' target='_blank'>
+                <button type='button'>Click to see available tickets</button>
+            </a>
+          </div>
 
           
           <button className='comment-btn' onClick={() => handleAttendClick()}>
