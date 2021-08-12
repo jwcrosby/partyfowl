@@ -9,7 +9,6 @@ import { createComment, deleteComment } from '../../services/commentService'
 
 
 const CommentSection = (props) => {
-    console.log('props, user', props.user)
 
     const handleCreateComment = async (formData) => {
         try {

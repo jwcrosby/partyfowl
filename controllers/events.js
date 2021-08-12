@@ -35,7 +35,7 @@ const createComment = async (req, res) => {
         const commentData = {
             content: req.body.content,
             event: event._id,
-            owner: '611195502c4c894ef0bb6744'
+            owner: req.user._id
         }
         event.comments.push(commentData)
         await event.save()
@@ -49,7 +49,6 @@ const createComment = async (req, res) => {
 const deleteComment = async (req, res) => {
     try {
         const event = await Event.findOne({event_id: req.params.event_id})
-        console.log('event', event)
         const idx = event.comments.findIndex((comment) =>
             comment._id.equals(req.params.comment_id)
         )
