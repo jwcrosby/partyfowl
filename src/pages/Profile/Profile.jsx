@@ -79,12 +79,15 @@ const Profile = (props) => {
                     <EventList eventsArray={userProfile.profile.events_saved} />
                     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem, iste, consectetur dicta similique eaque debitis temporibus inventore earum ratione nostrum veniam sed, doloribus dignissimos sint aut dolore atque dolorum nulla.</p>
                 </div> */}
+                {eventsAttending !== null &&
                 <div className={profileStyles.eventsAttendance}>
-                    Upcoming Events
-                    <EventList 
-                        eventsArray={eventsAttending}
-                    />
+                    <h3> Upcoming Events </h3>
+                    <p>{eventsAttending}</p>
+                    {/* {eventsAttending.map((event) => (
+                        <p>{event.name}</p>
+                    ))} */}
                 </div>
+                }
             </section>
             
         </main>        
