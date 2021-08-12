@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { withRouter } from 'react-router-dom'
 import styles from "./SearchResults.module.css";
 import SearchResultsMap from "../../components/SearchResultFeed/SearchResultsMap";
 import geohash from "ngeohash"
@@ -7,15 +8,17 @@ import geohash from "ngeohash"
 import { convertSearchQueryToLatLong } from "../../services/geocodioAPI";
 import { getEventsByGeoHash } from "../../services/ticketmasterAPI";
 
-const SearchResults = ({ user }) => {
+const SearchResults = (props) => {
   const [latitude, setLatitude] = useState();
   const [longitude, setLongitude] = useState();
   const [geoHashLocation, setGeoHashLocation] = useState();
   const [eventData, setEventData] = useState([]);
 
   useEffect(() => {
+    const searchQuery = props?.match?.params?.searchQuery
+
     //Convert incoming search quety to lat/long
-    convertSearchQueryToLatLong("Austin, TX").then((data) => {
+    convertSearchQueryToLatLong(searchQuery).then((data) => {
 
       const lat = data?.results[0]?.location?.lat;
       const long = data?.results[0]?.location?.lng;
@@ -55,4 +58,4 @@ const SearchResults = ({ user }) => {
   );
 };
 
-export default SearchResults;
+export default withRouter(SearchResults);
