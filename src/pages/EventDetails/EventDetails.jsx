@@ -131,8 +131,7 @@ const EventDetails = (props) => {
                 ))}
               </div>
             }
-           
-            
+
           </div>
           <div className='links-container'>
             <a href={eventDetails?._embedded?.venues[0]?.url} rel='noreferrer' target='_blank'>
@@ -147,13 +146,13 @@ const EventDetails = (props) => {
           <button className='comment-btn' onClick={() => handleAttendClick()}>
             I'm Attending This Event
           </button>
-                   
+
               
         </div>
       </div>
 
       <div className="comments">
-       
+
         {!eventExists && 
           <button className='comment-btn' onClick={() => createEventOnClick()}>
             Make The First Comment!
