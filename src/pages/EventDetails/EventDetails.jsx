@@ -108,9 +108,11 @@ const EventDetails = (props) => {
       </div>
 
       <div className='map-n-details'>
-        {/* <EventDetailsMap 
+      {eventDetails?._embedded?.venues[0]?.location &&
+        <EventDetailsMap 
           eventDetails={eventDetails}
-          /> */}
+          />
+        }
         <div className='details-text'>
           <div className="description">
             <p>Description: {eventDetails.description}</p>

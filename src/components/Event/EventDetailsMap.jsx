@@ -6,6 +6,7 @@ import "./EventDetailsMap.css";
 
 const TOKEN = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN
 const EventDetailsMap = (props) => {
+  console.log(props?.eventDetails)
 
   const lat = parseFloat(props?.eventDetails?._embedded?.venues[0]?.location?.latitude)
   const long = parseFloat(props?.eventDetails?._embedded?.venues[0]?.location?.longitude)
@@ -20,6 +21,7 @@ const EventDetailsMap = (props) => {
   
     return (
       <div className='map'>
+      {props?.eventDetails &&
         <ReactMapGL
         {...viewport}
         mapStyle="mapbox://styles/wcrosby/cks530lbr9l0s17t68dk9ozze"
@@ -33,6 +35,7 @@ const EventDetailsMap = (props) => {
         </div>
 
         </ReactMapGL>
+        }
       </div>
     );
   }
