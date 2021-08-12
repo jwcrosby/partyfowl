@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { withRouter } from 'react-router-dom'
+import { usePrevious } from "../../hooks/usePrevious";
 import styles from "./SearchResults.module.css";
 import geohash from "ngeohash"
 
@@ -15,7 +16,18 @@ const SearchResults = (props) => {
   const [latitude, setLatitude] = useState();
   const [longitude, setLongitude] = useState();
   const [geoHashLocation, setGeoHashLocation] = useState();
+  
   const [eventData, setEventData] = useState([]);
+
+  const prevEventDataState = usePrevious(eventData);
+  const [keyword, setKeyword] = useState("");
+  const [hasSearchRun, setHasSearchRun] = useState(false);
+
+  const clearSearch = () => {
+    setKeyword("");
+    setHasSearchRun(false);
+    setEventData(prevEventDataState);
+  };
 
   useEffect(() => {
     const searchQuery = props?.match?.params?.searchQuery
@@ -61,11 +73,11 @@ const SearchResults = (props) => {
       <Feed className='feed-parent'
         eventData={eventData}
         setEventData={setEventData}
-        // keyword={keyword}
-        // setKeyword={setKeyword}
-        // clearSearch={clearSearch}
-        // hasSearchRun={hasSearchRun}
-        // setHasSearchRun={setHasSearchRun}
+        keyword={keyword}
+        setKeyword={setKeyword}
+        clearSearch={clearSearch}
+        hasSearchRun={hasSearchRun}
+        setHasSearchRun={setHasSearchRun}
       />
       </div>
     </main>
