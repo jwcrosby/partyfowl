@@ -35,7 +35,8 @@ const Landing = ({ user }) => {
   return (
     <main className={styles.container}>
       <div>
-        {/* <img className='landing-img' src={headerImg} alt="A Stage" /> */}
+        {eventData &&
+
         <Feed className='feed-parent'
           eventData={eventData}
           setEventData={setEventData}
@@ -45,6 +46,7 @@ const Landing = ({ user }) => {
           hasSearchRun={hasSearchRun}
           setHasSearchRun={setHasSearchRun}
         />
+      }
       </div>
     </main>
   );

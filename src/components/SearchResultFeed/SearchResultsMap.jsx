@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ReactMapGL, { Marker } from "react-map-gl";
-import pinImage from "../../assets/goose.png";
+import pinImage from "../../assets/icons/drinkpin.png";
 import "./SearchResultsMap.css";
 
 
@@ -12,9 +12,7 @@ const SearchResultsMap = ({ eventData, latitude, longitude }) => {
   const [viewport, setViewport] = useState({
     latitude: latitude,
     longitude: longitude,
-    zoom: 12,
-    // width: "98vw",
-    // height: "70vh"
+    zoom: 12.5,
   });
 
 
@@ -33,7 +31,7 @@ const SearchResultsMap = ({ eventData, latitude, longitude }) => {
             <Link to={`/events/${event.id}`}>
               <Marker
                 latitude={parseFloat(
-                  event._embedded.venues[0].location.latitude
+                  event._embedded?.venues[0]?.location?.latitude
                 )}
                 longitude={parseFloat(
                   event._embedded?.venues[0]?.location?.longitude

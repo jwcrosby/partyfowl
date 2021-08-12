@@ -17,9 +17,9 @@ const getAllEvents = async () => {
   }
 };
 
-const getEventsByPostalCode = async (size, postalCode) => {
+const getEventsByGeoHash = async (size, geoHash) => {
   try {
-    let eventUrl = `/api/events/getByPostal/${size}/${postalCode}`
+    let eventUrl = `/api/events/getByGeoHash/${size}/${geoHash}`
 
     const res = await fetch(eventUrl);
 
@@ -46,4 +46,4 @@ const getEventById = async (id) => {
   }
 };
 
-export { getAllEvents, getEventsByPostalCode, getEventById };
+export { getAllEvents, getEventsByGeoHash, getEventById };
