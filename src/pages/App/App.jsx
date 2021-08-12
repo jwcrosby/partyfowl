@@ -55,7 +55,7 @@ const App = () => {
 				<Profile user={user}/>
 			</Route>
 			
-			<Route exact path="/events/search/:postalcode">
+			<Route exact path="/events/search/:searchQuery">
 				<SearchResults user={user} />
 			</Route>
 
