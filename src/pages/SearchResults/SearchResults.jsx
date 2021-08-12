@@ -7,7 +7,7 @@ import geohash from "ngeohash"
 
 //Services
 import { convertSearchQueryToLatLong } from "../../services/geocodioAPI";
-import { getEventsByPostalCode } from "../../services/ticketmasterAPI";
+import { getEventsByGeoHash } from "../../services/ticketmasterAPI";
 
 const SearchResults = ({ user }) => {
   const [latitude, setLatitude] = useState();
@@ -32,7 +32,7 @@ const SearchResults = ({ user }) => {
   }, []);
   
   useEffect(() => {
-      getEventsByPostalCode(100, geoHashLocation).then((data) => {
+    getEventsByGeoHash(100, geoHashLocation).then((data) => {
         data.hasOwnProperty("_embedded")
           ? setEventData(data._embedded.events)
           : setEventData([]);

@@ -12,7 +12,7 @@ const SearchResultsMap = ({ eventData, latitude, longitude }) => {
   const [viewport, setViewport] = useState({
     latitude: latitude,
     longitude: longitude,
-    zoom: 12,
+    zoom: 12.5,
   });
 
 
@@ -31,7 +31,7 @@ const SearchResultsMap = ({ eventData, latitude, longitude }) => {
             <Link to={`/events/${event.id}`}>
               <Marker
                 latitude={parseFloat(
-                  event._embedded.venues[0].location.latitude
+                  event._embedded?.venues[0]?.location?.latitude
                 )}
                 longitude={parseFloat(
                   event._embedded?.venues[0]?.location?.longitude
