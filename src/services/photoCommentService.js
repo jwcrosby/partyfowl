@@ -1,13 +1,16 @@
 import * as tokenService from './tokenService'
-const BASE_URL = '/api/events/'
+const BASE_URL = '/api/photos/'
 
 export const createPhotoComment = async (eventId, photoComment) => {
     try {
+
+    console.log("TEST", photoComment)
+    console.log(`${BASE_URL}${eventId}`)
         const res = await fetch(`${BASE_URL}${eventId}`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
-                'Authorization': `Bearer ${tokenService.getToken()}`
+                // 'Authorization': `Bearer ${tokenService.getToken()}`
             },
             body: JSON.stringify(photoComment)
         }, { mode: 'cors' })

@@ -5,14 +5,15 @@ import { decodeUserFromToken, checkAuth } from "../middleware/auth.js"
 const router = Router()
 
 // ============ Public Routes ============
+router.post('/:id', photoCommentsCtrl.createPhotoComment)
 
 
 
 // ============ Protected Routes =========
 router.use(decodeUserFromToken)
-router.post('/:id', checkAuth, photoCommentsCtrl.createPhotoComment)
 router.delete('/:event_id/photoComments/:photoComment_id', checkAuth, photoCommentsCtrl.deletePhotoComment)
 
+///api/photos/vvG1GZpE5kWw9a
 
 export {
     router
