@@ -8,6 +8,7 @@ import * as eventService from "../../services/eventService"
 
 // Components
 import CommentSection from "../../components/Comment/CommentSection";
+import PhotoCommentSection from "../../components/PhotoComment/PhotoCommentSection";
 import EventDetailsMap from "../../components/Event/EventDetailsMap";
 import { PromiseProvider } from "mongoose";
 
@@ -21,6 +22,7 @@ const EventDetails = (props) => {
   const [dbEventDetails, setDbEventDetails] = useState()
 
   const [commentsArray, setCommentsArray] = useState([])
+  const [photoCommentsArray, setPhotoCommentsArray] = useState([])
   const [photosArray, setPhotosArray] = useState([])
   const [profilesArray, setProfilesArray] = useState([])
 
@@ -51,6 +53,7 @@ const EventDetails = (props) => {
     setEventExists(true)
     setDbEventDetails(res)
     setCommentsArray(res.comments)
+    setPhotoCommentsArray(res.user_photos)
     setPhotosArray(res.user_photos)
     setProfilesArray(res.profiles_attending)
   }
@@ -75,6 +78,7 @@ const EventDetails = (props) => {
           setEventExists(true)
           setDbEventDetails(res[0]) // may not really need this if we're saving info in separate states
           setCommentsArray(res[0].comments)
+          setPhotoCommentsArray(res[0].user_photos)
           setPhotosArray(res[0].user_photos)
           setProfilesArray(res[0].profiles_attending)
           
@@ -169,20 +173,22 @@ const EventDetails = (props) => {
         
       </div>
 
-      <div className="user-photos">
+      <div className="photo-comments">
+
         {!eventExists && 
-            <button className='comment-btn' onClick={() => createEventOnClick()}>
-              Add The First Photo!
-            </button>
-          }
+          <button className='photo-comment-btn' onClick={() => createEventOnClick()}>
+            Add The First Photo!
+          </button>
+        }
         {eventExists && 
-          <h2>Placeholder for PhotoSection</h2>
-          // <PhotoSection 
-          //   eventId={id}
-          //   photosArray={photosArray}
-          //   setPhotosArray={setPhotosArray}
-          // />
+          <PhotoCommentSection
+            user={props.user}
+            eventId={id}
+            photoCommentsArray={photoCommentsArray}
+            setPhotoCommentsArray={setPhotoCommentsArray}
+          />
         } 
+        
       </div>
     </div>
   );
