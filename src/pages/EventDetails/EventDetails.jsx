@@ -105,7 +105,7 @@ const EventDetails = (props) => {
     <div className='details-div'>
       
       <h1 className='details-h1'>{eventDetails.name}</h1>
-        {eventExists ? <h2>Event Exists - TESTING CONDITIONAL RENDERING</h2>: <h2>Event Doesn't Exist</h2>}
+
       <div className="display-img">
         {/* can refactor to make it a carousel */}
         {/* need to make conditional for if no images */}
