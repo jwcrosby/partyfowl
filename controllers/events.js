@@ -39,9 +39,10 @@ const createUserAttendsEvent = async (req,res) => {
             {upsert: true}
         )
         
+        console.log(updatedEvent)
         await Profile.findOneAndUpdate(
             {_id : req.params.profile},
-            { $addToSet: {events_attending: updatedEvent._id}},
+            { $addToSet: {events_attending: {_id: updatedEvent._id, title: req.params.title}}},
             {upsert:true}
         )
         

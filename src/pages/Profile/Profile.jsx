@@ -13,62 +13,7 @@ const Profile = (props) => {
     const [userProfile,setUserProfile] = useState()
     const [eventsAttending, setEventsAttending] = useState(null)
    
-    // useEffect(() => {
-    //     const fetchProfile = async() => {
-    //         try {
-    //             const res = await userService.getUserProfile(_id)
-    //             console.log("THIS IS THE RESPONSEEEEE", res)
-    //             setUserProfile(res)
-                
-    //         }catch (error) {
-    //             throw error
-    //         }
-    //     }
-    //     fetchProfile()
-    // }, [_id])
     
-    // useEffect(() => {
-    //     const fetchEvent = async() => {
-    //         try {
-    //             // if (userProfile){
-    //                 const eventslist = userProfile.events_attending
-                    
-    //                 let list = []
-    //                 eventslist.map( async (event) => {
-    //                     const id = event.event_id
-    //                     const res = await ticketService.getEventById(id)
-    //                     list.push(res)
-    //                 })
-    //                 console.log("LIST OF EVENTS", list)
-    //                 setEventsAttending(list)
-    //             // }
-
-    //         } catch (error) {
-    //             throw error
-    //         }
-    //     }
-    //     fetchEvent()
-    // },[])
-    // const fetchEvent = async(res) => {
-    //     try {
-    //         // if (userProfile){
-    //             const eventslist = res.events_attending
-                
-    //             let list = []
-    //             eventslist.map( async (event) => {
-    //                 const id = event.event_id
-    //                 const res = await ticketService.getEventById(id)
-    //                 list.push(res)
-    //             })
-    //             console.log("LIST OF EVENTS", list)
-    //             setEventsAttending(list)
-    //         // }
-
-    //     } catch (error) {
-    //         throw error
-    //     }
-    // }
-
     const fetchProfile = async() => {
         try {
             const res = await userService.getUserProfile(_id)

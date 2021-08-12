@@ -27,11 +27,11 @@ export const doesEventExist = async (id) => {
     }
 }
 
-export const createUserAttendsEvent = async (id, profile) => {
+export const createUserAttendsEvent = async (id, profile, title) => {
     try {
         console.log("I'm in the eventServices function for user/event save")
         let EVENT_URL = `/api/events`
-        const res = await fetch(`${EVENT_URL}/${id}/${profile}`, 
+        const res = await fetch(`${EVENT_URL}/${id}/${profile}/${title}`, 
         {method: "POST",
         headers: {Authorization: `Bearer ${tokenService.getToken()}`},
         mode: 'cors'})
