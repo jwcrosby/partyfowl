@@ -5,9 +5,6 @@ import "./SearchHeader.css";
 //Components
 import Search from "./Search";
 
-//Services
-import { search } from "../../services/searchService";
-
 const SearchHeader = (props) => {
   const history = useHistory();
   const {
