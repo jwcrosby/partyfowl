@@ -15,6 +15,7 @@ import { PromiseProvider } from "mongoose";
 
 const EventDetails = (props) => {
   const { id } = useParams();
+  const profile = props.user.profile
   const [eventExists, setEventExists] = useState(false)
   const [eventDetails, setEventDetails] = useState()
   const [dbEventDetails, setDbEventDetails] = useState()
@@ -23,18 +24,34 @@ const EventDetails = (props) => {
   const [photosArray, setPhotosArray] = useState([])
   const [profilesArray, setProfilesArray] = useState([])
 
-  const handleUserEventInteraction = async() => {
-      const res = await eventService.createEvent(id)
-      setEventExists(true)
-      setDbEventDetails(res)
-      setCommentsArray(res.comments)
-      setPhotosArray(res.user_photos)
-      setProfilesArray(res.profiles_attending)
+  
+  const createEventOnClick = async() => {
+    const res = await eventService.createEvent(id)
+    setEventExists(true)
+    setDbEventDetails(res)
+    setCommentsArray(res.comments)
+    setPhotosArray(res.user_photos)
+    setProfilesArray(res.profiles_attending)
+  }
+<<<<<<< HEAD
+  
+=======
+
+
+  const handleAttendClick = async() => {
+    if (!eventExists) {
+      await createEventOnClick()
+    } 
+    const updatedEvent = await eventService.createUserAttendsEvent(id, profile)
+    setProfilesArray(updatedEvent[0].profiles_attending)
   }
   
+
+>>>>>>> main
   useEffect(() => {
     const fetchEvent = async () => {
       try {
+        
         // if event exists, returns populated eventData; else, returns null
         const res = await eventService.doesEventExist(id)
         if (res) {
@@ -64,6 +81,7 @@ const EventDetails = (props) => {
   return (
     
     <div className='details-div'>
+      
       <h1 className='details-h1'>{eventDetails.name}</h1>
         {eventExists ? <h2>Event Exists - TESTING CONDITIONAL RENDERING</h2>: <h2>Event Doesn't Exist</h2>}
       <div className="display-img">
@@ -85,7 +103,18 @@ const EventDetails = (props) => {
           </div>
           <div className="attending-users">
             {eventExists && 
-              <p><strong>List of Profiles Attending</strong></p>}
+              <div>
+                <p><strong>List of Profiles Attending</strong></p>
+                {profilesArray.map((profile) => (
+                    <div className="profile-listing">
+                        <img src={profile.avatar} alt="avatar" />
+                        {profile.name}
+                    </div>
+                ))}
+              </div>
+            }
+           
+            
           </div>
           <div className='links-container'>
             <a href={eventDetails?._embedded?.venues[0]?.url} rel='noreferrer' target='_blank'>
@@ -95,6 +124,12 @@ const EventDetails = (props) => {
                 <button type='button'>Click to see available tickets</button>
             </a>
           </div>
+
+          
+          <button className='comment-btn' onClick={() => handleAttendClick()}>
+            I'm Attending This Event
+          </button>
+                   
               
         </div>
       </div>
@@ -102,7 +137,7 @@ const EventDetails = (props) => {
       <div className="comments">
        
         {!eventExists && 
-          <button className='comment-btn' onClick={() => handleUserEventInteraction()}>
+          <button className='comment-btn' onClick={() => createEventOnClick()}>
             Make The First Comment!
           </button>
         }
@@ -119,7 +154,7 @@ const EventDetails = (props) => {
 
       <div className="user-photos">
         {!eventExists && 
-            <button className='comment-btn' onClick={() => handleUserEventInteraction()}>
+            <button className='comment-btn' onClick={() => createEventOnClick()}>
               Add The First Photo!
             </button>
           }
