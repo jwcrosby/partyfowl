@@ -4,6 +4,9 @@ import "./EventCard.css";
 
 const EventCard = (props) => {
 
+  const oldDate = new Date(props.event.dates.start.localDate)
+  const date = oldDate.toDateString()
+  
   return (
     <>
     <Link to={{ pathname: `/events/${props.event.id}` , state: { event : props.event.id}}}>
@@ -17,7 +20,7 @@ const EventCard = (props) => {
       </div>
 
         <div className="event-date">
-          <h5 className='card-details'>{props.event.dates.start.localDate}</h5>
+          <h5 className='card-details'>{date}</h5>
         </div> 
 
         <div className="event-time">
