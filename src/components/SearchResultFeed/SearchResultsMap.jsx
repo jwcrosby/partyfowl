@@ -3,9 +3,6 @@ import { Link } from "react-router-dom";
 import ReactMapGL, { Marker } from "react-map-gl";
 import pinImage from "../../assets/goose.png";
 import "./SearchResultsMap.css";
-import ngeohash from "ngeohash";
-
-var geohash = require("ngeohash");
 
 const TOKEN = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 
@@ -18,7 +15,6 @@ const SearchResultsMap = ({ eventData }) => {
     // height: "70vh"
   });
 
-  console.log(geohash.encode(39.7392, -104.9903));
 
   return (
     <div style={{ height: "70vh", width: "98vw" }} className="map">

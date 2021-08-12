@@ -8,21 +8,37 @@ import SearchResultsMap from "../../components/SearchResultFeed/SearchResultsMap
 import { convertSearchQueryToLatLong } from "../../services/geocodioAPI";
 import { getEventsByPostalCode } from "../../services/ticketmasterAPI";
 
-convertSearchQueryToLatLong
-
-//Components
-import Feed from "../../components/Feed/Feed";
-
 const SearchResults = ({ user }) => {
-  const geoHashLocation = "9xj64";
   const [eventData, setEventData] = useState([]);
 
-  useEffect(() => {
-    getEventsByPostalCode(100, geoHashLocation).then((data) => {
+  const [latitude, setLatitude] = useState("");
+  const [longitude, setLongitude] = useState("");
+  const [geoHashLocation, setGeoHashLocation] = useState("");
 
-      data.hasOwnProperty("_embedded")
-        ? setEventData(data._embedded.events)
-        : setEventData([]);
+  useEffect(() => {
+    //Convert incoming search quety to lat/long
+    convertSearchQueryToLatLong("80202").then((data) => {
+
+      const lat = data?.results[0]?.location?.lat;
+      const long = data?.results[0]?.location?.lng;
+      
+      var geohash = require("ngeohash");
+      const geoHashConversion = geohash.encode(lat, long);
+
+      setLatitude(lat.toString())
+      setLongitude(long.toString())
+      setGeoHashLocation(geoHashConversion.toString())
+
+      console.log(latitude, "latitude")
+      console.log(longitude, "longitude")
+      console.log(geoHashLocation, "geoHashLocation")
+
+      getEventsByPostalCode(100, geoHashLocation).then((data) => {
+
+        data.hasOwnProperty("_embedded")
+          ? setEventData(data._embedded.events)
+          : setEventData([]);
+      });
     });
   }, []);
 
