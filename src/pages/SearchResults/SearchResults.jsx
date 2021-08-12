@@ -28,10 +28,6 @@ const SearchResults = ({ user }) => {
       setLongitude(long);
       setGeoHashLocation(geoHashConversion.toString());
 
-      console.log(latitude, "latitude");
-      console.log(longitude, "longitude");
-      console.log(geoHashLocation, "geoHashLocation");
-
     });
   }, []);
   

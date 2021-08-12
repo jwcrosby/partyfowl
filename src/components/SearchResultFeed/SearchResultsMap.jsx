@@ -13,8 +13,6 @@ const SearchResultsMap = ({ eventData, latitude, longitude }) => {
     latitude: latitude,
     longitude: longitude,
     zoom: 12,
-    // width: "98vw",
-    // height: "70vh"
   });
 
 
