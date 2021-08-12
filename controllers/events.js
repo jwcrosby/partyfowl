@@ -110,9 +110,10 @@ function getEventsByPostalCode (req,res) {
 }
 
 function getEventById (req,res){
-    console.log("GTFO")
+    console.log("req.params", req.params.id)
     axios.get(`https://app.ticketmaster.com/discovery/v2/events/${req.params.id}.json?apikey=${process.env.API_KEY}`)
     .then(response => {
+        console.log("getEVENT BY ID", res.json)
         res.json(response.data)
     })  
     .catch(err => {

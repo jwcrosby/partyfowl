@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./EventCard.css";
 
 const EventCard = (props) => {
-
+  console.log(props)
   return (
     <>
     <Link to={{ pathname: `/events/${props.event.id}` , state: { event : props.event.id}}}>

@@ -3,13 +3,14 @@ import profileStyles from './Profile.module.css'
 
 // Services
 import * as userService from '../../services/userService'
+import * as ticketService from '../../services/ticketmasterAPI'
 
 // Components
 import EventList from '../../components/Event/EventList'
 
 const Profile = (props) => {
     const [userProfile,setUserProfile] = useState()
-
+    const [eventsAttending, setEventsAttending] = useState(null)
    
     useEffect(() => {
         const fetchProfile = async() => {
@@ -17,16 +18,38 @@ const Profile = (props) => {
                 const res = await userService.getUserProfile(props.user._id)
                 console.log("THIS IS THE RESPONSEEEEE", res)
                 setUserProfile(res)
+                
             }catch (error) {
                 throw error
             }
         }
         fetchProfile()
-
     }, [props])
     
+    useEffect(() => {
+        const fetchEvent = async() => {
+            try {
+                if (userProfile){
+                    const eventslist = userProfile.events_attending
+                    
+                    let list = []
+                    eventslist.map( async (event) => {
+                        const id = event.event_id
+                        const res = await ticketService.getEventById(id)
+                        list.push(res)
+                    })
+                    console.log("LIST OF EVENTS", list)
+                    setEventsAttending(list)
+                }
 
-    if ( userProfile === undefined ){
+            } catch (error) {
+                throw error
+            }
+        }
+        fetchEvent()
+    },[userProfile])
+
+    if ( userProfile === undefined){
         return (
             <>
             Still loading...
@@ -58,8 +81,9 @@ const Profile = (props) => {
                 </div> */}
                 <div className={profileStyles.eventsAttendance}>
                     Upcoming Events
-                    <EventList eventsArray={userProfile.events_attending} />
-                    <p>Lorem      ipsum dolor sit, amet consectetur adipisicing elit. Rem, iste, consectetur dicta similique eaque debitis temporibus inventore earum ratione nostrum veniam sed, doloribus dignissimos sint aut dolore atque dolorum nulla.</p>
+                    <EventList 
+                        eventsArray={eventsAttending}
+                    />
                 </div>
             </section>
             

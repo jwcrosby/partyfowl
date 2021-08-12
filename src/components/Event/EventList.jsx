@@ -4,7 +4,7 @@ import React from 'react'
 import EventCard from './EventCard'
 
 const EventList = (props) => {
-
+    console.log(props)
     //my job is to map through the event data
     return (
         <div className="event-list">

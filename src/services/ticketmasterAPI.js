@@ -33,6 +33,7 @@ const getEventsByPostalCode = async (size, postalCode) => {
 
 const getEventById = async (id) => {
   try {
+    console.log("THIS IS THE EVENT IDDDDDDDDDD", id)
     let eventUrl = `/api/events/getEvent/${id}`;
 
     const res = await fetch(eventUrl);
