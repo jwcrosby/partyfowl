@@ -33,9 +33,6 @@ const EventDetails = (props) => {
     setPhotosArray(res.user_photos)
     setProfilesArray(res.profiles_attending)
   }
-<<<<<<< HEAD
-  
-=======
 
 
   const handleAttendClick = async() => {
@@ -47,7 +44,6 @@ const EventDetails = (props) => {
   }
   
 
->>>>>>> main
   useEffect(() => {
     const fetchEvent = async () => {
       try {
