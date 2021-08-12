@@ -5,6 +5,7 @@ import styles from "./SearchResults.module.css";
 import SearchResultsMap from "../../components/SearchResultFeed/SearchResultsMap";
 
 //Services
+import { convertSearchQueryToLatLong } from "../../services/geocodioAPI";
 import { getEventsByPostalCode } from "../../services/ticketmasterAPI";
 
 //Components
