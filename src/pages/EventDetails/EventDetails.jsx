@@ -15,7 +15,7 @@ import { PromiseProvider } from "mongoose";
 
 const EventDetails = (props) => {
   const { id } = useParams();
-  const profile = props.user.profile
+  const profile = props?.user?.profile
   const [eventExists, setEventExists] = useState(false)
   const [eventDetails, setEventDetails] = useState()
   const [dbEventDetails, setDbEventDetails] = useState()
@@ -24,6 +24,27 @@ const EventDetails = (props) => {
   const [photosArray, setPhotosArray] = useState([])
   const [profilesArray, setProfilesArray] = useState([])
 
+  
+  const startDate = new Date(eventDetails?.dates?.start?.localDate)
+  const fixedDate = startDate.toDateString()
+
+  function tConvert (time) {
+    if (time === undefined) {
+      return 'No time given'
+    } else {
+          // Check correct time format and split into components
+      time = time.toString ().match (/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
+  
+      if (time.length > 1) { // If time format correct
+        time = time.slice (1);  // Remove full string match value
+        time[5] = +time[0] < 12 ? ' AM' : ' PM'; // Set AM/PM
+        time[0] = +time[0] % 12 || 12; // Adjust hours
+    }
+      return time.join (''); // return adjusted time or original string
+    }
+  }
+  const fixedTime = tConvert(eventDetails?.dates?.start?.localTime)
+  
   
   const createEventOnClick = async() => {
     const res = await eventService.createEvent(id)
@@ -95,7 +116,8 @@ const EventDetails = (props) => {
             <p>Description: {eventDetails.description}</p>
           </div>
           <div className="datetime">
-            <p>Timezone: {eventDetails.dates.timezone}</p>
+            <p>Date: {fixedDate}</p>
+            <p>Time: {fixedTime}</p>
           </div>
           <div className="attending-users">
             {eventExists && 
