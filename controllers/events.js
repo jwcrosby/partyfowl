@@ -3,12 +3,11 @@ import { Profile } from "../models/profile.js"
 import axios from "axios"
 
 const create = async (req,res) => {
+    console.log("CREATE FUNCTION REQ.BODY", req.body)
     try {
         const newEvent = await Event.create({
             event_id: req.params.id,
-            comments: [],
-            user_photos: [],
-            profiles_attending: [],
+            title: req.body.title
         })
         return res.status(200).json(newEvent)
     } catch (error) {
@@ -18,6 +17,8 @@ const create = async (req,res) => {
 
 const doesEventExist = async (req,res) => {
     try {
+        console.log("Hitting doesEventExist", req.params.id)
+
         const eventData = await Event.find({event_id: req.params.id}).populate("users_photos").populate("profiles_attending")
         if (eventData.length) {
             return res.status(200).json(eventData) 
@@ -41,7 +42,7 @@ const createUserAttendsEvent = async (req,res) => {
         
         await Profile.findOneAndUpdate(
             {_id : req.params.profile},
-            { $addToSet: {events_attending: updatedEvent._id}},
+            {$addToSet: {events_attending: updatedEvent._id}}, 
             {upsert:true}
         )
         
@@ -87,7 +88,7 @@ const deleteComment = async (req, res) => {
 }
 
 function getAllEvents (req, res) {
-    axios.get(`https://app.ticketmaster.com/discovery/v2/events.json?size=6&sort=date,asc&apikey=${process.env.API_KEY}`)
+    axios.get(`https://app.ticketmaster.com/discovery/v2/events.json?sort=random&size=6&apikey=${process.env.API_KEY}`)
     .then(response => {
         res.json(response.data)
     })
@@ -97,7 +98,7 @@ function getAllEvents (req, res) {
 }
 
 function getEventsByGeoHash (req,res) {
-    axios.get(`https://app.ticketmaster.com/discovery/v2/events.json?size=${req.params.size}&geoPoint=${req.params.geoHash}&radius=25&unit=miles&sort=date,asc&apikey=${process.env.API_KEY}`)
+    axios.get(`https://app.ticketmaster.com/discovery/v2/events.json?size=${req.params.size}&geoPoint=${req.params.geoHash}&radius=25&unit=miles&apikey=${process.env.API_KEY}`)
 
     .then(response => {
         res.json(response.data)
@@ -108,8 +109,10 @@ function getEventsByGeoHash (req,res) {
 }
 
 function getEventById (req,res){
+    console.log("req.params", req.params.id)
     axios.get(`https://app.ticketmaster.com/discovery/v2/events/${req.params.id}.json?apikey=${process.env.API_KEY}`)
     .then(response => {
+        console.log("getEVENT BY ID", res.json)
         res.json(response.data)
     })  
     .catch(err => {

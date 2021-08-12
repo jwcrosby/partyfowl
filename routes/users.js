@@ -11,7 +11,7 @@ const router = Router()
 /*---------- Protected Routes ----------*/
 router.use(decodeUserFromToken)
 router.get('/', checkAuth, usersCtrl.index)
-router.get('/populateEvents/:id', checkAuth, usersCtrl.populateEvents)
+// router.get('/populateEvents/:id', checkAuth, usersCtrl.populateEvents)
 router.get('/:id', checkAuth, usersCtrl.grabProfile)
 
 
