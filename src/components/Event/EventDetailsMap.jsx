@@ -6,11 +6,9 @@ import "./EventDetailsMap.css";
 
 const TOKEN = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN
 const EventDetailsMap = (props) => {
-  console.log("lat", props.eventDetails._embedded.venues[0].location.latitude)
-  console.log("long", props.eventDetails._embedded.venues[0].location.longitude)
 
-  const lat = parseFloat(props.eventDetails._embedded.venues[0].location.latitude)
-  const long = parseFloat(props.eventDetails._embedded.venues[0].location.longitude)
+  const lat = parseFloat(props?.eventDetails?._embedded?.venues[0]?.location?.latitude)
+  const long = parseFloat(props?.eventDetails?._embedded?.venues[0]?.location?.longitude)
   
   const [viewport, setViewport] = useState({
     latitude: lat,
