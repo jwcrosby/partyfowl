@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { usePrevious } from "../../hooks/usePrevious";
 import styles from "./SearchResults.module.css";
 import SearchResultsMap from "../../components/SearchResultFeed/SearchResultsMap";
 import geohash from "ngeohash"
