@@ -8,11 +8,13 @@ import "./SearchResultsMap.css";
 const TOKEN = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 
 const SearchResultsMap = ({ eventData, latitude, longitude }) => {
+console.log(latitude, longitude)
+
 
   const [viewport, setViewport] = useState({
     latitude: latitude,
     longitude: longitude,
-    zoom: 12.5,
+    zoom: 11.75,
   });
 
 

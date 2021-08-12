@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { withRouter } from 'react-router-dom'
 import styles from "./SearchResults.module.css";
-import SearchResultsMap from "../../components/SearchResultFeed/SearchResultsMap";
 import geohash from "ngeohash"
+
+//Components
+import SearchResultsMap from "../../components/SearchResultFeed/SearchResultsMap";
+import Feed from "../../components/Feed/Feed";
 
 //Services
 import { convertSearchQueryToLatLong } from "../../services/geocodioAPI";
@@ -33,7 +36,7 @@ const SearchResults = (props) => {
   }, []);
   
   useEffect(() => {
-    getEventsByGeoHash(100, geoHashLocation).then((data) => {
+    getEventsByGeoHash(150, geoHashLocation).then((data) => {
         data.hasOwnProperty("_embedded")
           ? setEventData(data._embedded.events)
           : setEventData([]);
@@ -53,6 +56,17 @@ const SearchResults = (props) => {
           longitude={longitude}
         />
           }
+      </div>
+      <div>
+      <Feed className='feed-parent'
+        eventData={eventData}
+        setEventData={setEventData}
+        // keyword={keyword}
+        // setKeyword={setKeyword}
+        // clearSearch={clearSearch}
+        // hasSearchRun={hasSearchRun}
+        // setHasSearchRun={setHasSearchRun}
+      />
       </div>
     </main>
   );
