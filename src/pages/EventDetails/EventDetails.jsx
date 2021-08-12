@@ -24,6 +24,10 @@ const EventDetails = (props) => {
   const [photosArray, setPhotosArray] = useState([])
   const [profilesArray, setProfilesArray] = useState([])
 
+
+  const startDate = new Date(eventDetails.dates.start.localDate)
+  const fixedDate = startDate.toDateString()
+
   
   const createEventOnClick = async() => {
     const res = await eventService.createEvent(id)
@@ -95,7 +99,8 @@ const EventDetails = (props) => {
             <p>Description: {eventDetails.description}</p>
           </div>
           <div className="datetime">
-            <p>Timezone: {eventDetails.dates.timezone}</p>
+            <p>Date: {fixedDate}</p>
+            <p>Time: </p>
           </div>
           <div className="attending-users">
             {eventExists && 
