@@ -7,14 +7,13 @@ import CreatePhotoComment from '../CreateComponents/CreatePhotoComment/CreatePho
 // services
 import { createPhotoComment, deletePhotoComment } from '../../services/photoCommentService'
 
-
 const PhotoCommentSection = (props) => {
-
+    console.log(props, "photoCommentSection")
     const handleCreatePhotoComment = async (formData) => {
         try {
             const newPhotoComment = await createPhotoComment(props.eventId, formData)
             newPhotoComment.owner = props.user
-            props.setCommentsArray([newPhotoComment, ...props.photoCommentsArray])
+            props.setPhotoCommentsArray([newPhotoComment, ...props.photoCommentsArray])
         } catch (error) {
             throw error
         }
@@ -23,7 +22,7 @@ const PhotoCommentSection = (props) => {
     const handleDeletePhotoComment = async (photoCommentId) => {
         try {
             await deletePhotoComment(props.eventId, photoCommentId)
-            props.setCommentsArray(props.photoCommentsArray.filter(photoComment => photoComment._id !== photoCommentId))
+            props.setPhotoCommentsArray(props.photoCommentsArray.filter(photoComment => photoComment._id !== photoCommentId))
         } catch (error) {
             throw error
         }

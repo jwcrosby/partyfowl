@@ -2,20 +2,30 @@ import { Photo } from '../models/photo.js'
 import { Event } from '../models/event.js'
 
 const createPhotoComment = async (req, res) => {
-    console.log('req', req)
+    console.log('req.body', req.body)
 
     try {
         const event = await Event.findOne({event_id: req.params.id})
+        console.log(event)
         const photoCommentData = {
-            image: '',
-            title: '',
-            owner: req?.user?.event_id,
-            event: event?._id
+            image: req.body.image,
+            title: req.body.title,
+            owner: req.body.owner,
+            event: event._id
         }
-        event.user_photos.push(photoCommentData)
-        await event.save()
-        const newPhotoComment = event.user_photos[event.user_photos.length - 1]
-        return res.status(201).json(newPhotoComment)
+
+        const photo = await new Photo(photoCommentData)
+
+        await photo.save()
+
+        await Event.updateOne(
+            { _id: event._id },
+            { $push: { user_photos: photo } }
+        )
+
+        // await event.save()
+        // const newPhotoComment = event.user_photos[event.user_photos.length - 1]
+        return res.status(201).json(photo)
     } catch (err) {
         res.status(400).send(err.message)
     }
