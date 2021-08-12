@@ -9,45 +9,92 @@ import * as ticketService from '../../services/ticketmasterAPI'
 import EventList from '../../components/Event/EventList'
 
 const Profile = (props) => {
+    const {_id} = props.user || {}
     const [userProfile,setUserProfile] = useState()
     const [eventsAttending, setEventsAttending] = useState(null)
    
-    useEffect(() => {
-        const fetchProfile = async() => {
-            try {
-                const res = await userService.getUserProfile(props.user._id)
-                console.log("THIS IS THE RESPONSEEEEE", res)
-                setUserProfile(res)
+    // useEffect(() => {
+    //     const fetchProfile = async() => {
+    //         try {
+    //             const res = await userService.getUserProfile(_id)
+    //             console.log("THIS IS THE RESPONSEEEEE", res)
+    //             setUserProfile(res)
                 
-            }catch (error) {
-                throw error
-            }
-        }
-        fetchProfile()
-    }, [props])
+    //         }catch (error) {
+    //             throw error
+    //         }
+    //     }
+    //     fetchProfile()
+    // }, [_id])
     
-    useEffect(() => {
-        const fetchEvent = async() => {
-            try {
-                if (userProfile){
-                    const eventslist = userProfile.events_attending
+    // useEffect(() => {
+    //     const fetchEvent = async() => {
+    //         try {
+    //             // if (userProfile){
+    //                 const eventslist = userProfile.events_attending
                     
-                    let list = []
-                    eventslist.map( async (event) => {
-                        const id = event.event_id
-                        const res = await ticketService.getEventById(id)
-                        list.push(res)
-                    })
-                    console.log("LIST OF EVENTS", list)
-                    setEventsAttending(list)
-                }
+    //                 let list = []
+    //                 eventslist.map( async (event) => {
+    //                     const id = event.event_id
+    //                     const res = await ticketService.getEventById(id)
+    //                     list.push(res)
+    //                 })
+    //                 console.log("LIST OF EVENTS", list)
+    //                 setEventsAttending(list)
+    //             // }
 
-            } catch (error) {
-                throw error
-            }
+    //         } catch (error) {
+    //             throw error
+    //         }
+    //     }
+    //     fetchEvent()
+    // },[])
+    // const fetchEvent = async(res) => {
+    //     try {
+    //         // if (userProfile){
+    //             const eventslist = res.events_attending
+                
+    //             let list = []
+    //             eventslist.map( async (event) => {
+    //                 const id = event.event_id
+    //                 const res = await ticketService.getEventById(id)
+    //                 list.push(res)
+    //             })
+    //             console.log("LIST OF EVENTS", list)
+    //             setEventsAttending(list)
+    //         // }
+
+    //     } catch (error) {
+    //         throw error
+    //     }
+    // }
+
+    const fetchProfile = async() => {
+        try {
+            const res = await userService.getUserProfile(_id)
+            console.log("THIS IS THE RESPONSEEEEE", res)
+            setUserProfile(res)
+           
+            const eventslist = res.events_attending
+                
+            let list = []
+            eventslist.map( async (event) => {
+                const id = event.event_id
+                const res = await ticketService.getEventById(id)
+                list.push(res)
+            })
+            console.log("LIST OF EVENTS", list)
+            setEventsAttending(list) 
+        }catch (error) {
+            throw error
         }
-        fetchEvent()
-    },[userProfile])
+    }
+
+    useEffect(() => {
+        fetchProfile()
+        // fetchEvent(res)
+
+    },[])
 
     if ( userProfile === undefined){
         return (
@@ -79,15 +126,12 @@ const Profile = (props) => {
                     <EventList eventsArray={userProfile.profile.events_saved} />
                     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem, iste, consectetur dicta similique eaque debitis temporibus inventore earum ratione nostrum veniam sed, doloribus dignissimos sint aut dolore atque dolorum nulla.</p>
                 </div> */}
-                {eventsAttending !== null &&
+                
                 <div className={profileStyles.eventsAttendance}>
                     <h3> Upcoming Events </h3>
-                    <p>{eventsAttending}</p>
-                    {/* {eventsAttending.map((event) => (
-                        <p>{event.name}</p>
-                    ))} */}
+                    <EventList eventsArray={eventsAttending} />
                 </div>
-                }
+                
             </section>
             
         </main>        
