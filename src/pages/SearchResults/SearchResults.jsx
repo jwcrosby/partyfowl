@@ -11,11 +11,11 @@ import { getEventsByPostalCode } from "../../services/ticketmasterAPI";
 import Feed from "../../components/Feed/Feed";
 
 const SearchResults = ({ user }) => {
-  const geoHash = "9xj64";
+  const geoHashLocation = "9xj64";
   const [eventData, setEventData] = useState([]);
 
   useEffect(() => {
-    getEventsByPostalCode(100, geoHash).then((data) => {
+    getEventsByPostalCode(100, geoHashLocation).then((data) => {
       console.log(data, "getAllEvents data");
 
       // const newArray = data?._embedded?.events?.map((event, index) => {
@@ -38,7 +38,7 @@ const SearchResults = ({ user }) => {
       <div>
         <h1 className="landing-h1">Search Results</h1>
 
-        <SearchResultsMap eventData={eventData} geoHash={geoHash} />
+        <SearchResultsMap eventData={eventData} geoHashgeoHashLocation={geoHashLocation} />
       </div>
     </main>
   );
