@@ -15,7 +15,7 @@ import { PromiseProvider } from "mongoose";
 
 const EventDetails = (props) => {
   const { id } = useParams();
-  const profile = props.user.profile
+  const profile = props?.user?.profile
   const [eventExists, setEventExists] = useState(false)
   const [eventDetails, setEventDetails] = useState()
   const [dbEventDetails, setDbEventDetails] = useState()
@@ -44,6 +44,7 @@ const EventDetails = (props) => {
     }
   }
   const fixedTime = tConvert(eventDetails?.dates?.start?.localTime)
+  
   
   const createEventOnClick = async() => {
     const res = await eventService.createEvent(id)
