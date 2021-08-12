@@ -1,4 +1,5 @@
 import { Event } from "../models/event.js"
+import { Profile } from "../models/profile.js"
 import axios from "axios"
 
 const create = async (req,res) => {
@@ -27,6 +28,26 @@ const doesEventExist = async (req,res) => {
         res.status(400).send(err.message)
     }
 }
+
+const saveEvent = async (req,res) => {
+    try {
+        const currentEvent = await Event.findById(req.params.id)
+        const currentProfile = await Profile.findById(req.params.profile)
+
+        currentEvent.profiles_attending.push(currentProfile)
+        currentProfile.events_attending.push(currentEvent)
+
+        await currentEvent.save()
+        await currentProfile.save()
+
+        // does this need to return anything?
+
+    } catch (error) {
+        res.status(400).send(error.message)
+    }
+}
+
+
 
 const createComment = async (req, res) => {
     try {
@@ -78,6 +99,7 @@ function getEventById (req,res){
 }
 
 
+
 export {
     create,
     createComment,
@@ -85,6 +107,7 @@ export {
     getAllEvents,
     getEventsByPostalCode,
     getEventById,
-    doesEventExist, 
+    doesEventExist,
+    saveEvent 
 }
 
