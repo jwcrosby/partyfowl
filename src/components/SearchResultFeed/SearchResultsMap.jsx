@@ -9,13 +9,10 @@ const TOKEN = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 
 const SearchResultsMap = ({ eventData, latitude, longitude }) => {
 
-  console.log(latitude, "X")
-  console.log(longitude, "Y")
-
   const [viewport, setViewport] = useState({
-    latitude: 39.7392,
-    longitude: -104.9903,
-    zoom: 13,
+    latitude: latitude,
+    longitude: longitude,
+    zoom: 12,
     // width: "98vw",
     // height: "70vh"
   });

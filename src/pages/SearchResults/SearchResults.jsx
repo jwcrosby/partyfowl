@@ -3,25 +3,25 @@ import { Link } from "react-router-dom";
 import { usePrevious } from "../../hooks/usePrevious";
 import styles from "./SearchResults.module.css";
 import SearchResultsMap from "../../components/SearchResultFeed/SearchResultsMap";
+import geohash from "ngeohash"
 
 //Services
 import { convertSearchQueryToLatLong } from "../../services/geocodioAPI";
 import { getEventsByPostalCode } from "../../services/ticketmasterAPI";
 
 const SearchResults = ({ user }) => {
-  const [latitude, setLatitude] = useState("");
-  const [longitude, setLongitude] = useState("");
-  const [geoHashLocation, setGeoHashLocation] = useState("");
+  const [latitude, setLatitude] = useState();
+  const [longitude, setLongitude] = useState();
+  const [geoHashLocation, setGeoHashLocation] = useState();
   const [eventData, setEventData] = useState([]);
 
   useEffect(() => {
     //Convert incoming search quety to lat/long
-    convertSearchQueryToLatLong("80202").then((data) => {
-      
+    convertSearchQueryToLatLong("Austin, TX").then((data) => {
+
       const lat = data?.results[0]?.location?.lat;
       const long = data?.results[0]?.location?.lng;
 
-      var geohash = require("ngeohash");
       const geoHashConversion = geohash.encode(lat, long);
 
       setLatitude(lat);
@@ -32,24 +32,30 @@ const SearchResults = ({ user }) => {
       console.log(longitude, "longitude");
       console.log(geoHashLocation, "geoHashLocation");
 
+    });
+  }, []);
+  
+  useEffect(() => {
       getEventsByPostalCode(100, geoHashLocation).then((data) => {
         data.hasOwnProperty("_embedded")
           ? setEventData(data._embedded.events)
           : setEventData([]);
       });
-    });
-  }, []);
+  }, [geoHashLocation]);
 
   return (
     <main className={styles.container}>
       <div>
         <h1 className="landing-h1">Search Results</h1>
 
+        {latitude && longitude && geoHashLocation && 
+
         <SearchResultsMap
           eventData={eventData}
           latitude={latitude}
           longitude={longitude}
         />
+          }
       </div>
     </main>
   );
