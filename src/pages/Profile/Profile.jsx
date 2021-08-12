@@ -12,16 +12,17 @@ const Profile = (props) => {
 
    
     useEffect(() => {
-        userService.getUserProfile(props.user._id)
-        .then (userProfile => {
-            setUserProfile(userProfile)
-            console.log(userProfile)
-            
-            userService.populateEvents(userProfile._id)
-            // .then (populatedProfile => {
-            //     setUserProfile(populatedProfile)
-            // })
-        })
+        const fetchProfile = async() => {
+            try {
+                const res = await userService.getUserProfile(props.user._id)
+                console.log("THIS IS THE RESPONSEEEEE", res)
+                setUserProfile(res)
+            }catch (error) {
+                throw error
+            }
+        }
+        fetchProfile()
+
     }, [props])
     
 
@@ -35,12 +36,12 @@ const Profile = (props) => {
     }
     return (
         <main  className={profileStyles.container}>
-            <h1 className={profileStyles.name}>{userProfile.profile.name}</h1>
+            <h1 className={profileStyles.name}>{userProfile.name}</h1>
             {/* <h1>PROFILE PAGE</h1>  */}
             <div className={profileStyles.avatarInfo}>
-                <img className={profileStyles.avatar} src={userProfile.profile.avatar} alt="user avatar"/>
+                <img className={profileStyles.avatar} src={userProfile.avatar} alt="user avatar"/>
                 <section className={profileStyles.info}>
-                <p>{userProfile.profile.location}</p>
+                <p>{userProfile.location}</p>
                 <p>Interested in ___</p>
                 </section>
             </div>
@@ -49,20 +50,16 @@ const Profile = (props) => {
                 <EventList eventsArray={userProfile} />
             </div> */}
             <section className={profileStyles.eventsProfile}>
-                <div className={profileStyles.eventsAttendance}>
-                    Events Attended
-                    <EventList eventsArray={userProfile.profile.events_saved} />
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem, iste, consectetur dicta similique eaque debitis temporibus inventore earum ratione nostrum veniam sed, doloribus dignissimos sint aut dolore atque dolorum nulla.</p>
-                </div>
-                <div className={profileStyles.eventsAttendance}>
+                
+                {/* <div className={profileStyles.eventsAttendance}>
                     Saved Events
                     <EventList eventsArray={userProfile.profile.events_saved} />
                     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem, iste, consectetur dicta similique eaque debitis temporibus inventore earum ratione nostrum veniam sed, doloribus dignissimos sint aut dolore atque dolorum nulla.</p>
-                </div>
+                </div> */}
                 <div className={profileStyles.eventsAttendance}>
                     Upcoming Events
-                    <EventList eventsArray={userProfile.profile.events_attending} />
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem, iste, consectetur dicta similique eaque debitis temporibus inventore earum ratione nostrum veniam sed, doloribus dignissimos sint aut dolore atque dolorum nulla.</p>
+                    <EventList eventsArray={userProfile.events_attending} />
+                    <p>Lorem      ipsum dolor sit, amet consectetur adipisicing elit. Rem, iste, consectetur dicta similique eaque debitis temporibus inventore earum ratione nostrum veniam sed, doloribus dignissimos sint aut dolore atque dolorum nulla.</p>
                 </div>
             </section>
             
