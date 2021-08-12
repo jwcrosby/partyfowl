@@ -48,7 +48,8 @@ const createComment = async (req, res) => {
 
 const deleteComment = async (req, res) => {
     try {
-        const event = await Event.find({event_id: req.params.id})
+        const event = await Event.findOne({event_id: req.params.event_id})
+        console.log('event', event)
         const idx = event.comments.findIndex((comment) =>
             comment._id.equals(req.params.comment_id)
         )
