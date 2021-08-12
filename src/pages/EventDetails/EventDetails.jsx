@@ -47,7 +47,7 @@ const EventDetails = (props) => {
   
   
   const createEventOnClick = async() => {
-    const res = await eventService.createEvent(id)
+    const res = await eventService.createEvent(id, eventDetails.name)
     setEventExists(true)
     setDbEventDetails(res)
     setCommentsArray(res.comments)
@@ -84,6 +84,7 @@ const EventDetails = (props) => {
 
         // returns ticketmaster event details
         const event = await ticketService.getEventById(id)
+        console.log(event)
         setEventDetails(event)
       } catch (error) {
         throw error
