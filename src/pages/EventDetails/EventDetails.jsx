@@ -39,7 +39,8 @@ const EventDetails = (props) => {
     if (!eventExists) {
       await createEventOnClick()
     } 
-    eventService.createUserAttendsEvent(id, profile)
+    const updatedProfile = eventService.createUserAttendsEvent(id, profile)
+    setProfilesArray(updatedProfile)
   }
   
 

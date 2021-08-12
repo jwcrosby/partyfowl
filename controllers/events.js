@@ -34,19 +34,19 @@ const createUserAttendsEvent = async (req,res) => {
     try {
         console.log("I'm in the user/event controller")
         
-        const currentEvent = await Event.findOneAndUpdate(
+        const updatedEvent = await Event.findOneAndUpdate(
             {event_id: req.params.id},
             { $set: {profiles_attending: req.params.profile}},
             {upsert: true}
         )
         
-        await Profile.updateOne(
+        const updatedProfile = await Profile.findOneAndUpdate(
             {_id : req.params.profile},
-            { $set: {events_attending: currentEvent._id}},
+            { $set: {events_attending: updatedEvent._id}},
             {upsert:true}
         )
 
-        return null // does this need to return anything?
+        return updatedProfile // does this need to return anything?
     } catch (error) {
         res.status(400).send(error.message)
     }
