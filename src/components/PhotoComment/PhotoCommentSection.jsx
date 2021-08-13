@@ -12,13 +12,14 @@ const PhotoCommentSection = (props) => {
     const handleCreatePhotoComment = async (formData) => {
         try {
             const newPhotoComment = await createPhotoComment(props.eventId, formData)
+            console.log('photo', newPhotoComment)
             newPhotoComment.owner = props.user
-            props.setPhotoCommentsArray([newPhotoComment, ...props.photoCommentsArray])
+            props.setPhotoCommentsArray([newPhotoComment])
         } catch (error) {
             throw error
         }
     }
-
+    console.log(props, "photoCommentSectionQQQQ")
     const handleDeletePhotoComment = async (photoCommentId) => {
         try {
             await deletePhotoComment(props.eventId, photoCommentId)
