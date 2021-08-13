@@ -18,6 +18,5 @@ const grabProfile = async(req,res) => {
 
 export {
   index,
-  grabProfile,
-  
+  grabProfile, 
 }

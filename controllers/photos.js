@@ -4,7 +4,7 @@ import { Event } from '../models/event.js'
 const createPhotoComment = async (req, res) => {
     try {
         const event = await Event.findOne({event_id: req.params.id})
-        
+
         const photoCommentData = {
             image: req.body.image,
             title: req.body.title,
@@ -13,12 +13,8 @@ const createPhotoComment = async (req, res) => {
         }
 
         const photo = await new Photo(photoCommentData)
-        
-
         await photo.save()
-
-
-        const test = await Event.findOneAndUpdate(
+        await Event.findOneAndUpdate(
             { _id: event._id },
             { $push: { user_photos: photo } }
         ).populate('user_photos')
@@ -30,7 +26,6 @@ const createPhotoComment = async (req, res) => {
 }
 
 const deletePhotoComment = async (req, res) => {
-    
     try {
         const event = await Event.findOne({event_id: req.params.event_id})
         const idx = event.user_photos.findIndex((photoComment) => 

@@ -22,7 +22,7 @@ const doesEventExist = async (req, res) => {
     if (eventData.length) {
       return res.status(200).json(eventData);
     } else {
-      return res.status(200).json(null); // event does exist in DB
+      return res.status(200).json(null);
     }
   } catch (err) {
     res.status(400).send(err.message);
@@ -98,7 +98,6 @@ function getEventsByGeoHash(req, res) {
     .get(
       `https://app.ticketmaster.com/discovery/v2/events.json?size=${req.params.size}&geoPoint=${req.params.geoHash}&radius=25&unit=miles&apikey=${process.env.API_KEY}`
     )
-
     .then((response) => {
       res.json(response.data);
     })

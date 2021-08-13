@@ -49,6 +49,8 @@ Some catchy introduction
 - [ ] Grabbing user location given user permission 
 - [ ] Ability to favorite or unfavorite events the user is interested in
 - [ ] Add loading animations
+- [ ] Redirect to login page when user tries to interact but is not authorized
+- [ ] Additional styling
 - [ ] Ability to interact with other users (i.e. followers, viewing profiles)
 - [ ] Mailing feature to send notifications
 - [ ] Messaging features

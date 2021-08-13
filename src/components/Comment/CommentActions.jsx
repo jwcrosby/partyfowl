@@ -2,7 +2,7 @@ import React from 'react'
 import './CommentCard.css'
 
 const CommentActions = (props) => {
-
+    
     return (
         <div className='actions'>
             {

@@ -7,7 +7,6 @@ import CreateComment from '../CreateComponents/CreateComment/CreateComment'
 // services
 import { createComment, deleteComment } from '../../services/commentService'
 
-
 const CommentSection = (props) => {
 
     const handleCreateComment = async (formData) => {
@@ -31,21 +30,17 @@ const CommentSection = (props) => {
 
     return (
         <div className='comment-section'>
-
             <div className='header'>
                 <h3>Comment Section</h3>
             </div>
-
             <CreateComment 
                 {...props}
                 handleCreateComment={handleCreateComment}
             ></CreateComment>
-
             <CommentList 
                 {...props}
                 handleDeleteComment={handleDeleteComment}
             />
-        
         </div>
     )
 }

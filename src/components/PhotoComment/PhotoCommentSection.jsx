@@ -32,21 +32,17 @@ const PhotoCommentSection = (props) => {
 
     return (
         <div className='photo-comment-section'>
-
             <div className='header'>
                 <h3>Photo Section</h3>
             </div>
-
             <CreatePhotoComment 
                 {...props}
                 handleCreatePhotoComment={handleCreatePhotoComment}
             ></CreatePhotoComment>
-
             <PhotoCommentList 
                 {...props}
                 handleDeletePhotoComment={handleDeletePhotoComment}
             />
-        
         </div>
     )
 }

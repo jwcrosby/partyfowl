@@ -3,8 +3,6 @@ import React from 'react'
 // Components
 import EventCard from './EventCard'
 
-
-
 const EventList = (props) => {
     const {eventsArray} = props
     return (

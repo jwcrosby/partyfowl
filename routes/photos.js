@@ -7,8 +7,6 @@ const router = Router()
 // ============ Public Routes ============
 router.post('/:id', photoCommentsCtrl.createPhotoComment)
 
-
-
 // ============ Protected Routes =========
 router.use(decodeUserFromToken)
 router.delete('/:event_id/photoComments/:photoComment_id', checkAuth, photoCommentsCtrl.deletePhotoComment)

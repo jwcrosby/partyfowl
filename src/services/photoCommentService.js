@@ -3,7 +3,6 @@ const BASE_URL = '/api/photos/'
 
 export const createPhotoComment = async (eventId, photoComment) => {
     try {
-
         const res = await fetch(`${BASE_URL}${eventId}`, {
             method: 'POST',
             headers: {
