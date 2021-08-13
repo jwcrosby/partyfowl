@@ -1,6 +1,5 @@
 import { User } from '../models/user.js'
 import { Profile } from '../models/profile.js'
-import mongoose from 'mongoose'
 import jwt from 'jsonwebtoken'
 
 async function login(req, res) {

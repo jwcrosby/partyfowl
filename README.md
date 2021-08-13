@@ -1,11 +1,22 @@
 # PartyFowl :tada:
+![PartyFowl Logo](src/assets/logo.png)
+
 Some catchy introduction
 
 ---
 ## :sparkles: [Check It Out Here!](https://partyfowl.herokuapp.com/)
 ---
-## :partying_face: How Does It Work?
+## :partying_face: How Does It Work? 
 
+
+
+![Landing Page](src/assets/landing.png) 
+
+![Search Page with Map](src/assets/maps.png)
+
+![Event Details Page](src/assets/eventdetail.png)
+
+![Profile Page](src/assets/profile.png)
 ---
 ## :egg: The Journey 
 - [Pitch Deck](https://docs.google.com/presentation/d/1bQ29lyAS3Sh1EwHPWaYkkN7ltEh5ggD-Cd8myElIi1k/edit?usp=sharing)
@@ -36,7 +47,10 @@ Some catchy introduction
 - [ ] Add user ability to upload their own profile image
 - [ ] Image upload without URL input
 - [ ] Grabbing user location given user permission 
+- [ ] Ability to favorite or unfavorite events the user is interested in
 - [ ] Add loading animations
+- [ ] Redirect to login page when user tries to interact but is not authorized
+- [ ] Additional styling
 - [ ] Ability to interact with other users (i.e. followers, viewing profiles)
 - [ ] Mailing feature to send notifications
 - [ ] Messaging features
@@ -51,3 +65,4 @@ Some catchy introduction
 ## :yellow_heart: Attributions & Shoutouts
 Special shoutout to our instructors!!
 
+Icons from www.flaticon.com. 

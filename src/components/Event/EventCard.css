@@ -1,11 +1,10 @@
 .event-list  {
-  /* margin: 1vw; */
+ 
   justify-content: center;
   display: block;
 }
 
 .event-card {
-  /* to distinguish card from background */
   background-color: white;
   border-radius: 5px;
   width: 45%;
@@ -16,11 +15,6 @@
   display: inline-flex;
   border: 1px solid rgb(255, 253, 208);
 }
-
-/* width: 90%; 
-
-
-*/
 
 .img-event {
   width: 23vw;

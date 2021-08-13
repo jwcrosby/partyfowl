@@ -28,7 +28,6 @@ const SearchHeader = (props) => {
     e.preventDefault();
     try {
       setHasSearchRun(true);
-
       convertSearchQueryToLatLong(keyword).then((data) => {
 
         const lat = data?.results[0]?.location?.lat;
@@ -44,10 +43,8 @@ const SearchHeader = (props) => {
             ? setEventData(data._embedded.events)
             : setEventData([]);
         });
-
       });
       
-
       history.push(`/events/search/${keyword}`);
       
     } catch (error) {

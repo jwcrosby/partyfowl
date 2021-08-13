@@ -23,7 +23,6 @@ export const doesEventExist = async (id) => {
     try {
         let EVENT_URL = '/api/events/doesEventExist'
         const res = await fetch(`${EVENT_URL}/${id}`)
-        // should return a boolean
         const data = await res.json()
         return data
     } catch (error) {

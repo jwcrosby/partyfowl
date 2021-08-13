@@ -18,23 +18,22 @@ const EventDetailsMap = (props) => {
     height: "40vh"
   });
   
-    return (
-      <div className='map'>
-        <ReactMapGL
-        {...viewport}
-        mapStyle="mapbox://styles/wcrosby/cks530lbr9l0s17t68dk9ozze"
-        onViewportChange={setViewport}
-        mapboxApiAccessToken={TOKEN}
-        >
-        <div className="pin" key={"test"}>
-            <Link to={`/events/${"test"}`}>
-              <Marker latitude={lat} longitude={long} ><img className="pin" src={pinImage} alt="pin"></img></Marker>
-            </Link>
-        </div>
-
-        </ReactMapGL>
+  return (
+    <div className='map'>
+      <ReactMapGL
+      {...viewport}
+      mapStyle="mapbox://styles/wcrosby/cks530lbr9l0s17t68dk9ozze"
+      onViewportChange={setViewport}
+      mapboxApiAccessToken={TOKEN}
+      >
+      <div className="pin" key={"test"}>
+          <Link to={`/events/${"test"}`}>
+            <Marker latitude={lat} longitude={long} ><img className="pin" src={pinImage} alt="pin"></img></Marker>
+          </Link>
       </div>
-    );
+      </ReactMapGL>
+    </div>
+  );
   }
 
 export default EventDetailsMap

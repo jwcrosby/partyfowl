@@ -18,9 +18,6 @@ const NavBar = ({ user, handleLogout }) => {
 					<NavLink className='nav-a logout' to='/' onClick={handleLogout}>Log out</NavLink>
 					<NavLink className='nav-a profile' to='/profile'>Profile</NavLink>
 					</div>
-					{/* <h1 className='h1-navbar'>
-						Welcome, {user.name}
-					</h1> */}
 				</>
 			) : (
 				<>

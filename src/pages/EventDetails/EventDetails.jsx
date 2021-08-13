@@ -22,8 +22,6 @@ const EventDetails = (props) => {
   const [commentsArray, setCommentsArray] = useState([])
   const [photoCommentsArray, setPhotoCommentsArray] = useState([])
   const [profilesArray, setProfilesArray] = useState([])
-
-  console.log('photo cmmnt', photoCommentsArray)
   
   const startDate = new Date(eventDetails?.dates?.start?.localDate)
   const fixedDate = startDate.toDateString()
@@ -32,13 +30,13 @@ const EventDetails = (props) => {
     if (time === undefined) {
       return 'No time given'
     } else {
-          // Check correct time format and split into components
+      // Check correct time format and split into components
       time = time.toString ().match (/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
   
-      if (time.length > 1) { // If time format correct
-        time = time.slice (1);  // Remove full string match value
-        time[5] = +time[0] < 12 ? ' AM' : ' PM'; // Set AM/PM
-        time[0] = +time[0] % 12 || 12; // Adjust hours
+      if (time.length > 1) {                      // If time format correct
+        time = time.slice (1);                    // Remove full string match value
+        time[5] = +time[0] < 12 ? ' AM' : ' PM';  // Set AM/PM
+        time[0] = +time[0] % 12 || 12;            // Adjust hours
     }
       return time.join (''); // return adjusted time or original string
     }
@@ -67,7 +65,6 @@ const EventDetails = (props) => {
   useEffect(() => {
     const fetchEvent = async () => {
       try {
-        // if event exists, returns populated eventData; else, returns null
         const res = await eventService.doesEventExist(id)
         if (res) {
           setEventExists(true)
@@ -78,7 +75,6 @@ const EventDetails = (props) => {
           setEventExists(false)
         }
 
-        // returns ticketmaster event details
         const event = await ticketService.getEventById(id)
         setEventDetails(event)
       } catch (error) {
@@ -93,18 +89,14 @@ const EventDetails = (props) => {
   }
   return (
     <div className='details-div'>
-      
       <h1 className='details-h1'>{eventDetails.name}</h1>
-
       <div className="display-img">
         <img className='details-img' src={eventDetails.images[0].url} alt="event" />
       </div>
       <div className='map-n-details'>
-
         <EventDetailsMap 
           eventDetails={eventDetails}
-          />
-          
+        />
         <div className='details-text'>
           <div className="description">
             <p>Description: {eventDetails.description}</p>
@@ -134,13 +126,11 @@ const EventDetails = (props) => {
                 <button type='button'>Click to see available tickets</button>
             </a>
           </div>
-
           <button className='comment-btn' onClick={() => handleAttendClick()}>
             I'm Attending This Event
           </button>   
         </div>
       </div>
-
       <div className="comments">
         {!eventExists && 
           <button className='comment-btn' onClick={() => createEventOnClick()}>
@@ -156,7 +146,6 @@ const EventDetails = (props) => {
           />
         }     
       </div>
-
       <div className="photo-comments">
         {!eventExists && 
           <button className='photo-comment-btn' onClick={() => createEventOnClick()}>

@@ -4,10 +4,7 @@ import React from 'react'
 import SearchHeader from './SearchHeader'
 import EventList from '../Event/EventList'
 
-
 const Feed = (props) => {
-
-
 
     return (
         <>
@@ -17,7 +14,6 @@ const Feed = (props) => {
                 eventsArray={props.eventData}
             />
         </>
-
     )
 }
 
