@@ -13,8 +13,6 @@ router.post('/:id', photoCommentsCtrl.createPhotoComment)
 router.use(decodeUserFromToken)
 router.delete('/:event_id/photoComments/:photoComment_id', checkAuth, photoCommentsCtrl.deletePhotoComment)
 
-///api/photos/vvG1GZpE5kWw9a
-
 export {
     router
 }

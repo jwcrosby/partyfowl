@@ -41,7 +41,6 @@ const SearchHeader = (props) => {
         setGeoHashLocation(geoHashConversion.toString());
 
         getEventsByGeoHash(150, geoHashConversion).then((data) => {
-          console.log(data, "Data")
           data.hasOwnProperty("_embedded")
             ? setEventData(data._embedded.events)
             : setEventData([]);
