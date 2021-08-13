@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import ReactMapGL, { Marker } from "react-map-gl";
-import pinImage from "../../assets/icons/drinkpin.png";
+import pinImage from "../../assets/icons/duckpin.png";
 import "./SearchResultsMap.css";
 
 
