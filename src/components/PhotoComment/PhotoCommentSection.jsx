@@ -10,11 +10,12 @@ import { createPhotoComment, deletePhotoComment } from '../../services/photoComm
 const PhotoCommentSection = (props) => {
     console.log(props, "photoCommentSection")
     const handleCreatePhotoComment = async (formData) => {
+        console.log('form data', formData)
         try {
             const newPhotoComment = await createPhotoComment(props.eventId, formData)
             console.log('photo', newPhotoComment)
-            newPhotoComment.owner = props.user
-            props.setPhotoCommentsArray([newPhotoComment])
+            // newPhotoComment.owner = props.user
+            props.setPhotoCommentsArray([newPhotoComment, ...props.photoCommentsArray])
         } catch (error) {
             throw error
         }

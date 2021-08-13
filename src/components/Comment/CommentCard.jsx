@@ -12,7 +12,7 @@ const CommentCard = (props) => {
 
             <div className='comment-content'>
                 <p id='content'>
-                    {props.user.name}: {props.comment.content}
+                    {props?.user?.name}: {props?.comment?.content}
                 </p>
             </div>
 
