@@ -1,14 +1,12 @@
 # PartyFowl :tada:
 ![PartyFowl Logo](src/assets/logo.png)
 
-Some catchy introduction
+Events made easy. No ducking around.
 
 ---
 ## :sparkles: [Check It Out Here!](https://partyfowl.herokuapp.com/)
 ---
-## :partying_face: How Does It Work? 
-
-
+## :partying_face: Screenshots
 
 ![Landing Page](src/assets/landing.png) 
 
