@@ -1,14 +1,26 @@
+.event-list  {
+  /* margin: 1vw; */
+  justify-content: center;
+  display: block;
+}
+
 .event-card {
   /* to distinguish card from background */
   background-color: white;
   border-radius: 5px;
-  width: 47%;
+  width: 45%;
   height: 20vh;
   display: flex;
   margin: 2vh;
+  align-items:unset;
   display: inline-flex;
   border: 1px solid rgb(255, 253, 208);
 }
+
+/* width: 90%; 
+
+
+*/
 
 .img-event {
   width: 23vw;
@@ -39,4 +51,11 @@
 }
 h5.card-details {
   margin-bottom: 0.5rem;
+}
+
+@media (max-width: 1000px) {
+  .event-card {
+    width: 90%; 
+    margin: 2vh 7vh;
+  }
 }

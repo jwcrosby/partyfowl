@@ -25,7 +25,7 @@ const NavBar = ({ user, handleLogout }) => {
 			) : (
 				<>
 					<NavLink className='Home nav-a' to='/'><img className='goose-icon' src={fowl} alt="Logo" /></NavLink>
-					<span className='header-img' ><img className='goose-icon' src={goose} alt="a goose" /></span> 
+					<span className='header-img' ><img className='goose-icon flying' src={goose} alt="a goose" /></span> 
 					<span className='form-links'>
 					<NavLink className='login nav-a' to="/login"><img className='nest-icon' src={nest} alt="an egg" /><br/></NavLink>
 					<NavLink className='signup nav-a' to="/signup">Sign Up</NavLink>
