@@ -70,30 +70,27 @@ const createComment = async (req, res) => {
 };
 
 const deleteComment = async (req, res) => {
-  try {
-    const event = await Event.findOne({ event_id: req.params.event_id });
-    const idx = event.comments.findIndex((comment) =>
-      comment._id.equals(req.params.comment_id)
-    );
-    const removedComment = event.comments.splice(idx, 1);
-    await event.save();
-    return res.status(200).json(removedComment);
-  } catch (err) {
-    res.json(err);
-  }
-};
+    try {
+        const event = await Event.findOne({event_id: req.params.event_id})
+        const idx = event.comments.findIndex((comment) =>
+            comment._id.equals(req.params.comment_id)
+        )
+        const removedComment = event.comments.splice(idx, 1)
+        await event.save()
+        return res.status(200).json(removedComment)
+    } catch (err) {
+        res.json(err)
+    }
+}
 
-function getAllEvents(req, res) {
-  axios
-    .get(
-      `https://app.ticketmaster.com/discovery/v2/events.json?sort=random&size=6&apikey=${process.env.API_KEY}`
-    )
-    .then((response) => {
-      res.json(response.data);
+function getAllEvents (req, res) {
+    axios.get(`https://app.ticketmaster.com/discovery/v2/events.json?sort=random&size=24&apikey=${process.env.API_KEY}`)
+    .then(response => {
+        res.json(response.data)
     })
-    .catch((err) => {
-      console.log(err);
-    });
+    .catch(err => {
+        console.log(err)
+    })
 }
 
 function getEventsByGeoHash(req, res) {
