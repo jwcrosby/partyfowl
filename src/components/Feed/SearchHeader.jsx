@@ -39,7 +39,6 @@ const SearchHeader = (props) => {
         setLatitude(lat)
         setLongitude(long)
         setGeoHashLocation(geoHashConversion.toString());
-  
 
         getEventsByGeoHash(150, geoHashConversion).then((data) => {
           console.log(data, "Data")
