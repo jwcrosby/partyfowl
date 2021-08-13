@@ -11,7 +11,6 @@ import Search from "./Search";
 const SearchHeader = (props) => {
   const history = useHistory();
   const {
-    eventData,
     setEventData,
     keyword,
     setKeyword,

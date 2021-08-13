@@ -10,7 +10,6 @@ import * as eventService from "../../services/eventService"
 import CommentSection from "../../components/Comment/CommentSection";
 import PhotoCommentSection from "../../components/PhotoComment/PhotoCommentSection";
 import EventDetailsMap from "../../components/Event/EventDetailsMap";
-import { PromiseProvider } from "mongoose";
 
 // Assets?
 
