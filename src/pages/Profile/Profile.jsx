@@ -9,8 +9,6 @@ const Profile = (props) => {
     const {_id} = props.user || {}
     const [userProfile,setUserProfile] = useState()
 
-    console.log(userProfile)
-
     
     const joinedDate = new Date(userProfile?.createdAt)
     const showJoinedDate = joinedDate.toLocaleDateString()

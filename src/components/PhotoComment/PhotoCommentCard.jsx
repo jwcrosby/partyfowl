@@ -5,7 +5,6 @@ import PhotoCommentActions from './PhotoCommentActions'
 
 
 const PhotoCommentCard = (props) => {
-console.log('props', props)
     return (
         <div className='photo-comment-card'>
 

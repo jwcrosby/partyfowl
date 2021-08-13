@@ -5,7 +5,6 @@ import PhotoCommentCard from './PhotoCommentCard'
 
 
 const PhotoCommentList = (props) => {
-console.log('photoCommentList props', props)
     return (
         props.photoCommentsArray.map((photoComment) => (
             <PhotoCommentCard 

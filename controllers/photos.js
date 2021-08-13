@@ -2,8 +2,6 @@ import { Photo } from '../models/photo.js'
 import { Event } from '../models/event.js'
 
 const createPhotoComment = async (req, res) => {
-    console.log('req.body', req.body)
-
     try {
         const event = await Event.findOne({event_id: req.params.id})
         
@@ -13,7 +11,6 @@ const createPhotoComment = async (req, res) => {
             owner: req.body.owner,
             event: event._id
         }
-        console.log(photoCommentData, 'PCD')
 
         const photo = await new Photo(photoCommentData)
         
