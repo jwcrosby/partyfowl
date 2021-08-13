@@ -69,6 +69,7 @@ const EventDetails = (props) => {
       try {
         // if event exists, returns populated eventData; else, returns null
         const res = await eventService.doesEventExist(id)
+        console.log("CHECK ME OUT", res)
         if (res) {
           setEventExists(true)
           setCommentsArray(res[0].comments)
