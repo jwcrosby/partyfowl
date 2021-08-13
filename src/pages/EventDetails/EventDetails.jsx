@@ -93,18 +93,14 @@ const EventDetails = (props) => {
   }
   return (
     <div className='details-div'>
-      
       <h1 className='details-h1'>{eventDetails.name}</h1>
-
       <div className="display-img">
         <img className='details-img' src={eventDetails.images[0].url} alt="event" />
       </div>
       <div className='map-n-details'>
-
         <EventDetailsMap 
           eventDetails={eventDetails}
-          />
-          
+        />
         <div className='details-text'>
           <div className="description">
             <p>Description: {eventDetails.description}</p>
@@ -134,13 +130,11 @@ const EventDetails = (props) => {
                 <button type='button'>Click to see available tickets</button>
             </a>
           </div>
-
           <button className='comment-btn' onClick={() => handleAttendClick()}>
             I'm Attending This Event
           </button>   
         </div>
       </div>
-
       <div className="comments">
         {!eventExists && 
           <button className='comment-btn' onClick={() => createEventOnClick()}>
@@ -156,7 +150,6 @@ const EventDetails = (props) => {
           />
         }     
       </div>
-
       <div className="photo-comments">
         {!eventExists && 
           <button className='photo-comment-btn' onClick={() => createEventOnClick()}>
