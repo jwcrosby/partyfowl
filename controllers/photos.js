@@ -6,26 +6,31 @@ const createPhotoComment = async (req, res) => {
 
     try {
         const event = await Event.findOne({event_id: req.params.id})
-        console.log(event)
+        
         const photoCommentData = {
             image: req.body.image,
             title: req.body.title,
             owner: req.body.owner,
             event: event._id
         }
+        console.log(photoCommentData, 'PCD')
 
         const photo = await new Photo(photoCommentData)
+        
 
         await photo.save()
 
-        await Event.updateOne(
+
+        const test = await Event.findOneAndUpdate(
             { _id: event._id },
             { $push: { user_photos: photo } }
-        )
+        ).populate('user_photos')
+
+        
 
         // await event.save()
         // const newPhotoComment = event.user_photos[event.user_photos.length - 1]
-        return res.status(201).json(photo)
+        return res.status(201).json(test.user_photos)
     } catch (err) {
         res.status(400).send(err.message)
     }

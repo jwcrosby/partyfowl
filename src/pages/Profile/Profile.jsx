@@ -8,6 +8,11 @@ import * as userService from '../../services/userService'
 const Profile = (props) => {
     const {_id} = props.user || {}
     const [userProfile,setUserProfile] = useState()
+
+    
+    const joinedDate = new Date(userProfile?.createdAt)
+    const showJoinedDate = joinedDate.toLocaleDateString()
+    
    
     useEffect(() => {
         const fetchProfile = async() => {
@@ -35,7 +40,7 @@ const Profile = (props) => {
                 <img className={profileStyles.avatar} src={userProfile.avatar} alt="user avatar"/>
                 <section className={profileStyles.info}>
                 <p>Location (zipcode): {userProfile.location}</p>
-                <p>Joined the Gaggle community on: </p>
+                <p>Joined the Gaggle community on: {showJoinedDate}</p>
                 </section>
             </div>
            
