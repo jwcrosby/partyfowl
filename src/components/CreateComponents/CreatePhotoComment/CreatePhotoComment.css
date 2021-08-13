@@ -1,0 +1,15 @@
+#photo-label {
+    margin-right: 20px;
+}
+
+#image-url {
+    margin-right: 20px;
+    width: 200px;
+    height: 25px;
+}
+
+#caption {
+    margin-right: 20px;
+    width: 300px;
+    height: 25px;
+}

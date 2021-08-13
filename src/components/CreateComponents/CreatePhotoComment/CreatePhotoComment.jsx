@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import './CreatePhotoComment.css'
 
 const CreatePhotoComment = (props) => {
     const [imageUrlText, setImageUrlText] = useState('')
@@ -19,8 +20,8 @@ const CreatePhotoComment = (props) => {
 
     return (
         <form onSubmit={handleSubmit} className='create-form'>
-            <label>Add Your Photo Here!</label>
-            <input 
+            <label id='photo-label'>Add Your Photo Here</label>
+            <input id='image-url'
                 required
                 autoComplete='off'
                 placeholder='ImageUrl'
@@ -28,7 +29,7 @@ const CreatePhotoComment = (props) => {
                 value={imageUrlText}
                 onChange={(e) => setImageUrlText(e.target.value)}
             ></input>
-            <input 
+            <input id='caption'
                 required
                 autoComplete='off'
                 placeholder='Caption'

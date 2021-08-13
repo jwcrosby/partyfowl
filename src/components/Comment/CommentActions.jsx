@@ -1,4 +1,5 @@
 import React from 'react'
+import './CommentCard.css'
 
 const CommentActions = (props) => {
 
@@ -7,8 +8,8 @@ const CommentActions = (props) => {
             {
                 props.user &&
                 props.user._id === props.comment.owner._id &&
-                <button onClick={() => props.handleDeleteComment(props.comment._id)}>
-                    Delete
+                <button onClick={() => props.handleDeleteComment(props.comment._id)} id='delete-btn'>
+                    X
                 </button>
             }
         </div>

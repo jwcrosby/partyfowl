@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import './CreateComment.css'
 
 const CreateComment = (props) => {
     const [text, setText] = useState('')
@@ -16,8 +17,8 @@ const CreateComment = (props) => {
 
     return (
         <form onSubmit={handleSubmit} className='create-form'>
-            <label>Enter Your Comment Here</label>
-            <input 
+            <label id='comment-label'>Enter Your Comment Here</label>
+            <input id='comment-input'
                 required
                 autoComplete='off'
                 placeholder='Comment'
