@@ -45,7 +45,7 @@ const SearchResults = (props) => {
       setGeoHashLocation(geoHashConversion.toString());
 
     });
-  }, []);
+  }, [props?.match?.params?.searchQuery]);
   
   useEffect(() => {
     getEventsByGeoHash(150, geoHashLocation).then((data) => {

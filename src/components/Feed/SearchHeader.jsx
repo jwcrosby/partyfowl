@@ -11,7 +11,6 @@ import Search from "./Search";
 const SearchHeader = (props) => {
   const history = useHistory();
   const {
-    eventData,
     setEventData,
     keyword,
     setKeyword,
@@ -41,7 +40,6 @@ const SearchHeader = (props) => {
         setGeoHashLocation(geoHashConversion.toString());
 
         getEventsByGeoHash(150, geoHashConversion).then((data) => {
-          console.log(data, "Data")
           data.hasOwnProperty("_embedded")
             ? setEventData(data._embedded.events)
             : setEventData([]);

@@ -3,8 +3,6 @@
 const getAllEvents = async () => {
   try {
     let eventUrl = `/api/events/getAll`;
-
-    console.log("getAllEvents hit")
     
     const res = await fetch(eventUrl);
     
@@ -12,7 +10,6 @@ const getAllEvents = async () => {
     
     return data;
   } catch (error) {
-    console.log(error, "getAllEvents error")
     throw error;
   }
 };
@@ -33,7 +30,6 @@ const getEventsByGeoHash = async (size, geoHash) => {
 
 const getEventById = async (id) => {
   try {
-    console.log("THIS IS THE EVENT IDDDDDDDDDD", id)
     let eventUrl = `/api/events/getEvent/${id}`;
 
     const res = await fetch(eventUrl);

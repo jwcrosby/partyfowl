@@ -10,7 +10,6 @@ import * as eventService from "../../services/eventService"
 import CommentSection from "../../components/Comment/CommentSection";
 import PhotoCommentSection from "../../components/PhotoComment/PhotoCommentSection";
 import EventDetailsMap from "../../components/Event/EventDetailsMap";
-import { PromiseProvider } from "mongoose";
 
 // Assets?
 
@@ -69,7 +68,6 @@ const EventDetails = (props) => {
       try {
         // if event exists, returns populated eventData; else, returns null
         const res = await eventService.doesEventExist(id)
-        console.log("CHECK ME OUT", res)
         if (res) {
           setEventExists(true)
           setCommentsArray(res[0].comments)

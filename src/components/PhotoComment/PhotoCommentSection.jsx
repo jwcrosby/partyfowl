@@ -8,7 +8,6 @@ import CreatePhotoComment from '../CreateComponents/CreatePhotoComment/CreatePho
 import { createPhotoComment, deletePhotoComment } from '../../services/photoCommentService'
 
 const PhotoCommentSection = (props) => {
-    console.log(props, "photoCommentSection")
     const handleCreatePhotoComment = async (formData) => {
         console.log('form data', formData)
         try {
@@ -20,7 +19,6 @@ const PhotoCommentSection = (props) => {
             throw error
         }
     }
-    console.log(props, "photoCommentSectionQQQQ")
     const handleDeletePhotoComment = async (photoCommentId) => {
         try {
             await deletePhotoComment(props.eventId, photoCommentId)
