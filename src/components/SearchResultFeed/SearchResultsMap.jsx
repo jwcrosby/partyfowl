@@ -1,14 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ReactMapGL, { Marker } from "react-map-gl";
-import pinImage from "../../assets/icons/drinkpin.png";
+import pinImage from "../../assets/icons/duckpin.png";
 import "./SearchResultsMap.css";
 
 
 const TOKEN = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 
 const SearchResultsMap = ({ eventData, latitude, longitude }) => {
-console.log(latitude, longitude)
 
 
   const [viewport, setViewport] = useState({
@@ -17,6 +16,14 @@ console.log(latitude, longitude)
     zoom: 13,
   });
 
+  useEffect(() => {
+    setViewport({
+      latitude: latitude,
+      longitude: longitude,
+      zoom: 13,
+    })
+
+  }, [latitude, longitude])
 
   return (
     <div style={{ height: "70vh", width: "98vw" }} className="map">

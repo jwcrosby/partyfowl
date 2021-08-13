@@ -78,6 +78,9 @@ const SearchResults = (props) => {
         clearSearch={clearSearch}
         hasSearchRun={hasSearchRun}
         setHasSearchRun={setHasSearchRun}
+        setLatitude={setLatitude}
+        setLongitude={setLongitude}
+        setGeoHashLocation={setGeoHashLocation}
       />
       </div>
     </main>

@@ -1,5 +1,8 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
+import { convertSearchQueryToLatLong } from "../../services/geocodioAPI";
+import { getEventsByGeoHash } from "../../services/ticketmasterAPI";
+import geohash from "ngeohash"
 import "./SearchHeader.css";
 
 //Components
@@ -16,12 +19,36 @@ const SearchHeader = (props) => {
     clearSearch,
     hasSearchRun,
     setHasSearchRun,
+
+    setLatitude,
+    setLongitude,
+    setGeoHashLocation,
   } = props;
 
   const handleSearch = async (e) => {
     e.preventDefault();
     try {
       setHasSearchRun(true);
+
+      convertSearchQueryToLatLong(keyword).then((data) => {
+
+        const lat = data?.results[0]?.location?.lat;
+        const long = data?.results[0]?.location?.lng;
+        const geoHashConversion = geohash.encode(lat, long);
+        
+        setLatitude(lat)
+        setLongitude(long)
+        setGeoHashLocation(geoHashConversion.toString());
+
+        getEventsByGeoHash(150, geoHashConversion).then((data) => {
+          console.log(data, "Data")
+          data.hasOwnProperty("_embedded")
+            ? setEventData(data._embedded.events)
+            : setEventData([]);
+        });
+
+      });
+      
 
       history.push(`/events/search/${keyword}`);
       
