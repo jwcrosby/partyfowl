@@ -88,7 +88,7 @@ const deleteComment = async (req, res) => {
 }
 
 function getAllEvents (req, res) {
-    axios.get(`https://app.ticketmaster.com/discovery/v2/events.json?sort=random&size=6&apikey=${process.env.API_KEY}`)
+    axios.get(`https://app.ticketmaster.com/discovery/v2/events.json?sort=random&size=24&apikey=${process.env.API_KEY}`)
     .then(response => {
         res.json(response.data)
     })
