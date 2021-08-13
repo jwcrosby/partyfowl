@@ -11,7 +11,7 @@
 .nav-a {
     color: black;
     font-family: 'Montserrat', sans-serif;
-    font-weight: 300;
+    font-weight: 400;
     font-size: 2.3rem;
     text-decoration: none;
     margin: 3px;
@@ -19,9 +19,7 @@
     display: inline-block;
     max-height: 3vh;
 }
-.h1-navbar {
-    
-}
+
 .Home {
     margin-left: 10vw;
     width: 33%;
@@ -66,3 +64,13 @@
     max-height: 3rem;
 }
 
+.goose-icon.flying {
+    animation:linear infinite alternate;
+    animation-name: run;
+    animation-duration: 5s;
+}
+@keyframes run {
+    0% { left: 0;}
+    50%{ left : 100%;}
+    100%{ left: 0;}
+}
