@@ -53,6 +53,11 @@
     padding-bottom: 4vh;
 }
 
+.photo-comments {
+    text-align: center;
+    padding-bottom: 4vh;
+}
+
 .comment-btn {
     border: none;
     background-color: rgb(58, 99, 211);
