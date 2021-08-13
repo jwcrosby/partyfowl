@@ -1,14 +1,12 @@
 # PartyFowl :tada:
 ![PartyFowl Logo](src/assets/logo.png)
 
-Some catchy introduction
+Events made easy. No ducking around.
 
 ---
 ## :sparkles: [Check It Out Here!](https://partyfowl.herokuapp.com/)
 ---
-## :partying_face: How Does It Work? 
-
-
+## :partying_face: Screenshots
 
 ![Landing Page](src/assets/landing.png) 
 
@@ -64,5 +62,10 @@ Some catchy introduction
 ---
 ## :yellow_heart: Attributions & Shoutouts
 Special shoutout to our instructors!!
+
+[Geocod.io](https://www.geocod.io/)
+[Mapbox GL](https://www.mapbox.com/)
+[React-Map-GL](https://visgl.github.io/react-map-gl/)
+[Ticketmaster Discovery API](https://developer.ticketmaster.com//)
 
 Icons from www.flaticon.com. 
