@@ -34,8 +34,8 @@ const Profile = (props) => {
             <div className={profileStyles.avatarInfo}>
                 <img className={profileStyles.avatar} src={userProfile.avatar} alt="user avatar"/>
                 <section className={profileStyles.info}>
-                <p>{userProfile.location}</p>
-                <p>Interested in ___</p>
+                <p>Location (zipcode): {userProfile.location}</p>
+                <p>Joined the Gaggle community on: </p>
                 </section>
             </div>
            
@@ -43,11 +43,11 @@ const Profile = (props) => {
                 <div className={profileStyles.eventsAttendance}>
                     <h3> Upcoming Events </h3>
                     {userProfile.events_attending.map((event) => (
-                       
+                       <div>
                         <Link to={{ pathname: `/events/${event.event_id}` , state: { event : event.event_id}}}>
                             {event.title}
                         </Link>
-                        
+                        </div>
                     ))}
                 </div>
             </section>
