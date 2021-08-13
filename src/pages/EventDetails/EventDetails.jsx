@@ -23,6 +23,7 @@ const EventDetails = (props) => {
   const [photoCommentsArray, setPhotoCommentsArray] = useState([])
   const [profilesArray, setProfilesArray] = useState([])
 
+  console.log('photo cmmnt', photoCommentsArray)
   
   const startDate = new Date(eventDetails?.dates?.start?.localDate)
   const fixedDate = startDate.toDateString()

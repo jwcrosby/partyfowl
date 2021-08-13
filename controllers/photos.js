@@ -23,7 +23,7 @@ const createPhotoComment = async (req, res) => {
             { $push: { user_photos: photo } }
         ).populate('user_photos')
 
-        return res.status(201).json(test.user_photos)
+        return res.status(201).json(photo)
     } catch (err) {
         res.status(400).send(err.message)
     }
