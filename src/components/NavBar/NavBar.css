@@ -10,7 +10,8 @@
 }
 .nav-a {
     color: black;
-    font-family: 'Courgette', cursive;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
     font-size: 2.3rem;
     text-decoration: none;
     margin: 3px;
