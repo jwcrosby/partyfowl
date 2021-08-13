@@ -17,7 +17,7 @@ const create = async (req, res) => {
 const doesEventExist = async (req, res) => {
   try {
     const eventData = await Event.find({ event_id: req.params.id })
-      .populate("users_photos")
+      .populate("user_photos")
       .populate("profiles_attending");
     if (eventData.length) {
       return res.status(200).json(eventData);

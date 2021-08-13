@@ -6,8 +6,9 @@ import PhotoCommentActions from './PhotoCommentActions'
 
 const PhotoCommentCard = (props) => {
 console.log('props', props)
-console.log('hello', props.photoCommentsArray[0][0].image)
-const image = props.photoCommentsArray[0][0].image
+// console.log('hello', props.photoCommentsArray[0][0].image)
+// const image = props.photoCommentsArray[0][0].image
+// const image = 'https://i.imgur.com/viKeMS4.jpg'
     return (
         <div className='photo-comment-card'>
 
@@ -15,7 +16,8 @@ const image = props.photoCommentsArray[0][0].image
                 <p>
                     {props?.user?.name}:
                 </p>
-                <img src={image} alt='alt'/>
+                <img src={props.photoComment.image} alt='alt' />
+                
                 
             </div>
             
