@@ -1,3 +1,6 @@
+a {
+    text-decoration: none;
+}
 .nav-bar{
     /* just to test if css is connected - and it is! */
     background: #b9b9ff;
@@ -32,6 +35,7 @@
 .login, .signup, .logout, .profile{
     color: white;
     text-align: right;
+    font-size: 2rem;
     /* width: 10%; */
     /* position: absolute;
     top: 0;
@@ -69,8 +73,49 @@
     animation-name: run;
     animation-duration: 5s;
 }
-@keyframes run {
-    0% { left: 0;}
-    50%{ left : 100%;}
-    100%{ left: 0;}
+@media (max-width: 1000px){
+    .login, .signup, .logout, .profile{
+        color: white;
+        text-align: right;
+        font-size: 1.5rem;
+        justify-content: center;
+    }
+    .form-links, .user-links {
+       justify-content: center;
+    }
+    img.img-event {
+        min-width: 210px;
+    }    
 }
+
+@media (max-width: 850px){
+    .login, .signup, .logout, .profile{
+        font-size: 1.2rem;
+    }
+    .form-links, .user-links {
+    justify-content: center;
+    margin: 0.2vh;
+    }
+    img.img-event {
+        min-width: 210px;
+    }
+    h3.h3-search {
+        font-size: 1rem;
+    }
+    
+}
+/* @media (max-width: 375px){
+    .event-list {
+        
+        justify-content: center;
+        display: inline-block;
+        width: 265px;
+        margin: 10px;
+        padding: 47px;
+    }
+    span.header-img {
+        display: none;
+    }
+    
+} */
+
