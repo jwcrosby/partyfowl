@@ -63,4 +63,9 @@ Events made easy. No ducking around.
 ## :yellow_heart: Attributions & Shoutouts
 Special shoutout to our instructors!!
 
+[Geocod.io](https://www.geocod.io/)
+[Mapbox GL](https://www.mapbox.com/)
+[React-Map-GL](https://visgl.github.io/react-map-gl/)
+[Ticketmaster Discovery API](https://developer.ticketmaster.com//)
+
 Icons from www.flaticon.com. 
